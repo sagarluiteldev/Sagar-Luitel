@@ -704,9 +704,14 @@ body.nav-open .nav-backdrop {
   z-index: 120;
   min-width: min(34rem, 100vw);
   height: 100svh;
-  transform: translateX(calc(100% + 6vw));
   transition: transform 0.82s var(--ease-primary);
   will-change: transform;
+}
+
+@media (min-width: 781px) {
+  .drawer {
+    transform: translateX(calc(100% + 6vw));
+  }
 }
 
 body.nav-open .drawer {
