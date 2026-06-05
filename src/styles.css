@@ -704,8 +704,11 @@ body.nav-open .nav-backdrop {
   z-index: 120;
   min-width: min(34rem, 100vw);
   height: 100svh;
-  transition: transform 0.82s var(--ease-primary);
   will-change: transform;
+}
+
+.app-ready .drawer {
+  transition: transform 0.82s var(--ease-primary);
 }
 
 @media (min-width: 781px) {
@@ -727,8 +730,11 @@ body.nav-open .drawer {
   overflow: hidden;
   transform-origin: right center;
   transform: scaleX(1);
-  transition: transform 0.82s var(--ease-primary);
   will-change: transform;
+}
+
+.app-ready .drawer__curve {
+  transition: transform 0.82s var(--ease-primary);
 }
 
 body.nav-open .drawer__curve {
