@@ -715,17 +715,19 @@ body.nav-open .drawer {
 
 .drawer__curve {
   position: absolute;
-  left: 1px;
+  right: calc(100% - 1px);
   top: 0;
   width: 6vw;
   height: 100%;
   overflow: hidden;
-  transform: translateX(-100%);
-  transition: width 0.82s var(--ease-primary);
+  transform-origin: right center;
+  transform: scaleX(1);
+  transition: transform 0.82s var(--ease-primary);
+  will-change: transform;
 }
 
 body.nav-open .drawer__curve {
-  width: 0;
+  transform: scaleX(0);
 }
 
 .drawer__curve span {
