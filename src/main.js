@@ -1019,7 +1019,16 @@ const runPreloader = () => {
 };
 
 const initSmoothScroll = () => {
+  scrollContainer = document.querySelector("[data-scroll-container]");
+
   if (!scrollContainer || prefersReducedMotion) {
+    window.addEventListener("scroll", () => setScrolledState(window.scrollY), { passive: true });
+    return;
+  }
+
+  // Disable smooth scroll and scrollerProxy on mobile/tablet viewports (width <= 780px)
+  const isMobile = window.innerWidth <= 780;
+  if (isMobile) {
     window.addEventListener("scroll", () => setScrolledState(window.scrollY), { passive: true });
     return;
   }
