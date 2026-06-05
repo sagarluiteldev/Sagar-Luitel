@@ -1018,18 +1018,26 @@ const runPreloader = () => {
   });
 };
 
+let windowScrollListener = null;
+
 const initSmoothScroll = () => {
   scrollContainer = document.querySelector("[data-scroll-container]");
 
+  if (windowScrollListener) {
+    window.removeEventListener("scroll", windowScrollListener);
+    windowScrollListener = null;
+  }
+
   if (!scrollContainer || prefersReducedMotion) {
-    window.addEventListener("scroll", () => setScrolledState(window.scrollY), { passive: true });
+    windowScrollListener = () => setScrolledState(window.scrollY);
+    window.addEventListener("scroll", windowScrollListener, { passive: true });
     return;
   }
 
-  // Disable smooth scroll and scrollerProxy on mobile/tablet viewports (width <= 780px)
   const isMobile = window.innerWidth <= 780;
   if (isMobile) {
-    window.addEventListener("scroll", () => setScrolledState(window.scrollY), { passive: true });
+    windowScrollListener = () => setScrolledState(window.scrollY);
+    window.addEventListener("scroll", windowScrollListener, { passive: true });
     return;
   }
 
@@ -1119,27 +1127,202 @@ const runRouteTransition = (label) => {
   const overlay = document.querySelector(".page-transition");
   if (!overlay || prefersReducedMotion) return Promise.resolve();
 
-  let labelNode = overlay.querySelector(".page-transition__label");
-  if (!labelNode) {
-    labelNode = document.createElement("p");
-    labelNode.className = "page-transition__label";
-    overlay.append(labelNode);
-  }
+  const pathNode = overlay.querySelector(".page-transition__path");
+  const labelNode = overlay.querySelector(".page-transition__label");
+
+  if (!pathNode || !labelNode) return Promise.resolve();
 
   labelNode.textContent = label;
   overlay.classList.add("is-active");
-  gsap.killTweensOf([overlay, labelNode]);
-  gsap.set(overlay, { autoAlpha: 1 });
+
+  gsap.killTweensOf([labelNode]);
   gsap.set(labelNode, { yPercent: 115, autoAlpha: 0 });
 
+  const transitionVal = { y: 100, curve: 0 };
+  const updatePath = () => {
+    const ySides = transitionVal.y;
+    const yCenter = transitionVal.y - transitionVal.curve;
+    const d = `M 0 100 L 0 ${ySides} Q 50 ${yCenter} 100 ${ySides} L 100 100 Z`;
+    pathNode.setAttribute("d", d);
+  };
+
+  updatePath();
+
   return new Promise((resolve) => {
-    gsap
-      .timeline({
-        defaults: { ease: "power4.out" },
-        onComplete: resolve,
-      })
-      .to(labelNode, { yPercent: 0, autoAlpha: 1, duration: 0.55 })
-      .to(labelNode, { yPercent: -8, duration: 0.28, ease: "power2.inOut" }, "+=0.1");
+    const tl = gsap.timeline({
+      onUpdate: updatePath,
+      onComplete: resolve,
+    });
+
+    tl.to(transitionVal, { y: 0, duration: 0.72, ease: "power3.inOut" })
+      .to(transitionVal, { curve: 30, duration: 0.36, ease: "power2.out" }, 0)
+      .to(transitionVal, { curve: 0, duration: 0.36, ease: "power2.in" }, 0.36)
+      .to(labelNode, { yPercent: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 0.28);
+  });
+};
+
+const playRouteTransitionExit = () => {
+  const overlay = document.querySelector(".page-transition");
+  if (!overlay) return;
+
+  const pathNode = overlay.querySelector(".page-transition__path");
+  const labelNode = overlay.querySelector(".page-transition__label");
+
+  if (!pathNode || !labelNode) {
+    document.documentElement.classList.remove("route-transitioning-exit");
+    return;
+  }
+
+  document.documentElement.classList.remove("route-transitioning-exit");
+  overlay.classList.add("is-active");
+
+  gsap.killTweensOf([labelNode]);
+  labelNode.textContent = getPathLabel(window.location.pathname);
+  gsap.set(labelNode, { yPercent: 0, autoAlpha: 1 });
+
+  const transitionVal = { y: 100, curve: 0 };
+  const updateExitPath = () => {
+    const ySides = transitionVal.y;
+    const yCenter = transitionVal.y - transitionVal.curve;
+    const d = `M 0 0 L 100 0 L 100 ${ySides} Q 50 ${yCenter} 0 ${ySides} Z`;
+    pathNode.setAttribute("d", d);
+  };
+
+  updateExitPath();
+
+  const tl = gsap.timeline({
+    onUpdate: updateExitPath,
+    onComplete: () => {
+      overlay.classList.remove("is-active");
+    },
+  });
+
+  tl.to(labelNode, { yPercent: -100, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, 0)
+    .to(transitionVal, { y: 0, duration: 0.72, ease: "power3.inOut" }, 0.08)
+    .to(transitionVal, { curve: 30, duration: 0.36, ease: "power2.out" }, 0.08)
+    .to(transitionVal, { curve: 0, duration: 0.36, ease: "power2.in" }, 0.44);
+};
+
+let homePageHTML = "";
+
+const saveHomePageHTML = () => {
+  const homeMain = document.querySelector("main#home");
+  if (homeMain) {
+    homePageHTML = homeMain.outerHTML;
+  }
+};
+
+const renderHomePage = () => {
+  document.body.classList.remove("case-route", "work-route", "about-route", "contact-route");
+  document.title = "Sagar Luitel - Full Stack Developer";
+  setMetaContent('meta[name="description"]', "Sagar Luitel is a full stack developer building refined web products, interfaces, and systems.");
+
+  if (homePageHTML) {
+    document.querySelector("main")?.remove();
+    document.body.insertAdjacentHTML("beforeend", homePageHTML);
+    return Promise.resolve();
+  } else {
+    return fetch("/")
+      .then((res) => res.text())
+      .then((htmlText) => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlText, "text/html");
+        const homeMainNode = doc.querySelector("main#home");
+        if (homeMainNode) {
+          homePageHTML = homeMainNode.outerHTML;
+          document.querySelector("main")?.remove();
+          document.body.insertAdjacentHTML("beforeend", homePageHTML);
+        }
+      });
+  }
+};
+
+const destroySite = () => {
+  if (smoothScroll) {
+    smoothScroll.destroy();
+    smoothScroll = null;
+  }
+  ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  document.body.classList.remove("case-route", "work-route", "about-route", "contact-route", "route-transitioning");
+  closeNavigation();
+};
+
+const reinitSiteForNewPage = () => {
+  setViewportHeight();
+  updateLocalTime();
+  initLazyMedia();
+  initSmoothScroll();
+  initNavigation();
+  initAnchors();
+  initMagneticButtons();
+  initHoverPreview();
+  initWorkPageControls();
+  initContactForm();
+  initScrollAnimations();
+
+  ScrollTrigger.refresh();
+  smoothScroll?.update();
+
+  requestAnimationFrame(() => {
+    ScrollTrigger.refresh();
+    smoothScroll?.update();
+  });
+};
+
+const navigateToPage = (href, isPopState = false) => {
+  if (isRouteTransitioning) return;
+  isRouteTransitioning = true;
+
+  const url = new URL(href, window.location.href);
+  const pathName = url.pathname.replace(/\/$/, "") || "/";
+  
+  const transition = runRouteTransition(getPathLabel(pathName));
+  document.body.classList.add("route-transitioning");
+  closeNavigation();
+
+  let fetchPromise = Promise.resolve();
+  if (pathName === "/" && !homePageHTML) {
+    fetchPromise = fetch("/")
+      .then((res) => res.text())
+      .then((htmlText) => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlText, "text/html");
+        const homeMainNode = doc.querySelector("main#home");
+        if (homeMainNode) {
+          homePageHTML = homeMainNode.outerHTML;
+        }
+      });
+  }
+
+  Promise.all([transition, fetchPromise]).then(() => {
+    destroySite();
+
+    const activeProject = projects.find((p) => pathName === `/work/${p.slug}`);
+    if (activeProject) {
+      renderCasePage(activeProject);
+    } else if (pathName === "/work") {
+      renderWorkPage();
+    } else if (pathName === "/about") {
+      renderAboutPage();
+    } else if (pathName === "/contact") {
+      renderContactPage();
+    } else if (pathName === "/") {
+      document.body.classList.remove("case-route", "work-route", "about-route", "contact-route");
+      document.title = "Sagar Luitel - Full Stack Developer";
+      setMetaContent('meta[name="description"]', "Sagar Luitel is a full stack developer building refined web products, interfaces, and systems.");
+      document.querySelector("main")?.remove();
+      if (homePageHTML) {
+        document.body.insertAdjacentHTML("beforeend", homePageHTML);
+      }
+    }
+
+    if (!isPopState) {
+      window.history.pushState({}, "", href);
+    }
+
+    reinitSiteForNewPage();
+    playRouteTransitionExit();
+    isRouteTransitioning = false;
   });
 };
 
@@ -1149,16 +1332,11 @@ const initRouteTransitions = () => {
     if (!transitionLink || isRouteTransitioning) return;
 
     event.preventDefault();
-    isRouteTransitioning = true;
+    navigateToPage(transitionLink.nextUrl.href);
+  });
 
-    const { nextUrl } = transitionLink;
-    const transition = runRouteTransition(getPathLabel(nextUrl.pathname));
-    document.body.classList.add("route-transitioning");
-    closeNavigation();
-
-    transition.then(() => {
-      window.location.assign(nextUrl.href);
-    });
+  window.addEventListener("popstate", () => {
+    navigateToPage(window.location.href, true);
   });
 };
 
@@ -1186,10 +1364,6 @@ const initNavigation = () => {
   document.querySelector(".hamburger")?.addEventListener("click", toggleNavigation);
   document.querySelector(".nav-link--menu")?.addEventListener("click", toggleNavigation);
   document.querySelector(".nav-backdrop")?.addEventListener("click", closeNavigation);
-
-  window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeNavigation();
-  });
 };
 
 const initMagneticButtons = () => {
@@ -1691,20 +1865,11 @@ const initLazyMedia = () => {
 };
 
 
-const initSite = () => {
-  document.documentElement.classList.add("app-ready");
-  setViewportHeight();
-  updateLocalTime();
-  initLazyMedia();
-  initSmoothScroll();
-  initNavigation();
-  initAnchors();
-  initRouteTransitions();
-  initMagneticButtons();
-  initHoverPreview();
-  initWorkPageControls();
-  initContactForm();
-  initScrollAnimations();
+let isGlobalInitialized = false;
+
+const initGlobalListeners = () => {
+  if (isGlobalInitialized) return;
+  isGlobalInitialized = true;
 
   window.addEventListener("resize", () => {
     setViewportHeight();
@@ -1712,7 +1877,6 @@ const initSite = () => {
     ScrollTrigger.refresh();
   });
 
-  // Refresh ScrollTrigger and Locomotive Scroll when images or videos load
   document.addEventListener(
     "load",
     (event) => {
@@ -1726,11 +1890,40 @@ const initSite = () => {
 
   window.setInterval(updateLocalTime, 30_000);
 
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeNavigation();
+  });
+};
+
+const initSite = () => {
+  document.documentElement.classList.add("app-ready");
+  saveHomePageHTML();
+  initGlobalListeners();
+
+  setViewportHeight();
+  updateLocalTime();
+  initLazyMedia();
+  initSmoothScroll();
+  initNavigation();
+  initAnchors();
+  initRouteTransitions();
+  initMagneticButtons();
+  initHoverPreview();
+  initWorkPageControls();
+  initContactForm();
+  initScrollAnimations();
+
   requestAnimationFrame(() => {
     ScrollTrigger.refresh();
     smoothScroll?.update();
   });
 };
+
+const routeTransitionExit = sessionStorage.getItem("routeTransitionDirection") === "exit";
+if (routeTransitionExit) {
+  sessionStorage.removeItem("routeTransitionDirection");
+  playRouteTransitionExit();
+}
 
 runPreloader().then(initSite);
 

@@ -119,23 +119,37 @@ li {
   position: fixed;
   inset: 0;
   z-index: 900;
-  display: grid;
-  place-items: center;
   pointer-events: none;
   overflow: hidden;
-  background: var(--color-darker);
-  opacity: 0;
+  background: transparent;
   visibility: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.page-transition__svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.page-transition__path {
+  fill: var(--color-darker);
 }
 
 .page-transition__label {
   position: relative;
+  z-index: 2;
   color: var(--color-light);
   font-size: clamp(3.2rem, 8vw, 8rem);
   font-weight: 450;
   line-height: 1;
   overflow: hidden;
   text-align: center;
+  opacity: 0;
 }
 
 .page-transition__label::before {
@@ -150,7 +164,13 @@ li {
 }
 
 .page-transition.is-active {
+  visibility: visible;
   pointer-events: auto;
+}
+
+html.route-transitioning-exit .page-transition {
+  visibility: visible !important;
+  pointer-events: auto !important;
 }
 
 body.route-transitioning .drawer,

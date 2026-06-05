@@ -18,6 +18,11 @@
     <link rel="icon" type="image/png" href="/assets/sagar-footer-portrait-circle.png" />
     <link rel="preload" href="/web/fonts/Chillax-Variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/web/css/chillax.css" />
+    <script>
+      if (sessionStorage.getItem("routeTransitionDirection") === "exit") {
+        document.documentElement.classList.add("route-transitioning-exit");
+      }
+    </script>
     <style>
       html {
         background: #141517;
@@ -96,7 +101,33 @@
   </head>
   <body data-barba="wrapper">
     <div class="page-transition" aria-hidden="true">
+      <svg class="page-transition__svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path class="page-transition__path" d="M 0 100 L 0 100 Q 50 100 100 100 L 100 100 Z" fill="#141517"></path>
+      </svg>
       <p class="page-transition__label">Home</p>
+      <script>
+        if (sessionStorage.getItem("routeTransitionDirection") === "exit") {
+          const path = window.location.pathname.replace(/\/$/, "") || "/";
+          let label = "Sagar Luitel";
+          if (path === "/") label = "Home";
+          else if (path === "/work") label = "Work";
+          else if (path === "/about") label = "About";
+          else if (path === "/contact") label = "Contact";
+          else if (path.startsWith("/work/")) {
+            const slug = path.split("/").pop();
+            label = slug.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+          }
+          
+          const labelNode = document.currentScript.previousElementSibling;
+          labelNode.textContent = label;
+          labelNode.style.opacity = "1";
+          
+          const pathNode = document.currentScript.parentElement.querySelector(".page-transition__path");
+          if (pathNode) {
+            pathNode.setAttribute("d", "M 0 0 L 100 0 L 100 100 Q 50 100 0 100 Z");
+          }
+        }
+      </script>
     </div>
 
     <div class="preloader" aria-live="polite">
