@@ -35,14 +35,22 @@
         visibility: hidden;
       }
 
-      html:not(.app-ready) .drawer {
-        transform: translateX(calc(100% + 6vw)) !important;
-        transition: none !important;
+      @media (min-width: 781px) {
+        html:not(.app-ready) .drawer {
+          transform: translateX(calc(100% + 6vw)) !important;
+          transition: none !important;
+        }
+      }
+
+      @media (max-width: 780px) {
+        html:not(.app-ready) .drawer {
+          transform: translateX(calc(100% + 18vw)) !important;
+          transition: none !important;
+        }
       }
 
       html:not(.app-ready) .drawer__curve {
-        width: 6vw !important;
-        transform: translateX(-100%) !important;
+        transform: scaleX(1) !important;
         transition: none !important;
       }
 
