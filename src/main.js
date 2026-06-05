@@ -296,8 +296,8 @@ const renderChrome = (active = "home", cursorText = "View") => `
         </ul>
       </div>
       <div class="drawer__socials socials">
-        <div class="stripe"></div>
         <h5>Socials</h5>
+        <div class="stripe"></div>
         <ul>
           <li><a class="magnetic" href="https://github.com/dragonm0901-ship-it" target="_blank" rel="noreferrer">GitHub</a></li>
           <li><a class="magnetic" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a></li>
@@ -1036,8 +1036,8 @@ const initSmoothScroll = () => {
   smoothScroll = new LocomotiveScroll({
     el: scrollContainer,
     smooth: true,
-    lerp: 0.08,
-    multiplier: 0.9,
+    lerp: 0.05,
+    multiplier: 1.0,
     reloadOnContextChange: true,
     tablet: { smooth: false },
     smartphone: { smooth: false },
@@ -1733,3 +1733,10 @@ const initSite = () => {
 };
 
 runPreloader().then(initSite);
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    ScrollTrigger.refresh();
+    smoothScroll?.update();
+  }, 100);
+});
