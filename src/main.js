@@ -219,7 +219,7 @@ const projects = [
     artClass: "project-art--two",
     background: "#DED5C8",
     accent: "#2B2D42",
-    image: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=800&q=80",
+    image: "/assets/laptop mockups/3D Museum Mockup.jpeg",
     laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252343 (1).jpeg",
     summary:
       "A virtual physics museum concept designed to preserve and exhibit artifacts in an interactive, web-based environment. The platform allows users to walk through an online gallery, interact with exhibits, trigger physical reactions, and experience spatial audio elements that mimic physical gallery acoustics.",
@@ -229,7 +229,74 @@ const projects = [
     solution:
       "I integrated Three.js with the Cannon.js rigid-body physics engine, optimizing bounding volume hierarchies to keep physics calculations lightweight. I bound collision impact vectors to dynamic Web Audio API panner nodes, adjusting frequency sweeps and panning relative to the listener's virtual ears, creating an immersive, physically authentic gallery environment.",
   },
+  {
+    slug: "cityscape",
+    title: "CityScape",
+    service: "Apartment Rentals",
+    role: "Full Stack Development & UI Design",
+    credits: "Code and design: Sagar Luitel",
+    location: "Kathmandu ©",
+    year: "2026",
+    liveUrl: "https://cityscapeny.vercel.app/",
+    artClass: "project-art--three",
+    background: "#DED5C8",
+    accent: "#564ADE",
+    image: "/assets/desktop mockups/cityscape desktop.jpeg",
+    laptopImage: "/assets/laptop mockups/cityscape mockup.jpeg",
+    summary:
+      "A premium apartment rental platform designed for booking fully equipped stays with stunning interiors and 24/7 guest support in New York City. The platform features an intuitive apartment selection layout, fluid transition effects, interactive maps of NYC neighborhoods, and a streamlined booking checkout flow.",
+    tech: ["React.js", "Vite", "GSAP Animations", "Tailwind CSS", "Framer Motion"],
+    challenge:
+      "Implementing smooth page transitions and filtering across hundreds of active listings while maintaining a fast, layout-shift-free interface. Standard client-side routing caused noticeable lag when reloading heavy gallery layouts with multiple high-res interior photos.",
+    solution:
+      "I optimized the image assets using responsive image sets and progressive loading. I developed a client-side state caching layer to keep listings in memory and used GSAP to coordinate layout animations during filters, resulting in immediate filtering transitions.",
+  },
+  {
+    slug: "navyata",
+    title: "Navyata",
+    service: "E-Commerce Boutique",
+    role: "Front End & E-Commerce Integration",
+    credits: "Code and design: Sagar Luitel",
+    location: "Kathmandu ©",
+    year: "2026",
+    liveUrl: "https://navyata.vercel.app/",
+    artClass: "project-art--four",
+    background: "#C8DBD0",
+    accent: "#49A77B",
+    image: "/assets/laptop mockups/navyata mockup.jpeg",
+    laptopImage: "/assets/laptop mockups/navyata mockup.jpeg",
+    summary:
+      "A modern, high-end fashion and lifestyle e-commerce boutique featuring curated apparel collections. The store combines a minimal aesthetic layout with an interactive shopping cart drawer, rich product detail layouts, and smooth checkout integrations.",
+    tech: ["React.js", "Shopify API", "Tailwind CSS", "Redux Toolkit", "GSAP Animations"],
+    challenge:
+      "Synchronizing Shopify's cart state with the custom client-side React UI without introducing lag or layout shifts during cart updates and removals. Off-the-shelf SDKs introduced multiple roundtrip network delays.",
+    solution:
+      "I engineered a lightweight Shopify Storefront API middleware wrapper that optimistic-updates the local Redux state immediately upon item addition, while performing the remote sync in the background, making the cart experience feel instantaneous.",
+  },
+  {
+    slug: "viatour",
+    title: "Viatour",
+    service: "Travel Booking Platform",
+    role: "Full Stack & Database Architecture",
+    credits: "Code and design: Sagar Luitel",
+    location: "Kathmandu ©",
+    year: "2026",
+    liveUrl: "https://via-tour.vercel.app/",
+    artClass: "project-art--one",
+    background: "#C9D5F5",
+    accent: "#0F7BFF",
+    image: "/assets/desktop mockups/viatour desktop.jpeg",
+    laptopImage: "/assets/laptop mockups/viatour mockup.jpeg",
+    summary:
+      "An interactive, full-stack travel booking application that allows users to discover, compare, and book tailored tour packages worldwide. The system features a responsive search engine with date and destination filters, a secure payment gateway integration, and a dedicated admin console to track reservations and customer reviews.",
+    tech: ["Next.js", "Node.js", "PostgreSQL", "Prisma", "Tailwind CSS", "Stripe API"],
+    challenge:
+      "Handling high-concurrency booking requests during holiday seasons without double-booking rooms or tour guides. Heavy read-write transactions on tour slots led to database locks and slow response times.",
+    solution:
+      "I designed a slot reservation system using transaction blocks in PostgreSQL with database-level row locks. I offloaded temporary seat reservations to an in-memory database with automatic TTL (time-to-live) expiration, ensuring slots were held for only 10 minutes during checkout.",
+  },
 ];
+
 
 const getRouteProject = () => {
   const match = window.location.pathname.match(/^\/work\/([^/]+)\/?$/);
