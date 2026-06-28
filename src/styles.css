@@ -10,6 +10,7 @@
   --color-soft: #e8eaeb;
   --color-blue: #FF4F22;
   --color-blue-dark: #E03E15;
+  --color-orange: #FF4F22;
   --color-border: rgba(20, 21, 23, 0.18);
   --color-border-light: rgba(255, 255, 255, 0.2);
   --ease-primary: cubic-bezier(0.7, 0, 0.3, 1);
@@ -547,6 +548,15 @@ p {
   color: inherit;
   cursor: pointer;
   will-change: transform;
+}
+
+.nav-link {
+  transition: color 0.3s var(--ease-primary);
+}
+
+.nav-link:not(.nav-link--menu):hover,
+.nav-link.is-active {
+  color: var(--color-orange);
 }
 
 .nav-link::after {

@@ -924,6 +924,7 @@ const renderContactPage = () => {
             </div>
             <div class="contact-layout">
               <form class="contact-form" action="#" novalidate>
+                <input type="hidden" name="access_key" value="e4b9d15c-482c-49bc-9a1c-c77aebd1ceb1" />
                 ${[
                   ["01", "What's your name?", "text", "Sagar Luitel *", "name"],
                   ["02", "What's your email?", "email", "sagar.luitel.0909@gmail.com *", "email"],
@@ -1588,7 +1589,85 @@ const initContactForm = () => {
     form.addEventListener("submit", (event) => {
       event.preventDefault();
       const note = form.querySelector(".form-note");
-      if (note) note.textContent = "Thanks. This demo form is ready to connect to your preferred backend.";
+      const button = form.querySelector(".contact-send");
+      const buttonText = button ? button.querySelector("span:not(.btn-fill)") : null;
+
+      // Basic client-side validation
+      const nameInput = form.querySelector('input[name="name"]');
+      const emailInput = form.querySelector('input[name="email"]');
+      const messageInput = form.querySelector('textarea[name="message"]');
+
+      if (!nameInput?.value.trim()) {
+        if (note) {
+          note.style.color = "#FF4F22";
+          note.textContent = "Please enter your name.";
+        }
+        return;
+      }
+
+      if (!emailInput?.value.trim()) {
+        if (note) {
+          note.style.color = "#FF4F22";
+          note.textContent = "Please enter your email address.";
+        }
+        return;
+      }
+
+      if (!messageInput?.value.trim()) {
+        if (note) {
+          note.style.color = "#FF4F22";
+          note.textContent = "Please enter your message.";
+        }
+        return;
+      }
+
+      // Show sending state
+      if (note) {
+        note.style.color = "";
+        note.textContent = "Sending your message...";
+      }
+
+      if (button) button.style.pointerEvents = "none";
+      if (buttonText) buttonText.textContent = "Sending...";
+
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: json,
+      })
+        .then(async (response) => {
+          const res = await response.json();
+          if (response.status === 200) {
+            if (note) {
+              note.style.color = "#49A77B"; // Accent green success color
+              note.textContent = "Thank you! Your message has been sent successfully.";
+            }
+            form.reset();
+          } else {
+            if (note) {
+              note.style.color = "#FF4F22";
+              note.textContent = res.message || "Something went wrong. Please try again.";
+            }
+          }
+        })
+        .catch((error) => {
+          console.error("Form submission error:", error);
+          if (note) {
+            note.style.color = "#FF4F22";
+            note.textContent = "Network error. Please check your connection and try again.";
+          }
+        })
+        .finally(() => {
+          if (button) button.style.pointerEvents = "";
+          if (buttonText) buttonText.textContent = "Send it!";
+        });
     });
   });
 };
