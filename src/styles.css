@@ -3353,7 +3353,6 @@ body.nav-open .drawer__primary li:nth-child(4) {
     min-height: 104svh;
   }
 
-
   .hero__portrait {
     top: 1%;
     height: 100%;
@@ -3365,24 +3364,7 @@ body.nav-open .drawer__primary li:nth-child(4) {
   }
 
   .hero__location {
-    left: auto;
-    right: var(--container-padding);
-    top: auto;
-    bottom: 3.5rem;
-    width: 5.7rem;
-    min-height: 5.7rem;
-    padding: 0;
-    border-radius: 50%;
-    background: transparent;
-    clip-path: none;
-  }
-
-  .hero__location p {
     display: none;
-  }
-
-  .digital-ball {
-    right: 0.9rem;
   }
 
   .hero__role {

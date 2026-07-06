@@ -33,7 +33,7 @@ const projects = [
   },
   {
     slug: "myrestro-manager",
-    title: "myRestro(SAAS) Manager",
+    title: "myRestro Manager",
     service: "SAAS Restaurant Manager",
     role: "Full Stack & Database Architecture",
     credits: "Code and design: Sagar Luitel",
@@ -219,7 +219,7 @@ const projects = [
     artClass: "project-art--two",
     background: "#DED5C8",
     accent: "#2B2D42",
-    image: "/assets/laptop mockups/3D Museum Mockup.jpeg",
+    image: "/assets/3d-museum-mockup-new.jpg",
     laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252343 (1).jpeg",
     summary:
       "A virtual physics museum concept designed to preserve and exhibit artifacts in an interactive, web-based environment. The platform allows users to walk through an online gallery, interact with exhibits, trigger physical reactions, and experience spatial audio elements that mimic physical gallery acoustics.",
@@ -241,7 +241,7 @@ const projects = [
     artClass: "project-art--three",
     background: "#DED5C8",
     accent: "#564ADE",
-    image: "/assets/desktop mockups/cityscape desktop.jpeg",
+    image: "/assets/cityscape-mockup-new.jpg",
     laptopImage: "/assets/laptop mockups/cityscape mockup.jpeg",
     summary:
       "A premium apartment rental platform designed for booking fully equipped stays with stunning interiors and 24/7 guest support in New York City. The platform features an intuitive apartment selection layout, fluid transition effects, interactive maps of NYC neighborhoods, and a streamlined booking checkout flow.",
@@ -263,7 +263,7 @@ const projects = [
     artClass: "project-art--four",
     background: "#C8DBD0",
     accent: "#49A77B",
-    image: "/assets/laptop mockups/navyata mockup.jpeg",
+    image: "/assets/navyata-mockup-new.jpg",
     laptopImage: "/assets/laptop mockups/navyata mockup.jpeg",
     summary:
       "A modern, high-end fashion and lifestyle e-commerce boutique featuring curated apparel collections. The store combines a minimal aesthetic layout with an interactive shopping cart drawer, rich product detail layouts, and smooth checkout integrations.",
@@ -285,7 +285,7 @@ const projects = [
     artClass: "project-art--one",
     background: "#C9D5F5",
     accent: "#0F7BFF",
-    image: "/assets/desktop mockups/viatour desktop.jpeg",
+    image: "/assets/viatour-mockup-new.jpg",
     laptopImage: "/assets/laptop mockups/viatour mockup.jpeg",
     summary:
       "An interactive, full-stack travel booking application that allows users to discover, compare, and book tailored tour packages worldwide. The system features a responsive search engine with date and destination filters, a secure payment gateway integration, and a dedicated admin console to track reservations and customer reviews.",
@@ -1207,6 +1207,7 @@ const runRouteTransition = (label) => {
   gsap.set(labelNode, { yPercent: 115, autoAlpha: 0 });
 
   const transitionVal = { y: 100, curve: 0 };
+  const maxCurve = window.innerWidth <= 780 ? 5 : 30;
   const updatePath = () => {
     const ySides = transitionVal.y;
     const yCenter = transitionVal.y - transitionVal.curve;
@@ -1223,7 +1224,7 @@ const runRouteTransition = (label) => {
     });
 
     tl.to(transitionVal, { y: 0, duration: 0.72, ease: "power3.inOut" })
-      .to(transitionVal, { curve: 30, duration: 0.36, ease: "power2.out" }, 0)
+      .to(transitionVal, { curve: maxCurve, duration: 0.36, ease: "power2.out" }, 0)
       .to(transitionVal, { curve: 0, duration: 0.36, ease: "power2.in" }, 0.36)
       .to(labelNode, { yPercent: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 0.28);
   });
@@ -1249,6 +1250,7 @@ const playRouteTransitionExit = () => {
   gsap.set(labelNode, { yPercent: 0, autoAlpha: 1 });
 
   const transitionVal = { y: 100, curve: 0 };
+  const maxCurve = window.innerWidth <= 780 ? 5 : 30;
   const updateExitPath = () => {
     const ySides = transitionVal.y;
     const yCenter = transitionVal.y - transitionVal.curve;
@@ -1267,7 +1269,7 @@ const playRouteTransitionExit = () => {
 
   tl.to(labelNode, { yPercent: -100, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, 0)
     .to(transitionVal, { y: 0, duration: 0.72, ease: "power3.inOut" }, 0.08)
-    .to(transitionVal, { curve: 30, duration: 0.36, ease: "power2.out" }, 0.08)
+    .to(transitionVal, { curve: maxCurve, duration: 0.36, ease: "power2.out" }, 0.08)
     .to(transitionVal, { curve: 0, duration: 0.36, ease: "power2.in" }, 0.44);
 };
 
