@@ -1318,6 +1318,7 @@ const destroySite = () => {
 };
 
 const reinitSiteForNewPage = () => {
+  window.scrollTo(0, 0);
   setViewportHeight();
   updateLocalTime();
   initLazyMedia();
@@ -1743,11 +1744,35 @@ const initScrollAnimations = () => {
     delay: 0.08,
   });
 
-  animateFromIfPresent([".hero__portrait img", ".hero__name"], {
+  const heroPortraitImg = document.querySelector(".hero__portrait img");
+  if (heroPortraitImg) {
+    gsap.fromTo(
+      heroPortraitImg,
+      {
+        yPercent: 26,
+        y: 90,
+        autoAlpha: 0,
+        scale: 1.4,
+        xPercent: -50,
+      },
+      {
+        yPercent: 26,
+        y: 0,
+        autoAlpha: 1,
+        scale: 1.4,
+        xPercent: -50,
+        duration: 1,
+        ease: "power4.out",
+        clearProps: "transform,opacity,visibility",
+      }
+    );
+  }
+
+  animateFromIfPresent(".hero__name", {
     y: 90,
     autoAlpha: 0,
     duration: 1,
-    stagger: 0.08,
+    delay: 0.08,
     ease: "power4.out",
   });
 
