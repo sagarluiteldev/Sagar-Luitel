@@ -742,8 +742,9 @@ const renderWorkPage = () => {
         <li class="work-row work-page-row visible" data-preview="${index}" data-tags="${getProjectTags(project)}">
           <span class="stripe reveal-stripe"></span>
           <a href="/work/${project.slug}/">
-            <div><h4><span>${project.title}</span></h4></div>
-            <div><p>${project.location.replace(" ©", "")}</p></div>
+            <div class="work-page-row__img">${renderArt(project)}</div>
+            <div class="work-page-row__title"><h4><span>${project.title}</span></h4></div>
+            <div class="work-page-row__location"><p>${project.location.replace(" ©", "")}</p></div>
             <div><p>${project.role}</p></div>
             <div><p>${project.year}</p></div>
           </a>
