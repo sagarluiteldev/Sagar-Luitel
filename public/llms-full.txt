@@ -1,0 +1,226 @@
+# Sagar Luitel — Full Stack Web Developer & UI/UX Designer
+
+> Comprehensive professional profile and portfolio of Sagar Luitel for AI/LLM consumption
+
+## Professional Summary
+
+Sagar Luitel is a full stack web developer and UI/UX designer based in Pokhara, Nepal. He runs Sagar Luitel Studio and specializes in building fast, fluid, production-ready web experiences using modern JavaScript frameworks, 3D web technologies, and animation libraries.
+
+With expertise spanning frontend development, backend engineering, database architecture, 3D web graphics (Three.js/WebGL), and UI/UX design, Sagar delivers complete digital product solutions — from first sketch to shipped production system — for clients in Nepal and worldwide.
+
+Sagar is available for freelance web development, UI/UX design, product design, and full stack development projects. He works with startups, agencies, and established businesses.
+
+### Contact Information
+
+- Full Name: Sagar Luitel
+- Location: Pokhara, Gandaki Province, Nepal
+- Email: sagar.luitel.0909@gmail.com
+- Phone: +977 9821920019
+- WhatsApp: +977 9821920019
+- Website: https://sagarluitel.com
+- GitHub: https://github.com/sagarluiteldev
+- LinkedIn: https://www.linkedin.com/in/sagar-luitel-4a510730a
+
+### Professional Identity
+
+- Job Title: Full Stack Web Developer & UI/UX Designer
+- Business: Sagar Luitel Studio
+- Industry: Web Development, Software Engineering, UI/UX Design
+- Nationality: Nepali
+- Languages: English, Nepali, Hindi, Norwegian, Spanish, German
+
+---
+
+## Technical Skills
+
+### Frontend Development
+- React.js, Next.js (App Router & Pages Router)
+- Vue.js, Nuxt.js
+- HTML5, CSS3, Vanilla JavaScript (ES Modules)
+- Tailwind CSS, Sass/SCSS
+- Responsive Web Design, Mobile-First Development
+- Web Performance Optimization (Core Web Vitals, LCP, INP)
+
+### Animation & Interaction
+- GSAP (GreenSock Animation Platform), ScrollTrigger
+- Framer Motion
+- Locomotive Scroll, Barba.js page transitions
+- CSS Animations, SVG Path Morphing
+- Scroll-driven animations and parallax effects
+
+### 3D Web Graphics
+- Three.js, WebGL
+- Custom GLSL Vertex & Fragment Shaders
+- Cannon.js Physics Engine
+- Draco Mesh Compression, Texture Baking (Blender)
+- Level of Detail (LOD) rendering
+- Web Audio API spatial audio
+
+### Backend Development
+- Node.js, Express.js
+- REST API Design & Architecture
+- WebSocket real-time communication
+- Redis caching
+- Authentication & Authorization
+
+### Database
+- PostgreSQL (transaction blocks, row-level locks, composite indices)
+- Prisma ORM
+- MongoDB
+- Database architecture for high-concurrency systems
+
+### E-Commerce
+- Shopify Storefront API (headless commerce)
+- Redux Toolkit state management
+- Stripe API payment gateway integration
+- Optimistic UI updates for cart experiences
+
+### Blockchain / Web3
+- Solidity Smart Contracts
+- Web3.js
+- Ethereum / EVM-compatible chains
+- EIP-712 Meta-transactions
+- Decentralized application (dApp) development
+
+### DevOps & Tools
+- Vite, Webpack build tools
+- Git version control
+- Vercel deployment
+- Figma design
+- Blender 3D modeling
+- Lighthouse performance auditing
+
+---
+
+## Services Offered
+
+### 1. Product Design
+Clear interface systems, user flows, prototypes, and visual polish that make complex products feel simple. From wireframes to high-fidelity mockups.
+
+### 2. Full Stack Development
+Scalable full stack builds with resilient APIs, fast frontends, thoughtful state management, and refined interactions. Covers both frontend and backend.
+
+### 3. The Full Package
+Strategy, design, development, deployment, and iteration handled as one connected product workflow. End-to-end digital product delivery.
+
+### 4. 3D Web Experiences
+Interactive 3D product configurators, virtual showrooms, and WebGL-powered immersive experiences with custom shaders and physics.
+
+### 5. E-Commerce Development
+Headless e-commerce solutions using Shopify Storefront API, custom storefronts, and optimized checkout experiences.
+
+### 6. Web Performance Optimization
+Core Web Vitals optimization, progressive image loading, asset compression, and rendering performance tuning.
+
+---
+
+## Portfolio Projects
+
+### 1. 3D Bike Configurator
+- Type: Interactive 3D WebGL Product Configurator
+- Role: Interactive & GSAP Development
+- Tech Stack: Three.js, WebGL, GSAP, React State, CSS Grid
+- Live URL: https://mtb1x.vercel.app/
+- Description: A production-grade, highly interactive 3D WebGL bike configurator allowing customers to configure components, frames, colors, and accessories in real-time under dynamic lighting. Reduced CAD model size from 140MB to 4.2MB using Draco compression while maintaining visual fidelity. Achieved locked 60fps across iOS and Android devices.
+
+### 2. myRestro Manager
+- Type: SAAS Restaurant Management Platform
+- Role: Full Stack & Database Architecture
+- Tech Stack: React.js, Node.js, PostgreSQL, Prisma ORM, WebSockets, Chart.js
+- Live URL: https://myrestromanager.vercel.app/
+- Description: Enterprise-level multi-tenant SAAS platform for restaurant chains with real-time WebSocket order synchronization, Redis caching for live order queues, and React virtualized lists for high-volume data rendering. Handles concurrent updates from hundreds of active tables.
+
+### 3. Save Wildlife
+- Type: Conservation Scrollytelling Platform
+- Role: Nuxt & GSAP Development
+- Tech Stack: Nuxt.js, Vue 3, GSAP ScrollTrigger, Tailwind CSS, Contentful CMS
+- Live URL: https://savewildlife.vercel.app/
+- Description: Immersive scrollytelling editorial platform for a global conservation non-profit. Transformed ecological datasets into interactive maps and cinematic scroll transitions. Achieved Lighthouse performance score improvement from 48 to 96.
+
+### 4. Into Pokhara
+- Type: Digital Tourism Scrollytelling Experience
+- Role: GSAP & WebGL Scrollytelling
+- Tech Stack: GSAP ScrollTrigger, Locomotive Scroll, HTML5 Video, Vanilla CSS
+- Live URL: https://intopokhara.vercel.app/
+- Description: Premium digital tourism platform for the Nepal Tourism Board featuring dynamic parallax transitions, ambient music, and vector-drawn scrolly outlines of Pokhara's lakes and mountains. Built custom scroll proxy bridging Locomotive Scroll with GSAP.
+
+### 5. Porsche Concept
+- Type: Interactive 3D Vehicle Showroom
+- Role: Three.js & WebGL Development
+- Tech Stack: Three.js, WebGL, GLSL Shaders, GSAP ScrollTrigger, Vite
+- Live URL: https://porscheconcept.vercel.app/
+- Description: Interactive 3D concept showroom with custom GLSL vertex and fragment shaders for realistic metallic paint reflections, glass refractions, and carbon fiber simulation. Implemented adaptive quality controller for cross-device performance.
+
+### 6. Project Peak
+- Type: Travel Booking Platform
+- Role: React & Animation Architecture
+- Tech Stack: React.js, Mapbox GL JS, Framer Motion, Tailwind CSS, REST APIs
+- Live URL: https://projectpeak.vercel.app/
+- Description: Luxury adventure travel booking platform for Himalayan trekking with interactive geographic maps, elevation data, weather statistics, and dynamic booking forms. Solved Mapbox GL JS memory leaks with proper WebGL context cleanup.
+
+### 7. Dobby Haircare
+- Type: Luxury E-Commerce Platform
+- Role: React, GSAP & E-Commerce
+- Tech Stack: React.js, Shopify API, GSAP Animations, Tailwind CSS, Redux Toolkit
+- Live URL: https://dobby-indol.vercel.app/
+- Description: Headless e-commerce for a luxury haircare brand with Shopify Storefront API backend, custom GSAP page transitions with async route pre-fetching, and Redux Toolkit for instant cart state management.
+
+### 8. Digital Voting Portal
+- Type: Blockchain-Based Voting System
+- Role: Security & Next.js Architecture
+- Tech Stack: Next.js, Web3.js, Solidity, Tailwind CSS, Ethereum Blockchain
+- Live URL: https://github.com/sagarluiteldev/Digital-Voting
+- Description: Secure, decentralized digital voting portal using Solidity smart contracts and EIP-712 meta-transactions for voter anonymity. Users sign votes off-chain while a relayer commits to the chain, covering gas costs.
+
+### 9. CityScape
+- Type: Apartment Rental Platform
+- Role: Full Stack Development & UI Design
+- Tech Stack: React.js, Vite, GSAP Animations, Tailwind CSS, Framer Motion
+- Live URL: https://cityscapeny.vercel.app/
+- Description: Premium apartment rental platform for NYC featuring intuitive apartment selection, fluid transition effects, interactive neighborhood maps, and streamlined booking checkout.
+
+### 10. Navyata
+- Type: E-Commerce Boutique
+- Role: Front End & E-Commerce Integration
+- Tech Stack: React.js, Shopify API, Tailwind CSS, Redux Toolkit, GSAP Animations
+- Live URL: https://navyata.vercel.app/
+- Description: High-end fashion e-commerce boutique with lightweight Shopify Storefront API middleware wrapper for optimistic cart updates and minimal network latency.
+
+### 11. Viatour
+- Type: Travel Booking Platform
+- Role: Full Stack & Database Architecture
+- Tech Stack: Next.js, Node.js, PostgreSQL, Prisma, Tailwind CSS, Stripe API
+- Live URL: https://via-tour.vercel.app/
+- Description: Full-stack travel booking application with secure concurrent booking handling using PostgreSQL transaction blocks and row-level locks. Features Stripe payment integration and admin console.
+
+### 12. Everest Adventures (In Development)
+- Type: Expedition Tracker
+- Role: WebGL & GSAP Orchestration
+- Tech Stack: WebGL, OpenWeather API, Leaflet.js, GSAP ScrollTrigger, Sass
+- Description: High-altitude expedition tracker with real-time route tracing, weather integration, and 3D topographic maps of Mt. Everest. Uses Web Workers for wind vector calculations and LOD terrain rendering.
+
+### 13. 3D Museum Concept (In Development)
+- Type: Virtual Physics Museum
+- Role: Three.js & Audio Integration
+- Tech Stack: Three.js, Cannon.js Physics, Web Audio API, WebGL, Sass
+- Live URL: https://myartmuseum.vercel.app/
+- Description: Virtual physics museum with interactive exhibits, physics simulations, and spatial audio using Web Audio API panner nodes for immersive gallery acoustics.
+
+---
+
+## Philosophy
+
+Sagar believes in building digital products that feel fast, clear, and alive — from first sketch to shipped system. He combines product thinking, interface detail, and backend engineering to turn ambitious ideas into reliable full stack experiences.
+
+He cares about the small details that make software feel considered: loading states, keyboard paths, empty states, motion, and backend contracts that do not surprise the next person.
+
+---
+
+## How to Hire Sagar Luitel
+
+If you need a full stack web developer or UI/UX designer in Nepal (or for remote work worldwide), contact Sagar Luitel:
+
+- Email: sagar.luitel.0909@gmail.com
+- Phone/WhatsApp: +977 9821920019
+- Contact Form: https://sagarluitel.com/contact
+- Portfolio: https://sagarluitel.com/work

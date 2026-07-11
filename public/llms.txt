@@ -1,0 +1,41 @@
+# Sagar Luitel — Full Stack Web Developer & UI/UX Designer
+
+> Portfolio and professional website of Sagar Luitel
+
+## About
+
+Sagar Luitel is a full stack web developer and UI/UX designer based in Pokhara, Nepal. He specializes in building fast, fluid, production-ready web experiences using React, Next.js, Three.js, Node.js, PostgreSQL, and GSAP animations. With expertise spanning frontend development, backend engineering, database architecture, 3D web graphics, and UI/UX design, Sagar delivers complete digital product solutions for clients in Nepal and worldwide.
+
+- Location: Pokhara, Nepal
+- Email: sagar.luitel.0909@gmail.com
+- Phone: +977 9821920019
+- Website: https://sagarluitel.com
+
+## Skills
+
+- Frontend: React.js, Next.js, Vue.js, Nuxt.js, HTML5, CSS3, Tailwind CSS, GSAP, Framer Motion
+- 3D & Graphics: Three.js, WebGL, GLSL Shaders, Cannon.js Physics
+- Backend: Node.js, Express.js, REST APIs, WebSockets, Redis
+- Database: PostgreSQL, Prisma ORM, MongoDB
+- E-Commerce: Shopify Storefront API, Redux Toolkit, Stripe API
+- Blockchain: Solidity, Web3.js, Ethereum, EIP-712
+- Tools: Vite, Git, Vercel, Figma, Blender
+
+## Services
+
+- Full Stack Web Development
+- UI/UX Design
+- Product Design
+- 3D Web Experiences
+- E-Commerce Development
+- Web Performance Optimization
+
+## Links
+
+- Portfolio: https://sagarluitel.com
+- Work: https://sagarluitel.com/work
+- About: https://sagarluitel.com/about
+- Contact: https://sagarluitel.com/contact
+- GitHub: https://github.com/sagarluiteldev
+- LinkedIn: https://www.linkedin.com/in/sagar-luitel-4a510730a
+- Extended info: https://sagarluitel.com/llms-full.txt

@@ -171,7 +171,7 @@ const projects = [
     credits: "Code and design: Sagar Luitel",
     location: "Kathmandu ©",
     year: "2026",
-    liveUrl: "https://github.com/dragonm0901-ship-it/Digital-Voting",
+    liveUrl: "https://github.com/sagarluiteldev/Digital-Voting",
     artClass: "project-art--four",
     background: "#E3C4BC",
     accent: "#49A77B",
@@ -215,7 +215,7 @@ const projects = [
     credits: "Code and design: Sagar Luitel",
     location: "Kathmandu ©",
     year: "2026",
-    liveUrl: "",
+    liveUrl: "https://myartmuseum.vercel.app/",
     artClass: "project-art--two",
     background: "#DED5C8",
     accent: "#2B2D42",
@@ -366,8 +366,8 @@ const renderChrome = (active = "home", cursorText = "View") => `
         <h5>Socials</h5>
         <div class="stripe"></div>
         <ul>
-          <li><a class="magnetic" href="https://github.com/dragonm0901-ship-it" target="_blank" rel="noreferrer">GitHub</a></li>
-          <li><a class="magnetic" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+          <li><a class="magnetic" href="https://github.com/sagarluiteldev" target="_blank" rel="noreferrer">GitHub</a></li>
+          <li><a class="magnetic" href="https://www.linkedin.com/in/sagar-luitel-4a510730a" target="_blank" rel="noreferrer">LinkedIn</a></li>
         </ul>
       </div>
     </div>
@@ -524,10 +524,10 @@ const renderCasePage = (project) => {
   const nextProject = getNextProject(project);
 
   document.body.classList.add("case-route");
-  document.title = `${project.title} - Sagar Luitel`;
-  setMetaContent('meta[name="description"]', `${project.title} case study by Sagar Luitel. ${project.summary}`);
-  setMetaContent('meta[property="og:title"]', `${project.title} - Sagar Luitel`);
-  setMetaContent('meta[property="og:description"]', project.summary);
+  document.title = `${project.title} — Sagar Luitel | Full Stack Developer Nepal`;
+  setMetaContent('meta[name="description"]', `${project.title} — ${project.service}. Case study by Sagar Luitel, full stack web developer and UI/UX designer in Nepal. Built with ${project.tech.slice(0, 3).join(', ')}.`);
+  setMetaContent('meta[property="og:title"]', `${project.title} — Sagar Luitel | Web Developer Nepal`);
+  setMetaContent('meta[property="og:description"]', `${project.service}: ${project.summary.slice(0, 200)}`);
 
   document.querySelector("main")?.remove();
   document.body.insertAdjacentHTML(
@@ -645,8 +645,8 @@ const renderCasePage = (project) => {
               <div class="socials">
                 <h5>Socials</h5>
                 <ul>
-                  <li><a class="magnetic" href="https://github.com/dragonm0901-ship-it" target="_blank" rel="noreferrer">GitHub</a></li>
-                  <li><a class="magnetic" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+                  <li><a class="magnetic" href="https://github.com/sagarluiteldev" target="_blank" rel="noreferrer">GitHub</a></li>
+                  <li><a class="magnetic" href="https://www.linkedin.com/in/sagar-luitel-4a510730a" target="_blank" rel="noreferrer">LinkedIn</a></li>
                 </ul>
                 <span class="stripe"></span>
               </div>
@@ -722,8 +722,8 @@ const renderStandardFooter = () => `
       <div class="socials">
         <h5>Socials</h5>
         <ul>
-          <li><a class="magnetic" href="https://github.com/dragonm0901-ship-it" target="_blank" rel="noreferrer">GitHub</a></li>
-          <li><a class="magnetic" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+          <li><a class="magnetic" href="https://github.com/sagarluiteldev" target="_blank" rel="noreferrer">GitHub</a></li>
+          <li><a class="magnetic" href="https://www.linkedin.com/in/sagar-luitel-4a510730a" target="_blank" rel="noreferrer">LinkedIn</a></li>
         </ul>
         <span class="stripe"></span>
       </div>
@@ -733,8 +733,8 @@ const renderStandardFooter = () => `
 
 const renderWorkPage = () => {
   document.body.classList.add("work-route");
-  document.title = "Work - Sagar Luitel";
-  setMetaContent('meta[name="description"]', "Selected full stack projects by Sagar Luitel.");
+  document.title = "Work — Sagar Luitel | Full Stack Web Developer & UI/UX Designer Nepal";
+  setMetaContent('meta[name="description"]', "Portfolio of Sagar Luitel — full stack web developer and UI/UX designer in Nepal. View projects including 3D configurators, e-commerce platforms, SAAS apps, travel booking systems, and blockchain solutions built with React, Next.js, Three.js, and Node.js.");
 
   const rows = projects
     .map(
@@ -821,8 +821,8 @@ const renderWorkPage = () => {
 
 const renderAboutPage = () => {
   document.body.classList.add("about-route");
-  document.title = "About - Sagar Luitel";
-  setMetaContent('meta[name="description"]', "About Sagar Luitel, full stack developer.");
+  document.title = "About — Sagar Luitel | Full Stack Web Developer & UI/UX Designer in Pokhara, Nepal";
+  setMetaContent('meta[name="description"]', "About Sagar Luitel — full stack web developer and UI/UX designer based in Pokhara, Nepal. Specializing in React, Next.js, Three.js, Node.js, PostgreSQL, and GSAP animations. Offering product design, full stack development, and complete digital product solutions.");
 
   document.querySelector("main")?.remove();
   document.body.insertAdjacentHTML(
@@ -908,8 +908,8 @@ const renderAboutPage = () => {
 
 const renderContactPage = () => {
   document.body.classList.add("contact-route");
-  document.title = "Contact - Sagar Luitel";
-  setMetaContent('meta[name="description"]', "Start a project with Sagar Luitel.");
+  document.title = "Contact — Hire Sagar Luitel | Freelance Web Developer & UI/UX Designer Nepal";
+  setMetaContent('meta[name="description"]', "Hire Sagar Luitel — freelance full stack web developer and UI/UX designer in Nepal. Get in touch for web development, product design, e-commerce solutions, and full stack projects. Available for remote work worldwide.");
 
   document.querySelector("main")?.remove();
   document.body.insertAdjacentHTML(
@@ -967,8 +967,8 @@ const renderContactPage = () => {
                 </ul>
                 <h5>Socials</h5>
                 <ul>
-                  <li><a class="magnetic" href="https://github.com/dragonm0901-ship-it" target="_blank" rel="noreferrer">GitHub</a></li>
-                  <li><a class="magnetic" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+                  <li><a class="magnetic" href="https://github.com/sagarluiteldev" target="_blank" rel="noreferrer">GitHub</a></li>
+                  <li><a class="magnetic" href="https://www.linkedin.com/in/sagar-luitel-4a510730a" target="_blank" rel="noreferrer">LinkedIn</a></li>
                 </ul>
               </aside>
             </div>
@@ -989,8 +989,8 @@ const renderContactPage = () => {
             <div class="socials">
               <h5>Socials</h5>
               <ul>
-                <li><a class="magnetic" href="https://github.com/dragonm0901-ship-it" target="_blank" rel="noreferrer">GitHub</a></li>
-                <li><a class="magnetic" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+                <li><a class="magnetic" href="https://github.com/sagarluiteldev" target="_blank" rel="noreferrer">GitHub</a></li>
+                <li><a class="magnetic" href="https://www.linkedin.com/in/sagar-luitel-4a510730a" target="_blank" rel="noreferrer">LinkedIn</a></li>
               </ul>
               <span class="stripe"></span>
             </div>
@@ -1285,8 +1285,8 @@ const saveHomePageHTML = () => {
 
 const renderHomePage = () => {
   document.body.classList.remove("case-route", "work-route", "about-route", "contact-route");
-  document.title = "Sagar Luitel - Full Stack Developer";
-  setMetaContent('meta[name="description"]', "Sagar Luitel is a full stack developer building refined web products, interfaces, and systems.");
+  document.title = "Sagar Luitel — Full Stack Web Developer & UI/UX Designer in Nepal";
+  setMetaContent('meta[name="description"]', "Sagar Luitel is a full stack web developer and UI/UX designer based in Pokhara, Nepal. Specializing in React, Next.js, Three.js, Node.js, and GSAP animations. Available for freelance web development projects worldwide.");
 
   if (homePageHTML) {
     document.querySelector("main")?.remove();
@@ -1380,8 +1380,8 @@ const navigateToPage = (href, isPopState = false) => {
       renderContactPage();
     } else if (pathName === "/") {
       document.body.classList.remove("case-route", "work-route", "about-route", "contact-route");
-      document.title = "Sagar Luitel - Full Stack Developer";
-      setMetaContent('meta[name="description"]', "Sagar Luitel is a full stack developer building refined web products, interfaces, and systems.");
+      document.title = "Sagar Luitel — Full Stack Web Developer & UI/UX Designer in Nepal";
+      setMetaContent('meta[name="description"]', "Sagar Luitel is a full stack web developer and UI/UX designer based in Pokhara, Nepal. Specializing in React, Next.js, Three.js, Node.js, and GSAP animations. Available for freelance web development projects worldwide.");
       document.querySelector("main")?.remove();
       if (homePageHTML) {
         document.body.insertAdjacentHTML("beforeend", homePageHTML);
