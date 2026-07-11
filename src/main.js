@@ -1442,9 +1442,13 @@ const initMagneticButtons = () => {
   if (prefersReducedMotion || window.matchMedia("(pointer: coarse)").matches) return;
 
   document.querySelectorAll(".magnetic").forEach((element) => {
-    const isRound = element.classList.contains("round-button");
+    const isRound = element.classList.contains("round-button") || element.classList.contains("hamburger");
     const strength = isRound ? 42 : 20;
-    const textSpan = isRound ? element.querySelector(".round-button-text") || element.querySelector("span:not(.btn-fill)") : null;
+    const textSpan = isRound
+      ? element.querySelector(".round-button-text") ||
+        element.querySelector("span:not(.btn-fill)") ||
+        element.querySelector(".hamburger__bars")
+      : null;
     const wavingWrapper = isRound ? element.querySelector(".round-button-icon-waving-wrapper") : null;
     const textStrength = 28;
     const iconStrength = 36; // Moving towards mouse slightly stronger than text
