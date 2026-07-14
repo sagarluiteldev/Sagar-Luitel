@@ -1149,6 +1149,9 @@ body.nav-open .drawer__primary li:nth-child(4) {
   display: flex;
   animation: hero-marquee 17s linear infinite;
   will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 .hero__name h1 {
@@ -3371,6 +3374,9 @@ body.nav-open .drawer__primary li:nth-child(4) {
   .hero {
     min-height: 100vh;
     min-height: 100dvh;
+  }
+
+  html.is-safari .hero {
     min-height: 100lvh;
   }
 
@@ -3381,8 +3387,7 @@ body.nav-open .drawer__primary li:nth-child(4) {
 
   .hero__portrait img {
     bottom: 0;
-    height: 88%;
-    transform: translateY(22%) scale(1.48);
+    height: 84%;
   }
 
   .hero__location {
@@ -3394,8 +3399,11 @@ body.nav-open .drawer__primary li:nth-child(4) {
     justify-content: flex-start;
     min-height: 100vh;
     min-height: 100dvh;
-    min-height: 100lvh;
     padding-bottom: 8.5rem;
+  }
+
+  html.is-safari .hero__role {
+    min-height: 100lvh;
   }
 
   .hero__role-card {
@@ -3414,7 +3422,7 @@ body.nav-open .drawer__primary li:nth-child(4) {
   }
 
   .hero__name {
-    bottom: 36vh;
+    bottom: 8.5rem;
   }
 
   .hero__name h1 {
@@ -3422,7 +3430,7 @@ body.nav-open .drawer__primary li:nth-child(4) {
   }
 
   .hero__name--back {
-    bottom: 49vh;
+    bottom: 14.5rem;
   }
 
   .hero__name--back h1 {
@@ -3769,8 +3777,7 @@ body.nav-open .drawer__primary li:nth-child(4) {
 
   .hero__portrait img {
     bottom: 0;
-    height: 84%;
-    transform: translateY(20%) scale(1.52);
+    height: 78%;
   }
 
   .hero__name {

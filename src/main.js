@@ -2068,6 +2068,16 @@ const initGlobalListeners = () => {
 
 const initSite = () => {
   document.documentElement.classList.add("app-ready");
+
+  const isSafari = navigator.userAgent.indexOf("Safari") !== -1 &&
+                   navigator.userAgent.indexOf("Chrome") === -1 &&
+                   navigator.userAgent.indexOf("Chromium") === -1 &&
+                   navigator.userAgent.indexOf("CriOS") === -1 &&
+                   navigator.userAgent.indexOf("FxiOS") === -1;
+  if (isSafari) {
+    document.documentElement.classList.add("is-safari");
+  }
+
   saveHomePageHTML();
   initGlobalListeners();
 
