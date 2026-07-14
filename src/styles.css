@@ -836,6 +836,10 @@ body.nav-open .drawer__primary li:nth-child(4) {
   will-change: transform;
 }
 
+.drawer-link.is-active {
+  color: var(--color-orange);
+}
+
 .drawer-link::before {
   content: "";
   position: absolute;
@@ -909,17 +913,20 @@ body.nav-open .drawer__primary li:nth-child(4) {
   height: 108%;
   overflow: visible;
   pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
+
 .hero__portrait img {
-  position: absolute;
-  left: 50%;
+  position: relative;
   bottom: 4vh;
   width: auto;
   max-width: none;
   height: min(88vh, 92%);
   object-fit: contain;
-  transform: translateX(-50%) translateY(26%) scale(1.4);
+  transform: translateY(26%) scale(1.4);
   transform-origin: bottom center;
   filter: saturate(0.96) contrast(1.02);
 }
@@ -3359,7 +3366,8 @@ body.nav-open .drawer__primary li:nth-child(4) {
   }
 
   .hero {
-    min-height: 104svh;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   .hero__portrait {
@@ -3402,8 +3410,16 @@ body.nav-open .drawer__primary li:nth-child(4) {
     bottom: 36vh;
   }
 
+  .hero__name h1 {
+    font-size: calc(var(--hero-name-size) * 1.6);
+  }
+
   .hero__name--back {
     bottom: 49vh;
+  }
+
+  .hero__name--back h1 {
+    font-size: calc(var(--hero-name-size) * 0.408 * 1.6);
   }
 
   .intro__grid {
@@ -3612,7 +3628,7 @@ body.nav-open .drawer__primary li:nth-child(4) {
   }
 
   .contact-form {
-    padding-bottom: 0;
+    padding-bottom: 10.5rem;
   }
 
   .form-row {
@@ -3625,10 +3641,16 @@ body.nav-open .drawer__primary li:nth-child(4) {
   }
 
   .contact-send {
-    position: relative;
-    right: auto;
-    bottom: auto;
-    margin-top: 2rem;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-top: 0;
+  }
+
+  .contact-stripe {
+    position: absolute;
+    left: 0;
+    bottom: 5.25rem;
   }
 
   .drawer {
@@ -3762,6 +3784,14 @@ body.nav-open .drawer__primary li:nth-child(4) {
   .round-button {
     width: 8.5rem;
     height: 8.5rem;
+  }
+
+  .contact-form {
+    padding-bottom: 8.5rem;
+  }
+
+  .contact-stripe {
+    bottom: 4.25rem;
   }
 
   .work-tiles ul {

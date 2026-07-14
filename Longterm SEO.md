@@ -1,14 +1,12 @@
 Manual Steps to Rank Higher on Google
 Phase 1: Fix Critical Technical Issues (Do This Week)
-Step 1: Fix the OG Image 404
-Your index.html line 27 references sagar-portrait.png which doesn't exist.
+Step 1: Fix the OG Image 404 (COMPLETED)
+Your index.html line 27 references og-image.png which has been created using the provided image.
 
 Action:
-
-Create a proper OG image (1200×630px recommended)
-Use your best professional photo or create a branded card with your name + title
-Save it as /public/assets/sagar-portrait.png (or update the meta tag path)
-Test with Facebook Sharing Debugger and Twitter Card Validator
+- [x] Create a proper OG image (1200×630px recommended)
+- [x] Save it as /public/assets/og-image.png (or update the meta tag path)
+- [ ] Test with Facebook Sharing Debugger and Twitter Card Validator
 Step 2: Submit Your Sitemap to Google Search Console
 This is the single most important manual step you can do right now.
 

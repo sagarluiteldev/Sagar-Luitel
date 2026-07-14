@@ -927,10 +927,10 @@ const renderContactPage = () => {
               <form class="contact-form" action="#" novalidate>
                 <input type="hidden" name="access_key" value="e4b9d15c-482c-49bc-9a1c-c77aebd1ceb1" />
                 ${[
-                  ["01", "What's your name?", "text", "Sagar Luitel *", "name"],
-                  ["02", "What's your email?", "email", "sagar.luitel.0909@gmail.com *", "email"],
-                  ["03", "What's the name of your organization?", "text", "Your company"],
-                  ["04", "What services are you looking for?", "text", "Design, Development, Product ..."],
+                  ["01", "Full Name", "text", "Your name...", "name"],
+                  ["02", "Email", "email", "Your email...", "email"],
+                  ["03", "Name of Organization", "text", "Your company...", "organization"],
+                  ["04", "What services are you looking for?", "text", "Design, Development, Product ...", "services"],
                 ]
                   .map(
                     ([number, label, type, placeholder, name = label]) => `
@@ -943,8 +943,8 @@ const renderContactPage = () => {
                   .join("")}
                 <label class="form-row form-row--message">
                   <h5>05</h5>
-                  <span>Your message</span>
-                  <textarea name="message" rows="7" placeholder="Hello Sagar, can you help me with ... *"></textarea>
+                  <span>Special Message</span>
+                  <textarea name="message" rows="7" placeholder="Your notes here..."></textarea>
                 </label>
                 <span class="stripe contact-stripe"></span>
                 <button class="round-button round-button--blue magnetic contact-send" type="submit">
@@ -964,11 +964,6 @@ const renderContactPage = () => {
                   <li><p>Sagar Luitel Studio</p></li>
                   <li><p>Full Stack Development</p></li>
                   <li><p>Location: Kathmandu, Nepal</p></li>
-                </ul>
-                <h5>Socials</h5>
-                <ul>
-                  <li><a class="magnetic" href="https://github.com/sagarluiteldev" target="_blank" rel="noreferrer">GitHub</a></li>
-                  <li><a class="magnetic" href="https://www.linkedin.com/in/sagar-luitel-4a510730a" target="_blank" rel="noreferrer">LinkedIn</a></li>
                 </ul>
               </aside>
             </div>
@@ -1758,14 +1753,12 @@ const initScrollAnimations = () => {
         y: 90,
         autoAlpha: 0,
         scale: 1.4,
-        xPercent: -50,
       },
       {
         yPercent: 26,
         y: 0,
         autoAlpha: 1,
         scale: 1.4,
-        xPercent: -50,
         duration: 1,
         ease: "power4.out",
         clearProps: "transform,opacity,visibility",
