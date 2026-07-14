@@ -524,9 +524,9 @@ const renderCasePage = (project) => {
   const nextProject = getNextProject(project);
 
   document.body.classList.add("case-route");
-  document.title = `${project.title} — Sagar Luitel | Full Stack Developer Nepal`;
-  setMetaContent('meta[name="description"]', `${project.title} — ${project.service}. Case study by Sagar Luitel, full stack web developer and UI/UX designer in Nepal. Built with ${project.tech.slice(0, 3).join(', ')}.`);
-  setMetaContent('meta[property="og:title"]', `${project.title} — Sagar Luitel | Web Developer Nepal`);
+  document.title = `${project.title} — Sagar Luitel | Full Stack & Frontend Developer Nepal`;
+  setMetaContent('meta[name="description"]', `${project.title} — ${project.service}. Case study by Sagar Luitel, freelance full stack developer, frontend engineer, and UI/UX designer in Nepal. Built with ${project.tech.slice(0, 3).join(', ')}.`);
+  setMetaContent('meta[property="og:title"]', `${project.title} — Sagar Luitel | Full Stack Developer Nepal`);
   setMetaContent('meta[property="og:description"]', `${project.service}: ${project.summary.slice(0, 200)}`);
 
   document.querySelector("main")?.remove();
@@ -733,8 +733,8 @@ const renderStandardFooter = () => `
 
 const renderWorkPage = () => {
   document.body.classList.add("work-route");
-  document.title = "Work — Sagar Luitel | Full Stack Web Developer & UI/UX Designer Nepal";
-  setMetaContent('meta[name="description"]', "Portfolio of Sagar Luitel — full stack web developer and UI/UX designer in Nepal. View projects including 3D configurators, e-commerce platforms, SAAS apps, travel booking systems, and blockchain solutions built with React, Next.js, Three.js, and Node.js.");
+  document.title = "Work — Sagar Luitel | Full Stack & Frontend Developer, UI/UX Designer Nepal";
+  setMetaContent('meta[name="description"]', "Portfolio of Sagar Luitel — full stack & frontend developer, UI/UX designer in Nepal. View projects including 3D configurators, e-commerce platforms, SAAS apps, travel booking systems, and blockchain solutions built with React, Next.js, Three.js, and Node.js.");
 
   const rows = projects
     .map(
@@ -821,8 +821,8 @@ const renderWorkPage = () => {
 
 const renderAboutPage = () => {
   document.body.classList.add("about-route");
-  document.title = "About — Sagar Luitel | Full Stack Web Developer & UI/UX Designer in Pokhara, Nepal";
-  setMetaContent('meta[name="description"]', "About Sagar Luitel — full stack web developer and UI/UX designer based in Pokhara, Nepal. Specializing in React, Next.js, Three.js, Node.js, PostgreSQL, and GSAP animations. Offering product design, full stack development, and complete digital product solutions.");
+  document.title = "About — Sagar Luitel | Full Stack & Frontend Developer, UI/UX Designer in Nepal";
+  setMetaContent('meta[name="description"]', "About Sagar Luitel — freelance full stack developer, frontend engineer, and UI/UX designer in Nepal. Specialized in React, Next.js, Node.js, and Three.js.");
 
   document.querySelector("main")?.remove();
   document.body.insertAdjacentHTML(
@@ -853,7 +853,7 @@ const renderAboutPage = () => {
             <div class="about-image-section__grid">
               <div class="about-copy">
                 <div class="arrow-mark" aria-hidden="true"></div>
-                <p data-scroll data-scroll-speed="-1">I help teams turn messy ideas into clear product systems. Every build starts with the user flow, then becomes a fast interface, reliable backend, and maintainable codebase.</p>
+                <p data-scroll data-scroll-speed="-1">As a versatile <strong>Full Stack & Frontend Developer</strong> and <strong>UI/UX Designer based in Nepal</strong>, I help teams turn complex concepts into polished, fast, and secure digital product systems. Every build spans the entire lifecycle—from wireframing and interface prototypes to reliable database systems and clean codebases.</p>
                 <p data-scroll data-scroll-speed="-1"><span>Always exploring<span class="animate-dot">.</span><span class="animate-dot">.</span><span class="animate-dot">.</span></span></p>
               </div>
               <div class="single-about-image">
@@ -908,8 +908,8 @@ const renderAboutPage = () => {
 
 const renderContactPage = () => {
   document.body.classList.add("contact-route");
-  document.title = "Contact — Hire Sagar Luitel | Freelance Web Developer & UI/UX Designer Nepal";
-  setMetaContent('meta[name="description"]', "Hire Sagar Luitel — freelance full stack web developer and UI/UX designer in Nepal. Get in touch for web development, product design, e-commerce solutions, and full stack projects. Available for remote work worldwide.");
+  document.title = "Contact — Hire Sagar Luitel | Full Stack Developer & UI/UX Designer in Nepal";
+  setMetaContent('meta[name="description"]', "Hire Sagar Luitel — freelance full stack developer, frontend engineer, and UI/UX designer in Nepal. Get in touch for custom web development and digital solutions.");
 
   document.querySelector("main")?.remove();
   document.body.insertAdjacentHTML(
@@ -1280,8 +1280,8 @@ const saveHomePageHTML = () => {
 
 const renderHomePage = () => {
   document.body.classList.remove("case-route", "work-route", "about-route", "contact-route");
-  document.title = "Sagar Luitel — Full Stack Web Developer & UI/UX Designer in Nepal";
-  setMetaContent('meta[name="description"]', "Sagar Luitel is a full stack web developer and UI/UX designer based in Pokhara, Nepal. Specializing in React, Next.js, Three.js, Node.js, and GSAP animations. Available for freelance web development projects worldwide.");
+  document.title = "Sagar Luitel — Full Stack & Frontend Developer, UI/UX Designer in Nepal";
+  setMetaContent('meta[name="description"]', "Sagar Luitel is a freelance full stack developer, frontend engineer, and UI/UX designer in Nepal. Specialized in React, Next.js, Three.js, and Node.js. Available for freelance projects.");
 
   if (homePageHTML) {
     document.querySelector("main")?.remove();
@@ -1375,8 +1375,8 @@ const navigateToPage = (href, isPopState = false) => {
       renderContactPage();
     } else if (pathName === "/") {
       document.body.classList.remove("case-route", "work-route", "about-route", "contact-route");
-      document.title = "Sagar Luitel — Full Stack Web Developer & UI/UX Designer in Nepal";
-      setMetaContent('meta[name="description"]', "Sagar Luitel is a full stack web developer and UI/UX designer based in Pokhara, Nepal. Specializing in React, Next.js, Three.js, Node.js, and GSAP animations. Available for freelance web development projects worldwide.");
+      document.title = "Sagar Luitel — Full Stack & Frontend Developer, UI/UX Designer in Nepal";
+      setMetaContent('meta[name="description"]', "Sagar Luitel is a freelance full stack developer, frontend engineer, and UI/UX designer in Nepal. Specialized in React, Next.js, Three.js, and Node.js. Available for freelance projects.");
       document.querySelector("main")?.remove();
       if (homePageHTML) {
         document.body.insertAdjacentHTML("beforeend", homePageHTML);

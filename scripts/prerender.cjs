@@ -178,22 +178,22 @@ function prerenderRoute({ routePath, title, description, bodyClass, renderFn }) 
 const standardRoutes = [
   {
     routePath: '/work',
-    title: 'Work — Sagar Luitel | Full Stack Web Developer & UI/UX Designer Nepal',
-    description: 'Portfolio of Sagar Luitel — full stack web developer and UI/UX designer in Nepal. View projects including 3D configurators, e-commerce platforms, SAAS apps, travel booking systems, and blockchain solutions built with React, Next.js, Three.js, and Node.js.',
+    title: 'Work — Sagar Luitel | Full Stack & Frontend Developer, UI/UX Designer Nepal',
+    description: 'Portfolio of Sagar Luitel — freelance full stack & frontend developer, UI/UX designer in Nepal. View projects including 3D configurators, e-commerce platforms, SAAS apps, and interactive 3D web applications.',
     bodyClass: 'work-route',
     renderFn: renderWorkPage
   },
   {
     routePath: '/about',
-    title: 'About — Sagar Luitel | Full Stack Web Developer & UI/UX Designer in Pokhara, Nepal',
-    description: 'About Sagar Luitel — full stack web developer and UI/UX designer based in Pokhara, Nepal. Specializing in React, Next.js, Three.js, Node.js, PostgreSQL, and GSAP animations. Offering product design, full stack development, and complete digital product solutions.',
+    title: 'About — Sagar Luitel | Full Stack & Frontend Developer, UI/UX Designer in Nepal',
+    description: 'About Sagar Luitel — freelance full stack developer, frontend engineer, and UI/UX designer in Pokhara, Nepal. Specializing in React, Next.js, Node.js, and Three.js.',
     bodyClass: 'about-route',
     renderFn: renderAboutPage
   },
   {
     routePath: '/contact',
-    title: 'Contact — Hire Sagar Luitel | Freelance Web Developer & UI/UX Designer Nepal',
-    description: 'Hire Sagar Luitel — freelance full stack web developer and UI/UX designer in Nepal. Get in touch for web development, product design, e-commerce solutions, and full stack projects. Available for remote work worldwide.',
+    title: 'Contact — Hire Sagar Luitel | Full Stack Developer & UI/UX Designer in Nepal',
+    description: 'Hire Sagar Luitel — freelance full stack developer, frontend engineer, and UI/UX designer in Nepal. Get in touch for custom web development, interactive user interfaces, and full stack systems.',
     bodyClass: 'contact-route',
     renderFn: renderContactPage
   }
@@ -205,8 +205,8 @@ standardRoutes.forEach(prerenderRoute);
 projects.forEach(project => {
   prerenderRoute({
     routePath: `/work/${project.slug}`,
-    title: `${project.title} — Sagar Luitel | Full Stack Developer Nepal`,
-    description: `${project.title} — ${project.service}. Case study by Sagar Luitel, full stack web developer and UI/UX designer in Nepal. Built with ${project.tech.slice(0, 3).join(', ')}.`,
+    title: `${project.title} — Sagar Luitel | Full Stack & Frontend Developer Nepal`,
+    description: `${project.title} — ${project.service}. Case study by Sagar Luitel, freelance full stack developer, frontend engineer, and UI/UX designer in Nepal. Built with ${project.tech.slice(0, 3).join(', ')}.`,
     bodyClass: 'case-route',
     renderFn: () => renderCasePage(project)
   });
