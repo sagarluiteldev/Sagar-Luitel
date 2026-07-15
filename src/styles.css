@@ -3377,8 +3377,8 @@ body.nav-open .drawer__primary li:nth-child(4) {
   }
 
   html.is-safari .hero {
-    min-height: 100vh;
-    min-height: 100lvh;
+    min-height: 106vh;
+    min-height: 106lvh;
   }
 
   .hero__portrait {
@@ -3403,8 +3403,8 @@ body.nav-open .drawer__primary li:nth-child(4) {
   }
 
   html.is-safari .hero__role {
-    min-height: 100vh;
-    min-height: 100lvh;
+    min-height: 106vh;
+    min-height: 106lvh;
   }
 
   .hero__role-card {
