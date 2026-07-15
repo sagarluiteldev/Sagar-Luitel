@@ -1188,19 +1188,19 @@ body.nav-open .drawer__primary li:nth-child(4) {
 
 @keyframes hero-marquee-reverse {
   from {
-    transform: translateX(-33.333%);
+    transform: translate3d(-33.33333%, 0, 0);
   }
   to {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes hero-marquee {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translateX(-33.333%);
+    transform: translate3d(-33.33333%, 0, 0);
   }
 }
 
@@ -3377,7 +3377,8 @@ body.nav-open .drawer__primary li:nth-child(4) {
   }
 
   html.is-safari .hero {
-    min-height: calc(var(--vh, 1vh) * 100);
+    min-height: 100vh;
+    min-height: 100lvh;
   }
 
   .hero__portrait {
@@ -3402,7 +3403,8 @@ body.nav-open .drawer__primary li:nth-child(4) {
   }
 
   html.is-safari .hero__role {
-    min-height: calc(var(--vh, 1vh) * 100);
+    min-height: 100vh;
+    min-height: 100lvh;
   }
 
   .hero__role-card {
