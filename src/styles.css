@@ -3430,12 +3430,20 @@ body.nav-open .drawer__primary li:nth-child(4) {
     bottom: 8.5rem;
   }
 
+  html.is-safari .hero__name {
+    bottom: 11.5rem;
+  }
+
   .hero__name h1 {
     font-size: calc(var(--hero-name-size) * 1.6);
   }
 
   .hero__name--back {
     bottom: 14.5rem;
+  }
+
+  html.is-safari .hero__name--back {
+    bottom: 17.5rem;
   }
 
   .hero__name--back h1 {
@@ -3862,8 +3870,16 @@ body.nav-open .drawer__primary li:nth-child(4) {
     bottom: 6.5rem;
   }
 
+  html.is-safari .hero__name {
+    bottom: 9.5rem;
+  }
+
   .hero__name--back {
     bottom: 11.0rem;
+  }
+
+  html.is-safari .hero__name--back {
+    bottom: 14.0rem;
   }
 
   .hero__role {
