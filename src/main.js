@@ -1099,20 +1099,20 @@ const initSmoothScroll = () => {
   }
 
   const isMobile = window.innerWidth <= 780;
-  if (isMobile) {
-    windowScrollListener = () => setScrolledState(window.scrollY);
-    window.addEventListener("scroll", windowScrollListener, { passive: true });
-    return;
-  }
 
   smoothScroll = new LocomotiveScroll({
     el: scrollContainer,
     smooth: true,
-    lerp: 0.05,
-    multiplier: 1.0,
+    lerp: isMobile ? 0.08 : 0.05, // slightly faster lerp on mobile for responsiveness
+    multiplier: isMobile ? 1.5 : 1.0, // slightly larger multiplier on mobile for easier scrolling
     reloadOnContextChange: true,
-    tablet: { smooth: false },
-    smartphone: { smooth: false },
+    tablet: { 
+      smooth: true, 
+      breakpoint: 780 
+    },
+    smartphone: { 
+      smooth: true 
+    },
   });
 
   smoothScroll.on("scroll", (args) => {
@@ -1523,7 +1523,7 @@ const initHoverPreview = () => {
   const cursorDisc = document.querySelector(".cursor-disc");
   const cursorLabel = document.querySelector(".cursor-label");
 
-  if (!preview || !previewTrack || window.matchMedia("(pointer: coarse)").matches) return;
+  if (!preview || !previewTrack || !cursorDisc || !cursorLabel || window.matchMedia("(pointer: coarse)").matches) return;
 
   const movePreviewX = gsap.quickTo(preview, "x", { duration: 0.48, ease: "power3.out" });
   const movePreviewY = gsap.quickTo(preview, "y", { duration: 0.48, ease: "power3.out" });
@@ -1755,6 +1755,8 @@ const initScrollAnimations = () => {
 
   const heroPortraitImg = document.querySelector(".hero__portrait img");
   if (heroPortraitImg) {
+    const isMobile = window.innerWidth <= 780;
+    
     gsap.fromTo(
       heroPortraitImg,
       {
@@ -1770,9 +1772,25 @@ const initScrollAnimations = () => {
         scale: 1.4,
         duration: 1,
         ease: "power4.out",
-        clearProps: "transform,opacity,visibility",
+        clearProps: isMobile ? "opacity,visibility" : "transform,opacity,visibility",
       }
     );
+
+    // Dynamic scroll-driven zoom and parallax for mobile view
+    if (isMobile) {
+      gsap.to(heroPortraitImg, {
+        scale: 1.15,
+        yPercent: 34,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+          invalidateOnRefresh: true,
+        }
+      });
+    }
   }
 
   animateFromIfPresent(".hero__name", {
@@ -2051,7 +2069,12 @@ const initGlobalListeners = () => {
   if (isGlobalInitialized) return;
   isGlobalInitialized = true;
 
+  let lastWidth = window.innerWidth;
   window.addEventListener("resize", () => {
+    const width = window.innerWidth;
+    if (width === lastWidth) return; // Prevent recalculations and jumps on mobile height-only scroll resizing
+    lastWidth = width;
+
     setViewportHeight();
     smoothScroll?.update();
     ScrollTrigger.refresh();

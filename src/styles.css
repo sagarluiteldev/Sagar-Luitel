@@ -932,6 +932,7 @@ body.nav-open .drawer__primary li:nth-child(4) {
   transform: translateY(26%) scale(1.4);
   transform-origin: bottom center;
   filter: saturate(0.96) contrast(1.02);
+  will-change: transform;
 }
 
 .hero__location {
@@ -3372,12 +3373,11 @@ body.nav-open .drawer__primary li:nth-child(4) {
   }
 
   .hero {
-    min-height: 100vh;
-    min-height: 100dvh;
+    min-height: calc(var(--vh, 1vh) * 100);
   }
 
   html.is-safari .hero {
-    min-height: 100lvh;
+    min-height: calc(var(--vh, 1vh) * 100);
   }
 
   .hero__portrait {
@@ -3397,13 +3397,12 @@ body.nav-open .drawer__primary li:nth-child(4) {
   .hero__role {
     align-items: flex-end;
     justify-content: flex-start;
-    min-height: 100vh;
-    min-height: 100dvh;
+    min-height: calc(var(--vh, 1vh) * 100);
     padding-bottom: 8.5rem;
   }
 
   html.is-safari .hero__role {
-    min-height: 100lvh;
+    min-height: calc(var(--vh, 1vh) * 100);
   }
 
   .hero__role-card {
@@ -3724,6 +3723,75 @@ body.nav-open .drawer__primary li:nth-child(4) {
   .footer__bottom .socials .stripe {
     display: block;
     margin-top: 2rem;
+  }
+
+  /* About me button loop animation for mobile view */
+  .round-button-text {
+    animation: mobile-btn-text-loop 4s ease-in-out infinite;
+  }
+
+  .round-button-icon-waving {
+    animation: mobile-btn-wave-loop 4s ease-in-out infinite;
+  }
+
+  .round-button:hover .round-button-text {
+    opacity: unset;
+    transform: unset;
+  }
+
+  .round-button:hover .round-button-icon-waving {
+    opacity: unset;
+    transform: unset;
+    animation: none;
+  }
+
+  @keyframes mobile-btn-text-loop {
+    0%, 70% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    75%, 95% {
+      opacity: 0;
+      transform: scale(0.75);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes mobile-btn-wave-loop {
+    0%, 70% {
+      opacity: 0;
+      transform: scale(0.6) rotate(0deg);
+    }
+    75% {
+      opacity: 1;
+      transform: scale(1.1) rotate(0deg);
+    }
+    78% {
+      transform: scale(1.1) rotate(15deg);
+    }
+    81% {
+      transform: scale(1.1) rotate(-10deg);
+    }
+    84% {
+      transform: scale(1.1) rotate(15deg);
+    }
+    87% {
+      transform: scale(1.1) rotate(-5deg);
+    }
+    90% {
+      transform: scale(1.1) rotate(10deg);
+    }
+    93% {
+      opacity: 1;
+      transform: scale(1.1) rotate(0deg);
+    }
+    97%, 100% {
+      opacity: 0;
+      transform: scale(0.6) rotate(0deg);
+    }
   }
 }
 
