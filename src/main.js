@@ -1388,6 +1388,15 @@ const navigateToPage = (href, isPopState = false) => {
     }
 
     reinitSiteForNewPage();
+
+    // Track the new page view in Google Analytics for SPA route transition
+    if (typeof gtag === 'function') {
+      gtag('config', 'G-6NP7MX6CW2', {
+        page_path: window.location.pathname,
+        page_title: document.title
+      });
+    }
+
     playRouteTransitionExit();
     isRouteTransitioning = false;
   });
