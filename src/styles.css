@@ -1188,7 +1188,7 @@ body.nav-open .drawer__primary li:nth-child(4) {
 
 @keyframes hero-marquee-reverse {
   from {
-    transform: translate3d(-33.33333%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
   }
   to {
     transform: translate3d(0, 0, 0);
@@ -1200,7 +1200,7 @@ body.nav-open .drawer__primary li:nth-child(4) {
     transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translate3d(-33.33333%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
   }
 }
 
@@ -1585,6 +1585,43 @@ body.nav-open .drawer__primary li:nth-child(4) {
   height: 7%;
   border-radius: 999px;
   background: #0F7BFF;
+}
+
+.project-art--five {
+  background: #efebe9;
+}
+
+.project-art--five::before {
+  background:
+    radial-gradient(circle at 78% 28%, rgba(43, 45, 66, 0.25), transparent 25%),
+    linear-gradient(145deg, #fbfbfb, #ded5c8);
+}
+
+.project-art--five span:nth-child(1) {
+  left: 12%;
+  top: 14%;
+  width: 76%;
+  height: 50%;
+  border-radius: 1.2rem;
+  background: #ffffff;
+}
+
+.project-art--five span:nth-child(2) {
+  left: 18%;
+  top: 23%;
+  width: 64%;
+  height: 7%;
+  border-radius: 999px;
+  background: #1c1d20;
+}
+
+.project-art--five span:nth-child(3) {
+  left: 18%;
+  top: 40%;
+  width: 38%;
+  height: 7%;
+  border-radius: 999px;
+  background: #0f7bff;
 }
 
 .work-tiles {
@@ -2272,17 +2309,27 @@ body.nav-open .drawer__primary li:nth-child(4) {
   will-change: bottom, width, height, border-radius;
 }
 
+.case-footer {
+  background: var(--color-darker) !important;
+  overflow: hidden;
+}
+
 .case-footer .footer {
   padding-top: 6.5rem;
+  background: var(--color-darker);
+  position: relative;
 }
 
 .next-case-card {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(16rem, 21rem);
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: var(--gap);
-  padding-bottom: 5rem;
+  text-align: center;
+  gap: 8.5rem; /* Increased distance between title and image to prevent overlap on hover */
+  width: 100%;
   color: inherit;
+  position: relative;
+  z-index: 1;
 }
 
 .next-case-card p {
@@ -2298,28 +2345,53 @@ body.nav-open .drawer__primary li:nth-child(4) {
 
 .next-case-thumb {
   position: relative;
-  overflow: hidden;
-  width: min(21rem, 24vw);
+  z-index: 1;
+  width: min(28rem, 100%);
+  height: 18rem;
+  border-radius: 0;
+  margin: 0 auto;
+  margin-bottom: -14.4rem; /* Exactly 80% negative margin to show 20% initially */
+  overflow: visible;
+  transition: transform 0.6s var(--ease-primary);
 }
 
 .next-case-thumb .project-art {
-  transition: transform 0.7s var(--ease-primary);
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  transition: transform 0.6s var(--ease-primary);
 }
 
-.next-case-card:hover h2 {
-  transform: translateX(1rem);
+.case-footer .stripe {
+  position: relative;
+  z-index: 4;
+  background: var(--color-border-light);
+  opacity: 0.85;
+}
+
+.next-case-bottom-wrapper {
+  position: relative;
+  z-index: 3;
+  background: var(--color-darker);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 5rem;
+  padding-bottom: 12rem; /* Increased bottom padding to prevent image from leaking at bottom */
+}
+
+.next-case-card:hover .next-case-thumb {
+  transform: translateY(-40%); /* Slide up to show 60% (translate up by 40%) */
 }
 
 .next-case-card:hover .project-art {
-  transform: scale(1.05);
-}
-
-.case-footer .container--medium > .stripe {
-  margin-bottom: 3rem;
+  transform: scale(1.04);
 }
 
 .all-work-button {
   margin-bottom: 2rem;
+  background: var(--color-light);
+  box-shadow: none;
 }
 
 .route-page .site-wrap {
@@ -3551,11 +3623,18 @@ body.nav-open .drawer__primary li:nth-child(4) {
   }
 
   .next-case-card {
-    grid-template-columns: 1fr;
+    gap: 6.5rem; /* Increased gap to prevent hover overlap on tablet */
   }
 
   .next-case-thumb {
-    width: min(20rem, 100%);
+    width: min(22rem, 80vw);
+    height: 14rem;
+    margin-bottom: -11.2rem; /* Exactly 80% negative margin to show 20% initially */
+  }
+
+  .next-case-bottom-wrapper {
+    padding-top: 4rem;
+    padding-bottom: 10rem; /* Increased bottom padding to prevent leakage on tablet */
   }
 
   .route-header {
@@ -3706,6 +3785,10 @@ body.nav-open .drawer__primary li:nth-child(4) {
 
   .footer h2 {
     font-size: 4.4rem;
+  }
+
+  .footer__headline .arrow-mark {
+    display: none;
   }
 
   .footer__cta .round-button {
@@ -3895,6 +3978,10 @@ body.nav-open .drawer__primary li:nth-child(4) {
     height: 8.5rem;
   }
 
+  .footer__cta .round-button {
+    top: -4.25rem;
+  }
+
   .contact-form {
     padding-bottom: 8.5rem;
   }
@@ -3974,8 +4061,23 @@ body.nav-open .drawer__primary li:nth-child(4) {
     font-size: 3.2rem;
   }
 
+  .next-case-card {
+    gap: 5rem; /* Increased gap to prevent hover overlap on mobile */
+  }
+
   .next-case-card h2 {
     font-size: 3.2rem;
+  }
+
+  .next-case-thumb {
+    width: min(18rem, 80vw);
+    height: 11rem;
+    margin-bottom: -8.8rem; /* Exactly 80% negative margin to show 20% initially */
+  }
+
+  .next-case-bottom-wrapper {
+    padding-top: 3.5rem;
+    padding-bottom: 8rem; /* Increased bottom padding to prevent leakage on mobile */
   }
 
   .toggle-row {

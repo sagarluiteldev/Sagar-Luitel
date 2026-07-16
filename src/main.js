@@ -120,6 +120,28 @@ const projects = [
       "I authored custom GLSL vertex and fragment shaders to simulate real-time specular highlights and fresnel paint shading with minimal texture memory overhead. I baked ambient occlusion maps from high-poly models onto mobile-optimized Three.js meshes, reducing load sizes by 80%. Furthermore, I implemented an adaptive quality controller that monitors frame times and scales down shadow resolutions dynamically on weaker devices to ensure smooth interactions.",
   },
   {
+    slug: "architrave",
+    title: "Architrave",
+    service: "Luxury Architectural Firm",
+    role: "Full Stack & Database Architecture",
+    credits: "Code and design: Sagar Luitel",
+    location: "Kathmandu ©",
+    year: "2026",
+    liveUrl: "https://architrave.vercel.app/",
+    artClass: "project-art--five",
+    background: "#DED5C8",
+    accent: "#2B2D42",
+    image: "/assets/architrave-mockup.jpg",
+    laptopImage: "/assets/laptop mockups/architrave mockup.jpeg",
+    summary:
+      "A high-performance, full-stack housing portal designed to balance complex architectural listings with a minimalist, high-conversion user interface. The platform blends heritage design with modern components, providing visitors with an elegant architectural journey.",
+    tech: ["React.js", "Vite", "Tailwind CSS", "GSAP Animations", "Node.js", "Express", "PostgreSQL"],
+    challenge:
+      "Integrating complex architectural blueprints, high-resolution interior photos, and extensive property listings without causing visual layout shifts or performance lag on mobile web browsers. Additionally, maintaining transaction integrity and security during real-time booking and inquiry flows.",
+    solution:
+      "I engineered a unified design system using Tailwind and GSAP that eliminated layout shifts and optimized image delivery with modern WebP pipelines. I designed a secure Node.js backend using Express and Zod validations, guaranteeing transaction safety and sanitizing booking queues."
+  },
+  {
     slug: "project-peak",
     title: "Project Peak",
     service: "Travel Booking Platform",
@@ -171,7 +193,7 @@ const projects = [
     credits: "Code and design: Sagar Luitel",
     location: "Kathmandu ©",
     year: "2026",
-    liveUrl: "https://github.com/sagarluiteldev/Digital-Voting",
+    liveUrl: "https://digitalvotingnepal.vercel.app/",
     artClass: "project-art--four",
     background: "#E3C4BC",
     accent: "#49A77B",
@@ -617,19 +639,21 @@ const renderCasePage = (project) => {
           <section class="section footer">
             <div class="container container--medium">
               <a class="next-case-card" href="/work/${nextProject.slug}/">
-                <div>
+                <div class="next-case-text">
                   <p>Next case</p>
                   <h2>${nextProject.title}</h2>
                 </div>
                 <div class="next-case-thumb">
-                  ${renderArt(nextProject)}
+                  ${renderArt(nextProject, "next-case-art")}
                 </div>
               </a>
               <span class="stripe"></span>
-              <a class="button magnetic all-work-button" href="/work">
-                <span class="btn-fill"></span>
-                <span>All work <small>${projects.length}</small></span>
-              </a>
+              <div class="next-case-bottom-wrapper">
+                <a class="button magnetic all-work-button" href="/work">
+                  <span class="btn-fill"></span>
+                  <span>All work <small>${projects.length}</small></span>
+                </a>
+              </div>
             </div>
             <div class="container footer__bottom">
               <div>
@@ -1011,6 +1035,7 @@ if (activeProject) {
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 let scrollContainer = document.querySelector("[data-scroll-container]");
 let smoothScroll = null;
+let scrollRefreshListener = null;
 
 const setViewportHeight = () => {
   document.documentElement.style.setProperty("--vh", `${window.innerHeight * 0.01}px`);
@@ -1099,6 +1124,19 @@ const initSmoothScroll = () => {
   }
 
   const isMobile = window.innerWidth <= 780;
+  const isCasePage = document.body.classList.contains("case-route");
+
+  // Disable smooth scroll on mobile for case pages to enable high-performance native momentum scroll
+  if (isMobile && isCasePage) {
+    smoothScroll = null;
+    windowScrollListener = () => {
+      setScrolledState(window.scrollY);
+      ScrollTrigger.update();
+    };
+    window.addEventListener("scroll", windowScrollListener, { passive: true });
+    ScrollTrigger.defaults({ scroller: window });
+    return;
+  }
 
   smoothScroll = new LocomotiveScroll({
     el: scrollContainer,
@@ -1136,17 +1174,22 @@ const initSmoothScroll = () => {
         height: window.innerHeight,
       };
     },
-    pinType: scrollContainer.style.transform ? "transform" : "fixed",
+    pinType: "transform",
   });
 
   ScrollTrigger.defaults({ scroller: scrollContainer });
-  ScrollTrigger.addEventListener("refresh", () => smoothScroll?.update());
+  
+  if (scrollRefreshListener) {
+    ScrollTrigger.removeEventListener("refresh", scrollRefreshListener);
+  }
+  scrollRefreshListener = () => smoothScroll?.update();
+  ScrollTrigger.addEventListener("refresh", scrollRefreshListener);
 };
 
 const scrollToTarget = (target) => {
   if (!target) return;
 
-  if (smoothScroll) {
+  if (smoothScroll && typeof smoothScroll.scrollTo === "function") {
     smoothScroll.scrollTo(target, {
       duration: 900,
       easing: [0.7, 0, 0.3, 1],
@@ -1260,6 +1303,8 @@ const playRouteTransitionExit = () => {
     onUpdate: updateExitPath,
     onComplete: () => {
       overlay.classList.remove("is-active");
+      smoothScroll?.update();
+      ScrollTrigger.refresh();
     },
   });
 
@@ -1305,10 +1350,19 @@ const renderHomePage = () => {
 
 const destroySite = () => {
   if (smoothScroll) {
+    smoothScroll.scrollTo(0, { duration: 0, disableLerp: true });
     smoothScroll.destroy();
     smoothScroll = null;
   }
-  ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  if (windowScrollListener) {
+    window.removeEventListener("scroll", windowScrollListener);
+    windowScrollListener = null;
+  }
+  window.scrollTo(0, 0);
+  if (typeof ScrollTrigger !== "undefined") {
+    ScrollTrigger.clearScrollMemory();
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill(true));
+  }
   document.body.classList.remove("case-route", "work-route", "about-route", "contact-route", "route-transitioning");
   closeNavigation();
 };
@@ -1327,12 +1381,20 @@ const reinitSiteForNewPage = () => {
   initContactForm();
   initScrollAnimations();
 
-  ScrollTrigger.refresh();
   smoothScroll?.update();
+  ScrollTrigger.refresh();
 
   requestAnimationFrame(() => {
-    ScrollTrigger.refresh();
     smoothScroll?.update();
+    ScrollTrigger.refresh();
+  });
+
+  // Periodically refresh ScrollTrigger and Locomotive Scroll after page load to handle lazy media and font loading reflows
+  [100, 300, 600, 1000, 1500].forEach((delay) => {
+    setTimeout(() => {
+      smoothScroll?.update();
+      ScrollTrigger.refresh();
+    }, delay);
   });
 };
 
@@ -1690,35 +1752,40 @@ const animateFromIfPresent = (targets, vars) => {
 };
 
 const initFooterCurveMotion = () => {
-  gsap.utils.toArray(".footer-curve, .case-footer-curve").forEach((curve) => {
-    const shape = curve.querySelector("span");
-    if (!shape) return;
+  setTimeout(() => {
+    gsap.utils.toArray(".footer-curve, .case-footer-curve").forEach((curve) => {
+      if (!curve.isConnected) return;
+      const shape = curve.querySelector("span");
+      if (!shape) return;
 
-    gsap.fromTo(
-      shape,
-      {
-        bottom: "-42vh",
-        width: "150%",
-        height: "50vh",
-        borderTopLeftRadius: "50%",
-        borderTopRightRadius: "50%",
-      },
-      {
-        bottom: "0vh",
-        width: "100%",
-        height: "9vh",
-        borderTopLeftRadius: "0%",
-        borderTopRightRadius: "0%",
-        ease: "none",
-        scrollTrigger: {
-          trigger: curve,
-          start: "top 92%",
-          end: "bottom 45%",
-          scrub: 0.7,
+      gsap.fromTo(
+        shape,
+        {
+          bottom: "-42vh",
+          width: "150%",
+          height: "50vh",
+          borderTopLeftRadius: "50%",
+          borderTopRightRadius: "50%",
         },
-      },
-    );
-  });
+        {
+          bottom: "0vh",
+          width: "100%",
+          height: "9vh",
+          borderTopLeftRadius: "0%",
+          borderTopRightRadius: "0%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: curve,
+            scroller: smoothScroll ? scrollContainer : window,
+            start: "top 92%",
+            end: "bottom 45%",
+            scrub: 0.7,
+            invalidateOnRefresh: true,
+          },
+        },
+      );
+    });
+  }, 250);
 };
 
 const initScrollAnimations = () => {
@@ -1935,6 +2002,24 @@ const initScrollAnimations = () => {
 
   gsap.utils.toArray(".reveal-text").forEach((element) => {
     if (element.closest(".intro__headline")) {
+      const isMobile = window.innerWidth <= 780;
+      if (isMobile) {
+        gsap.fromTo(element,
+          { opacity: 0.2, y: 15 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: element,
+              start: "top 92%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+        return;
+      }
       const text = element.textContent.trim();
       const words = text.split(/\s+/);
       element.innerHTML = words
@@ -2030,7 +2115,27 @@ const initScrollAnimations = () => {
   });
 
   // Project detail page paragraphs scrolly reveal (TextFluxUnveil effect)
+  const isMobile = window.innerWidth <= 780;
   gsap.utils.toArray(".case-paragraph").forEach((element) => {
+    if (isMobile) {
+      // Optimize for mobile: simple fade-in transition instead of heavy word-splitting & scrubbing
+      gsap.fromTo(element,
+        { opacity: 0.2, y: 15 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: element,
+            start: "top 92%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+      return;
+    }
+
     const text = element.textContent.trim();
     const words = text.split(/\s+/);
     element.innerHTML = words
@@ -2059,6 +2164,10 @@ const initLazyMedia = () => {
   new LazyLoad({
     elements_selector: ".lazy",
     threshold: 250,
+    callback_loaded: () => {
+      smoothScroll?.update();
+      ScrollTrigger.refresh();
+    },
   });
 };
 
@@ -2068,6 +2177,10 @@ let isGlobalInitialized = false;
 const initGlobalListeners = () => {
   if (isGlobalInitialized) return;
   isGlobalInitialized = true;
+
+  if (typeof window !== "undefined" && window.history && window.history.scrollRestoration) {
+    window.history.scrollRestoration = "manual";
+  }
 
   let lastWidth = window.innerWidth;
   window.addEventListener("resize", () => {
@@ -2084,8 +2197,8 @@ const initGlobalListeners = () => {
     "load",
     (event) => {
       if (event.target && (event.target.tagName === "IMG" || event.target.tagName === "VIDEO")) {
-        ScrollTrigger.refresh();
         smoothScroll?.update();
+        ScrollTrigger.refresh();
       }
     },
     true
@@ -2127,8 +2240,8 @@ const initSite = () => {
   initScrollAnimations();
 
   requestAnimationFrame(() => {
-    ScrollTrigger.refresh();
     smoothScroll?.update();
+    ScrollTrigger.refresh();
   });
 };
 
@@ -2142,7 +2255,7 @@ runPreloader().then(initSite);
 
 window.addEventListener("load", () => {
   setTimeout(() => {
-    ScrollTrigger.refresh();
     smoothScroll?.update();
+    ScrollTrigger.refresh();
   }, 100);
 });
