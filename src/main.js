@@ -5,6 +5,7 @@ import LocomotiveScroll from "locomotive-scroll";
 import LazyLoad from "vanilla-lazyload";
 
 gsap.registerPlugin(ScrollTrigger);
+window.ScrollTrigger = ScrollTrigger;
 
 document.body.classList.remove("nav-open", "route-transitioning");
 
@@ -1036,6 +1037,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 let scrollContainer = document.querySelector("[data-scroll-container]");
 let smoothScroll = null;
 let scrollRefreshListener = null;
+let gsapContext = null;
 
 const setViewportHeight = () => {
   document.documentElement.style.setProperty("--vh", `${window.innerHeight * 0.01}px`);
@@ -1153,6 +1155,11 @@ const initSmoothScroll = () => {
     },
   });
 
+  window.smoothScroll = smoothScroll;
+
+  // Reset scroll position to 0 immediately to prevent any async window scroll positions from carrying over
+  smoothScroll.scrollTo(0, { duration: 0, disableLerp: true });
+
   smoothScroll.on("scroll", (args) => {
     const y = args?.scroll?.y || 0;
     setScrolledState(y);
@@ -1162,7 +1169,13 @@ const initSmoothScroll = () => {
   ScrollTrigger.scrollerProxy(scrollContainer, {
     scrollTop(value) {
       if (arguments.length && smoothScroll) {
-        smoothScroll.scrollTo(value, { duration: 0, disableLerp: true });
+        const isRefreshing = typeof ScrollTrigger !== "undefined" && ScrollTrigger.isRefreshing;
+        if (!isRefreshing) {
+          const currentY = smoothScroll.scroll?.instance?.scroll?.y || 0;
+          if (Math.abs(currentY - value) > 0.5) {
+            smoothScroll.scrollTo(value, { duration: 0, disableLerp: true });
+          }
+        }
       }
       return smoothScroll?.scroll?.instance?.scroll?.y || 0;
     },
@@ -1353,17 +1366,22 @@ const destroySite = () => {
     smoothScroll.scrollTo(0, { duration: 0, disableLerp: true });
     smoothScroll.destroy();
     smoothScroll = null;
+    window.smoothScroll = null;
   }
   if (windowScrollListener) {
     window.removeEventListener("scroll", windowScrollListener);
     windowScrollListener = null;
   }
   window.scrollTo(0, 0);
+  if (gsapContext) {
+    gsapContext.revert();
+    gsapContext = null;
+  }
   if (typeof ScrollTrigger !== "undefined") {
     ScrollTrigger.clearScrollMemory();
     ScrollTrigger.getAll().forEach((trigger) => trigger.kill(true));
   }
-  document.body.classList.remove("case-route", "work-route", "about-route", "contact-route", "route-transitioning");
+  document.body.classList.remove("case-route", "work-route", "about-route", "contact-route", "route-transitioning", "is-scrolled");
   closeNavigation();
 };
 
@@ -1373,13 +1391,22 @@ const reinitSiteForNewPage = () => {
   updateLocalTime();
   initLazyMedia();
   initSmoothScroll();
+  if (typeof ScrollTrigger !== "undefined") {
+    ScrollTrigger.refresh();
+  }
   initNavigation();
   initAnchors();
   initMagneticButtons();
   initHoverPreview();
   initWorkPageControls();
   initContactForm();
-  initScrollAnimations();
+
+  if (gsapContext) {
+    gsapContext.revert();
+  }
+  gsapContext = gsap.context(() => {
+    initScrollAnimations();
+  });
 
   smoothScroll?.update();
   ScrollTrigger.refresh();
@@ -1752,40 +1779,40 @@ const animateFromIfPresent = (targets, vars) => {
 };
 
 const initFooterCurveMotion = () => {
-  setTimeout(() => {
-    gsap.utils.toArray(".footer-curve, .case-footer-curve").forEach((curve) => {
-      if (!curve.isConnected) return;
-      const shape = curve.querySelector("span");
-      if (!shape) return;
+  gsap.utils.toArray(".footer-curve, .case-footer-curve").forEach((curve) => {
+    if (!curve.isConnected) return;
+    const shape = curve.querySelector("span");
+    if (!shape) return;
 
-      gsap.fromTo(
-        shape,
-        {
-          bottom: "-42vh",
-          width: "150%",
-          height: "50vh",
-          borderTopLeftRadius: "50%",
-          borderTopRightRadius: "50%",
+    // Clear any stale GSAP inline styles from previous route so fromTo starts clean
+    gsap.set(shape, { clearProps: "all" });
+
+    gsap.fromTo(
+      shape,
+      {
+        bottom: "-42vh",
+        width: "150%",
+        height: "50vh",
+        borderTopLeftRadius: "50%",
+        borderTopRightRadius: "50%",
+      },
+      {
+        bottom: "0vh",
+        width: "100%",
+        height: "9vh",
+        borderTopLeftRadius: "0%",
+        borderTopRightRadius: "0%",
+        ease: "none",
+        scrollTrigger: {
+          trigger: curve,
+          start: "top 92%",
+          end: "bottom 45%",
+          scrub: 0.7,
+          invalidateOnRefresh: true,
         },
-        {
-          bottom: "0vh",
-          width: "100%",
-          height: "9vh",
-          borderTopLeftRadius: "0%",
-          borderTopRightRadius: "0%",
-          ease: "none",
-          scrollTrigger: {
-            trigger: curve,
-            scroller: smoothScroll ? scrollContainer : window,
-            start: "top 92%",
-            end: "bottom 45%",
-            scrub: 0.7,
-            invalidateOnRefresh: true,
-          },
-        },
-      );
-    });
-  }, 250);
+      },
+    );
+  });
 };
 
 const initScrollAnimations = () => {
@@ -2160,13 +2187,33 @@ const initScrollAnimations = () => {
   initFooterCurveMotion();
 };
 
+const debounce = (func, wait) => {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+};
+
+let debouncedRefresh = null;
+
 const initLazyMedia = () => {
+  if (!debouncedRefresh) {
+    debouncedRefresh = debounce(() => {
+      smoothScroll?.update();
+      ScrollTrigger.refresh();
+    }, 150);
+  }
+
   new LazyLoad({
     elements_selector: ".lazy",
     threshold: 250,
     callback_loaded: () => {
-      smoothScroll?.update();
-      ScrollTrigger.refresh();
+      debouncedRefresh();
     },
   });
 };
@@ -2237,7 +2284,10 @@ const initSite = () => {
   initHoverPreview();
   initWorkPageControls();
   initContactForm();
-  initScrollAnimations();
+
+  gsapContext = gsap.context(() => {
+    initScrollAnimations();
+  });
 
   requestAnimationFrame(() => {
     smoothScroll?.update();
