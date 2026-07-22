@@ -1802,6 +1802,7 @@ const initHeroMarquee = () => {
   const baseSpeed = isMobile ? 0.75 : 1.25;
 
   let lastScrollY = window.scrollY || 0;
+  let smoothScrollDelta = 0;
 
   if (marqueeTickerFn) {
     gsap.ticker.remove(marqueeTickerFn);
@@ -1809,12 +1810,15 @@ const initHeroMarquee = () => {
 
   marqueeTickerFn = () => {
     const currentScrollY = window.scrollY || 0;
-    const scrollDelta = currentScrollY - lastScrollY;
+    const rawDelta = currentScrollY - lastScrollY;
     lastScrollY = currentScrollY;
 
-    // Apply continuous horizontal drift + scroll velocity momentum
-    frontX -= baseSpeed + (scrollDelta * 0.35);
-    backX += (baseSpeed * 0.85) + (scrollDelta * 0.35);
+    // Smooth lerp for scroll velocity to eliminate mobile touch discrete spikes and match desktop smoothness
+    smoothScrollDelta += (rawDelta - smoothScrollDelta) * (isMobile ? 0.08 : 0.15);
+
+    // Apply continuous horizontal drift + smoothed scroll momentum
+    frontX -= baseSpeed + (smoothScrollDelta * 0.25);
+    backX += (baseSpeed * 0.85) + (smoothScrollDelta * 0.25);
 
     if (frontTrack) {
       const frontLoopWidth = frontTrack.firstElementChild?.offsetWidth || (window.innerWidth * 1.5);

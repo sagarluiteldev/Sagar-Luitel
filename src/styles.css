@@ -50,7 +50,7 @@
 }
 
 :root {
-  --font-primary: "Chillax", "Chillax-Bold", "Chillax-Variable", "Chillax-Medium", "Chillax-Regular", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-primary: "Chillax-Medium", "Chillax", "Chillax-Variable", "Chillax-Bold", "Chillax-Regular", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   --color-dark: #141517;
   --color-darker: #141517;
   --color-light: #ffffff;
@@ -1231,7 +1231,7 @@ html:not(.app-ready) .hero__name {
   margin: 0;
   color: var(--color-light);
   font-size: var(--hero-name-size);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 0.95;
   white-space: nowrap;
 }
