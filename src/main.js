@@ -1901,11 +1901,11 @@ const initScrollAnimations = () => {
         0
       );
 
-      // Ultra-smooth GPU-accelerated mobile hero parallax with 0.1s scrub dampening
+      // Ultra-smooth dual-section mobile parallax: hero elements & intro section react dynamically to scroll
       if (isMobile) {
         gsap.to(heroPortraitImg, {
-          scale: baseScale * 1.08,
-          yPercent: baseTranslateY + 14,
+          scale: baseScale * 1.12,
+          yPercent: baseTranslateY + 24,
           ease: "none",
           force3D: true,
           scrollTrigger: {
@@ -1918,7 +1918,7 @@ const initScrollAnimations = () => {
         });
 
         gsap.to(".hero__name:not(.hero__name--back)", {
-          yPercent: 18,
+          yPercent: 28,
           ease: "none",
           force3D: true,
           scrollTrigger: {
@@ -1929,6 +1929,25 @@ const initScrollAnimations = () => {
             invalidateOnRefresh: true,
           }
         });
+
+        const introSection = document.querySelector(".intro");
+        if (introSection) {
+          gsap.fromTo(introSection,
+            { y: 50 },
+            {
+              y: -30,
+              ease: "none",
+              force3D: true,
+              scrollTrigger: {
+                trigger: introSection,
+                start: "top bottom",
+                end: "top 20%",
+                scrub: 0.1,
+                invalidateOnRefresh: true,
+              }
+            }
+          );
+        }
       }
     }
 
