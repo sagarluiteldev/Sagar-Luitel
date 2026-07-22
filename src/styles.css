@@ -54,6 +54,7 @@
 html {
   background: var(--color-dark);
   scroll-behavior: auto;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -899,11 +900,11 @@ body.nav-open .drawer__primary li:nth-child(4) {
   position: relative;
   min-height: 100vh;
   min-height: 100dvh;
-  min-height: calc(var(--vh, 1vh) * 100);
   padding: 0;
   overflow: hidden;
   background: var(--color-dark);
   color: var(--color-light);
+  contain: layout style;
 }
 
 
@@ -940,7 +941,16 @@ body.nav-open .drawer__primary li:nth-child(4) {
   transform: translateY(36%) scale(1.6);
   transform-origin: bottom center;
   filter: saturate(0.96) contrast(1.02);
-  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+html:not(.app-ready) .hero__portrait img {
+  opacity: 0 !important;
+  visibility: hidden !important;
 }
 
 .hero__location {
@@ -3469,7 +3479,7 @@ body.nav-open .drawer__primary li:nth-child(4) {
   .hero__portrait img {
     bottom: 0;
     height: 84%;
-    transform: translateY(48%) scale(1.85);
+    transform: translateY(46%) scale(2.035);
   }
 
   html.is-safari .hero__portrait img {

@@ -1128,23 +1128,11 @@ const initSmoothScroll = () => {
   const isMobile = window.innerWidth <= 780;
   const isCasePage = document.body.classList.contains("case-route");
 
-  // Disable smooth scroll on mobile for case pages to enable high-performance native momentum scroll
-  if (isMobile && isCasePage) {
-    smoothScroll = null;
-    windowScrollListener = () => {
-      setScrolledState(window.scrollY);
-      ScrollTrigger.update();
-    };
-    window.addEventListener("scroll", windowScrollListener, { passive: true });
-    ScrollTrigger.defaults({ scroller: window });
-    return;
-  }
-
   smoothScroll = new LocomotiveScroll({
     el: scrollContainer,
     smooth: true,
-    lerp: isMobile ? 0.08 : 0.05, // slightly faster lerp on mobile for responsiveness
-    multiplier: isMobile ? 1.5 : 1.0, // slightly larger multiplier on mobile for easier scrolling
+    lerp: isMobile ? 0.07 : 0.06,
+    multiplier: 1.0,
     reloadOnContextChange: true,
     tablet: { 
       smooth: true, 
@@ -1197,6 +1185,13 @@ const initSmoothScroll = () => {
   }
   scrollRefreshListener = () => smoothScroll?.update();
   ScrollTrigger.addEventListener("refresh", scrollRefreshListener);
+
+  if (window.ResizeObserver && scrollContainer) {
+    const resizeObserver = new ResizeObserver(() => {
+      smoothScroll?.update();
+    });
+    resizeObserver.observe(scrollContainer);
+  }
 };
 
 const scrollToTarget = (target) => {
@@ -1850,8 +1845,8 @@ const initScrollAnimations = () => {
   const heroPortraitImg = document.querySelector(".hero__portrait img");
   if (heroPortraitImg) {
     const isMobile = window.innerWidth <= 780;
-    const baseScale = isMobile ? 1.85 : 1.6;
-    const baseTranslateY = isMobile ? 48 : 36;
+    const baseScale = isMobile ? 2.035 : 1.6;
+    const baseTranslateY = isMobile ? 46 : 36;
     
     gsap.fromTo(
       heroPortraitImg,
@@ -1876,7 +1871,7 @@ const initScrollAnimations = () => {
     if (isMobile) {
       gsap.to(heroPortraitImg, {
         scale: baseScale * 1.08,
-        yPercent: baseTranslateY + 6,
+        yPercent: baseTranslateY + 5,
         ease: "none",
         scrollTrigger: {
           trigger: ".hero",
