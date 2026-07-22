@@ -1848,7 +1848,7 @@ const initScrollAnimations = () => {
   if (heroPortraitImg || heroNames.length) {
     const isMobile = window.innerWidth <= 780;
     const baseScale = isMobile ? 2.035 : 1.6;
-    const baseTranslateY = isMobile ? 46 : 36;
+    const baseTranslateY = isMobile ? 51 : 36;
 
     const heroSyncTl = gsap.timeline({
       defaults: { ease: "power4.out", duration: 1.1 }
@@ -1895,7 +1895,7 @@ const initScrollAnimations = () => {
     const heroBackName = document.querySelector(".hero__name--back");
     const heroFrontName = document.querySelector(".hero__name:not(.hero__name--back)");
 
-    if (heroBackName) {
+    if (heroBackName && !isMobile) {
       heroSyncTl.fromTo(
         heroBackName,
         {

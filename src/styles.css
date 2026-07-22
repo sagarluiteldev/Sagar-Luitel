@@ -3481,11 +3481,11 @@ html:not(.app-ready) .hero__name {
   .hero__portrait img {
     bottom: 0;
     height: 84%;
-    transform: translateY(46%) scale(2.035);
+    transform: translateY(51%) scale(2.035);
   }
 
-  html.is-safari .hero__portrait img {
-    bottom: 4.5vh;
+  .hero__name--back {
+    display: none !important;
   }
 
   .hero__location {
