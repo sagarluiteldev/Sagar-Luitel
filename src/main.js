@@ -1888,13 +1888,14 @@ const initScrollAnimations = () => {
         yPercent: baseTranslateY,
         scale: baseScale,
         force3D: true,
+        autoAlpha: 0,
       });
 
       heroSyncTl.fromTo(
         heroPortraitImg,
         {
           y: 65,
-          autoAlpha: 1,
+          autoAlpha: 0,
         },
         {
           y: 0,
