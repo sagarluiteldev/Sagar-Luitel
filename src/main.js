@@ -1782,6 +1782,56 @@ const initFooterCurveMotion = () => {
   });
 };
 
+let marqueeTickerFn = null;
+
+const initHeroMarquee = () => {
+  const frontTrack = document.querySelector(".hero__name:not(.hero__name--back) .hero__name-track");
+  const backTrack = document.querySelector(".hero__name--back .hero__name-track");
+
+  if (!frontTrack && !backTrack) return;
+
+  // Disable CSS keyframe animations so GSAP ticker handles 100% of movement smoothly without layer conflicts
+  document.querySelectorAll(".hero__name-loop").forEach((loop) => {
+    loop.style.animation = "none";
+  });
+
+  const isMobile = window.innerWidth <= 780;
+
+  let frontX = 0;
+  let backX = 0;
+  const baseSpeed = isMobile ? 0.75 : 1.25;
+
+  let lastScrollY = window.scrollY || 0;
+
+  if (marqueeTickerFn) {
+    gsap.ticker.remove(marqueeTickerFn);
+  }
+
+  marqueeTickerFn = () => {
+    const currentScrollY = window.scrollY || 0;
+    const scrollDelta = currentScrollY - lastScrollY;
+    lastScrollY = currentScrollY;
+
+    // Apply continuous horizontal drift + scroll velocity momentum
+    frontX -= baseSpeed + (scrollDelta * 0.35);
+    backX += (baseSpeed * 0.85) + (scrollDelta * 0.35);
+
+    if (frontTrack) {
+      const frontLoopWidth = frontTrack.firstElementChild?.offsetWidth || (window.innerWidth * 1.5);
+      const wrappedFrontX = ((frontX % frontLoopWidth) - frontLoopWidth) % frontLoopWidth;
+      gsap.set(frontTrack, { x: wrappedFrontX, force3D: true });
+    }
+
+    if (backTrack && !isMobile) {
+      const backLoopWidth = backTrack.firstElementChild?.offsetWidth || (window.innerWidth * 1.5);
+      const wrappedBackX = ((backX % backLoopWidth) - backLoopWidth) % backLoopWidth;
+      gsap.set(backTrack, { x: wrappedBackX, force3D: true });
+    }
+  };
+
+  gsap.ticker.add(marqueeTickerFn);
+};
+
 const initScrollAnimations = () => {
   if (prefersReducedMotion) return;
 
@@ -1903,37 +1953,7 @@ const initScrollAnimations = () => {
       );
     }
 
-    const heroFrontTrack = document.querySelector(".hero__name:not(.hero__name--back) .hero__name-track");
-    if (heroFrontTrack) {
-      gsap.to(heroFrontTrack, {
-        xPercent: 12,
-        ease: "none",
-        force3D: true,
-        scrollTrigger: {
-          trigger: ".hero",
-          start: "top top",
-          end: "bottom top",
-          scrub: 0.1,
-          invalidateOnRefresh: true,
-        },
-      });
-    }
-
-    const heroBackTrack = document.querySelector(".hero__name--back .hero__name-track");
-    if (heroBackTrack) {
-      gsap.to(heroBackTrack, {
-        xPercent: -12,
-        ease: "none",
-        force3D: true,
-        scrollTrigger: {
-          trigger: ".hero",
-          start: "top top",
-          end: "bottom top",
-          scrub: 0.1,
-          invalidateOnRefresh: true,
-        },
-      });
-    }
+    initHeroMarquee();
   }
 
   // Alphabet Split and Reveal for Hero Role text & pop animation for arrow

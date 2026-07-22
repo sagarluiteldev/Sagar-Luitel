@@ -1,7 +1,56 @@
 @import "lenis/dist/lenis.css";
 
+@font-face {
+  font-family: 'Chillax';
+  src: url('/web/fonts/Chillax-Bold.woff2') format('woff2'),
+       url('/web/fonts/Chillax-Bold.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Chillax';
+  src: url('/web/fonts/Chillax-Semibold.woff2') format('woff2'),
+       url('/web/fonts/Chillax-Semibold.woff') format('woff');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Chillax';
+  src: url('/web/fonts/Chillax-Medium.woff2') format('woff2'),
+       url('/web/fonts/Chillax-Medium.woff') format('woff');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Chillax';
+  src: url('/web/fonts/Chillax-Regular.woff2') format('woff2'),
+       url('/web/fonts/Chillax-Regular.woff') format('woff');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Chillax-Bold';
+  src: url('/web/fonts/Chillax-Bold.woff2') format('woff2'),
+       url('/web/fonts/Chillax-Bold.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Chillax-Variable';
+  src: url('/web/fonts/Chillax-Variable.woff2') format('woff2-variations'),
+       url('/web/fonts/Chillax-Variable.woff2') format('woff2');
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}
+
 :root {
-  --font-primary: "Chillax", "Chillax-Variable", "Chillax-Bold", "Chillax-Medium", "Chillax-Regular", "Helvetica Neue", Arial, sans-serif;
+  --font-primary: "Chillax", "Chillax-Bold", "Chillax-Variable", "Chillax-Medium", "Chillax-Regular", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   --color-dark: #141517;
   --color-darker: #141517;
   --color-light: #ffffff;
@@ -1182,7 +1231,7 @@ html:not(.app-ready) .hero__name {
   margin: 0;
   color: var(--color-light);
   font-size: var(--hero-name-size);
-  font-weight: 450;
+  font-weight: 600;
   line-height: 0.95;
   white-space: nowrap;
 }
