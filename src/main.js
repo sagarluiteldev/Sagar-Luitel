@@ -1892,9 +1892,30 @@ const initScrollAnimations = () => {
       }
     }
 
-    if (heroNames.length) {
+    const heroBackName = document.querySelector(".hero__name--back");
+    const heroFrontName = document.querySelector(".hero__name:not(.hero__name--back)");
+
+    if (heroBackName) {
       heroSyncTl.fromTo(
-        heroNames,
+        heroBackName,
+        {
+          y: 70,
+          autoAlpha: 0,
+        },
+        {
+          y: 0,
+          autoAlpha: 0.35,
+          duration: 1.1,
+          ease: "power4.out",
+          clearProps: "transform,visibility",
+        },
+        0
+      );
+    }
+
+    if (heroFrontName) {
+      heroSyncTl.fromTo(
+        heroFrontName,
         {
           y: 70,
           autoAlpha: 0,

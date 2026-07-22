@@ -912,7 +912,7 @@ body.nav-open .drawer__primary li:nth-child(4) {
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 1;
+  z-index: 1 !important;
   width: 100%;
   height: 100%;
   overflow: visible;
@@ -1192,9 +1192,10 @@ html:not(.app-ready) .hero__name {
 }
 
 .hero__name--back {
-  z-index: 0;
+  z-index: 0 !important;
   bottom: clamp(11rem, 24vh, 19.5rem);
   opacity: 0.35;
+  pointer-events: none;
 }
 
 .hero__name--back h1 {
