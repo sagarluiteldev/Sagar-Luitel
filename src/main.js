@@ -1901,11 +1901,23 @@ const initScrollAnimations = () => {
         0
       );
 
-      // Dynamic scroll-driven zoom and parallax for mobile view
+      // Dynamic scroll-driven zoom and parallax curtain effect for mobile view
       if (isMobile) {
         gsap.to(heroPortraitImg, {
           scale: baseScale * 1.08,
-          yPercent: baseTranslateY + 5,
+          yPercent: baseTranslateY + 14,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".hero",
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+            invalidateOnRefresh: true,
+          }
+        });
+
+        gsap.to(".hero__name:not(.hero__name--back)", {
+          yPercent: 18,
           ease: "none",
           scrollTrigger: {
             trigger: ".hero",
