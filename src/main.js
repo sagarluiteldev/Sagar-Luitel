@@ -1902,6 +1902,36 @@ const initScrollAnimations = () => {
         0
       );
     }
+
+    const heroFrontTrack = document.querySelector(".hero__name:not(.hero__name--back) .hero__name-track");
+    if (heroFrontTrack) {
+      gsap.to(heroFrontTrack, {
+        xPercent: 14,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      });
+    }
+
+    const heroBackTrack = document.querySelector(".hero__name--back .hero__name-track");
+    if (heroBackTrack) {
+      gsap.to(heroBackTrack, {
+        xPercent: -14,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      });
+    }
   }
 
   // Alphabet Split and Reveal for Hero Role text & pop animation for arrow

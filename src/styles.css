@@ -1,7 +1,7 @@
 @import "lenis/dist/lenis.css";
 
 :root {
-  --font-primary: "Chillax-Variable", "Chillax-Regular", "Helvetica Neue", Arial, sans-serif;
+  --font-primary: "Chillax", "Chillax-Variable", "Chillax-Bold", "Chillax-Medium", "Chillax-Regular", "Helvetica Neue", Arial, sans-serif;
   --color-dark: #141517;
   --color-darker: #141517;
   --color-light: #ffffff;
