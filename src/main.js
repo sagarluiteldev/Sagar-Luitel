@@ -1896,7 +1896,7 @@ const initScrollAnimations = () => {
           scale: baseScale,
           duration: 1.1,
           ease: "power4.out",
-          clearProps: isMobile ? "opacity,visibility" : "transform,opacity,visibility",
+          clearProps: "transform,opacity,visibility",
         },
         0
       );
@@ -1932,21 +1932,18 @@ const initScrollAnimations = () => {
 
         const introSection = document.querySelector(".intro");
         if (introSection) {
-          gsap.fromTo(introSection,
-            { y: 50 },
-            {
-              y: -30,
-              ease: "none",
-              force3D: true,
-              scrollTrigger: {
-                trigger: introSection,
-                start: "top bottom",
-                end: "top 20%",
-                scrub: 0.1,
-                invalidateOnRefresh: true,
-              }
+          gsap.to(introSection, {
+            y: -45,
+            ease: "none",
+            force3D: true,
+            scrollTrigger: {
+              trigger: introSection,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 0.1,
+              invalidateOnRefresh: true,
             }
-          );
+          });
         }
       }
     }
