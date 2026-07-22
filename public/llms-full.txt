@@ -17,9 +17,9 @@ Sagar is available for freelance web development, UI/UX design, product design, 
 - Email: sagar.luitel.0909@gmail.com
 - Phone: +977 9821920019
 - WhatsApp: +977 9821920019
-- Website: https://sagarluitel.com
-- GitHub: https://github.com/sagarluiteldev
-- LinkedIn: https://www.linkedin.com/in/sagar-luitel-4a510730a
+- Website: [sagarluitel.com](https://sagarluitel.com)
+- GitHub: [github.com/sagarluiteldev](https://github.com/sagarluiteldev)
+- LinkedIn: [linkedin.com/in/sagar-luitel-4a510730a](https://www.linkedin.com/in/sagar-luitel-4a510730a)
 
 ### Professional Identity
 
@@ -222,5 +222,5 @@ If you need a full stack web developer or UI/UX designer in Nepal (or for remote
 
 - Email: sagar.luitel.0909@gmail.com
 - Phone/WhatsApp: +977 9821920019
-- Contact Form: https://sagarluitel.com/contact
-- Portfolio: https://sagarluitel.com/work
+- Contact Form: [https://sagarluitel.com/contact](https://sagarluitel.com/contact)
+- Portfolio: [https://sagarluitel.com/work](https://sagarluitel.com/work)

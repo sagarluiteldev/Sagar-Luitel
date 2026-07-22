@@ -22,8 +22,8 @@ const projects = [
     artClass: "project-art--one",
     background: "#C9D5F5",
     accent: "#0F7BFF",
-    image: "/assets/bike-configurator-mockup.jpg",
-    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252344 (2).jpeg",
+    image: "/assets/bike-configurator-mockup.webp",
+    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252344 (2).webp",
     summary:
       "A production-grade, highly interactive 3D WebGL bike configurator developed to elevate user customization and engagement for a premium utility bicycle manufacturer. By moving away from static 2D image sheets, this platform allows customers to configure components, frames, colors, and accessories in real-time under naturalistic dynamic lighting. Built upon high-fidelity CAD source data, the app bridges the gap between high-performance interactive 3D renderings and responsive state management across desktop and mobile browsers.",
     tech: ["Three.js", "WebGL", "GSAP", "React State", "CSS Grid"],
@@ -44,8 +44,8 @@ const projects = [
     artClass: "project-art--two",
     background: "#DED5C8",
     accent: "#5299FF",
-    image: "/assets/myrestro-manager-mockup.jpg",
-    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252344 (4).jpeg",
+    image: "/assets/myrestro-manager-mockup.webp",
+    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252344 (4).webp",
     summary:
       "An enterprise-level, multi-tenant SAAS platform engineered for modern restaurant chains to orchestrate table reservations, real-time order flows, and live kitchen execution pipelines. Unlike traditional POS setups that require proprietary hardware networks, myRestro leverages a cloud-first, serverless architecture that enables instant table synchronization, automated order queue routing, and detailed analytics dashboards. The application serves as the single source of truth for front-of-house staff, kitchen crews, and management alike.",
     tech: ["React.js", "Node.js", "PostgreSQL", "Prisma ORM", "WebSockets", "Chart.js"],
@@ -66,8 +66,8 @@ const projects = [
     artClass: "project-art--three",
     background: "#C8DBD0",
     accent: "#49A77B",
-    image: "/assets/save-wildlife-mockup.jpg",
-    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252343.jpeg",
+    image: "/assets/save-wildlife-mockup.webp",
+    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252343.webp",
     summary:
       "An immersive scrollytelling editorial platform designed for a global conservation non-profit to drive public engagement and raise funds. The platform translates complex ecological datasets and species migration coordinates into interactive maps, cinematic scroll transitions, and spatial audio backdrops. By combining storytelling with data visualization, we transformed cold statistics into a highly moving, interactive reading journey that connects users directly to wildlife protection zones.",
     tech: ["Nuxt.js", "Vue 3", "GSAP ScrollTrigger", "Tailwind CSS", "Contentful CMS"],
@@ -88,8 +88,8 @@ const projects = [
     artClass: "project-art--four",
     background: "#E3C4BC",
     accent: "#FF805F",
-    image: "/assets/into-pokhara-mockup.jpg",
-    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252344.jpeg",
+    image: "/assets/into-pokhara-mockup.webp",
+    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252344.webp",
     summary:
       "A premium digital tourism scrollytelling platform commissioned by the Nepal Tourism Board. Designed as a cinematic virtual tour of Pokhara's lakes and mountains, the site relies on dynamic parallax transitions, ambient music transitions, and vector-drawn scrolly outlines. The site offers visitors an editorial-style narrative experience that adapts dynamically as they scroll, providing an immersive taste of the region's geography and culture.",
     tech: ["GSAP ScrollTrigger", "Locomotive Scroll", "HTML5 Video", "Vanilla CSS"],
@@ -110,8 +110,8 @@ const projects = [
     artClass: "project-art--one",
     background: "#C9D5F5",
     accent: "#0F7BFF",
-    image: "/assets/porsche-mockup.jpg",
-    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252344 (1).jpeg",
+    image: "/assets/porsche-mockup.webp",
+    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252344 (1).webp",
     summary:
       "An interactive 3D concept showroom showcasing next-generation Porsche electric models. Built to replicate the physical luxury of a vehicle showroom, the platform allows users to open doors, trigger charging animation timelines, inspect wheels, and rotate models inside a WebGL sandbox. The app represents a benchmark in combining web-based 3D assets with responsive, high-end web design elements.",
     tech: ["Three.js", "WebGL", "GLSL Shaders", "GSAP ScrollTrigger", "Vite"],
@@ -132,8 +132,8 @@ const projects = [
     artClass: "project-art--five",
     background: "#DED5C8",
     accent: "#2B2D42",
-    image: "/assets/architrave-mockup.jpg",
-    laptopImage: "/assets/laptop mockups/architrave mockup.jpeg",
+    image: "/assets/architrave-mockup.webp",
+    laptopImage: "/assets/laptop mockups/architrave mockup.webp",
     summary:
       "A high-performance, full-stack housing portal designed to balance complex architectural listings with a minimalist, high-conversion user interface. The platform blends heritage design with modern components, providing visitors with an elegant architectural journey.",
     tech: ["React.js", "Vite", "Tailwind CSS", "GSAP Animations", "Node.js", "Express", "PostgreSQL"],
@@ -154,8 +154,8 @@ const projects = [
     artClass: "project-art--two",
     background: "#DED5C8",
     accent: "#FF930F",
-    image: "/assets/project-peak-mockup.jpg",
-    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605261352.jpeg",
+    image: "/assets/project-peak-mockup.webp",
+    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605261352.webp",
     summary:
       "A luxury adventure travel booking platform offering bespoke trekking itineraries across the Himalayas. The application features interactive geographic maps showing elevations, path routes, weather statistics, and dynamic booking forms. The interface is optimized to make exploring high-altitude routes visual, inspiring, and straightforward.",
     tech: ["React.js", "Mapbox GL JS", "Framer Motion", "Tailwind CSS", "REST APIs"],
@@ -176,8 +176,8 @@ const projects = [
     artClass: "project-art--three",
     background: "#C8DBD0",
     accent: "#0F7BFF",
-    image: "/assets/dobby-mockup.jpg",
-    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252344 (3).jpeg",
+    image: "/assets/dobby-mockup.webp",
+    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252344 (3).webp",
     summary:
       "A headless e-commerce application developed for a luxury haircare brand. The project combines a modern frontend experience with a secure Shopify Storefront backend. It features custom-designed product filters, dynamic cart updates, and interactive storytelling layouts that make buying premium products feel tactile and quick.",
     tech: ["React.js", "Shopify API", "GSAP Animations", "Tailwind CSS", "Redux Toolkit"],
@@ -198,8 +198,8 @@ const projects = [
     artClass: "project-art--four",
     background: "#E3C4BC",
     accent: "#49A77B",
-    image: "/assets/digital-voting-mockup.jpg",
-    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252343 (2).jpeg",
+    image: "/assets/digital-voting-mockup.webp",
+    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252343 (2).webp",
     summary:
       "A secure, decentralized digital voting portal designed to execute transparent, tamper-proof organizational elections. The platform utilizes blockchain smart contracts to log votes and cryptographic proofs to ensure voter privacy. It represents a model in building secure, accessible Web3 interfaces for everyday administrative workflows.",
     tech: ["Next.js", "Web3.js", "Solidity", "Tailwind CSS", "Ethereum Blockchain"],
@@ -220,8 +220,8 @@ const projects = [
     artClass: "project-art--one",
     background: "#C9D5F5",
     accent: "#FF930F",
-    image: "/assets/everest-mockup.jpg",
-    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252343 (3).jpeg",
+    image: "/assets/everest-mockup.webp",
+    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252343 (3).webp",
     summary:
       "A high-altitude expedition tracker application designed for mountaineering teams and outdoor enthusiasts. The platform provides real-time route tracing, weather integration, and topographic 3D maps of Mt. Everest. It serves as an interactive scrollytelling tool and safety tracker for teams navigating the Himalayas.",
     tech: ["WebGL", "OpenWeather API", "Leaflet.js", "GSAP ScrollTrigger", "Sass"],
@@ -242,8 +242,8 @@ const projects = [
     artClass: "project-art--two",
     background: "#DED5C8",
     accent: "#2B2D42",
-    image: "/assets/3d-museum-mockup-new.jpg",
-    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252343 (1).jpeg",
+    image: "/assets/3d-museum-mockup-new.webp",
+    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252343 (1).webp",
     summary:
       "A virtual physics museum concept designed to preserve and exhibit artifacts in an interactive, web-based environment. The platform allows users to walk through an online gallery, interact with exhibits, trigger physical reactions, and experience spatial audio elements that mimic physical gallery acoustics.",
     tech: ["Three.js", "Cannon.js Physics", "Web Audio API", "WebGL", "Sass"],
@@ -264,8 +264,8 @@ const projects = [
     artClass: "project-art--three",
     background: "#DED5C8",
     accent: "#564ADE",
-    image: "/assets/cityscape-mockup-new.jpg",
-    laptopImage: "/assets/laptop mockups/cityscape mockup.jpeg",
+    image: "/assets/cityscape-mockup-new.webp",
+    laptopImage: "/assets/laptop mockups/cityscape mockup.webp",
     summary:
       "A premium apartment rental platform designed for booking fully equipped stays with stunning interiors and 24/7 guest support in New York City. The platform features an intuitive apartment selection layout, fluid transition effects, interactive maps of NYC neighborhoods, and a streamlined booking checkout flow.",
     tech: ["React.js", "Vite", "GSAP Animations", "Tailwind CSS", "Framer Motion"],
@@ -286,8 +286,8 @@ const projects = [
     artClass: "project-art--four",
     background: "#C8DBD0",
     accent: "#49A77B",
-    image: "/assets/navyata-mockup-new.jpg",
-    laptopImage: "/assets/laptop mockups/navyata mockup.jpeg",
+    image: "/assets/navyata-mockup-new.webp",
+    laptopImage: "/assets/laptop mockups/navyata mockup.webp",
     summary:
       "A modern, high-end fashion and lifestyle e-commerce boutique featuring curated apparel collections. The store combines a minimal aesthetic layout with an interactive shopping cart drawer, rich product detail layouts, and smooth checkout integrations.",
     tech: ["React.js", "Shopify API", "Tailwind CSS", "Redux Toolkit", "GSAP Animations"],
@@ -308,8 +308,8 @@ const projects = [
     artClass: "project-art--one",
     background: "#C9D5F5",
     accent: "#0F7BFF",
-    image: "/assets/viatour-mockup-new.jpg",
-    laptopImage: "/assets/laptop mockups/viatour mockup.jpeg",
+    image: "/assets/viatour-mockup-new.webp",
+    laptopImage: "/assets/laptop mockups/viatour mockup.webp",
     summary:
       "An interactive, full-stack travel booking application that allows users to discover, compare, and book tailored tour packages worldwide. The system features a responsive search engine with date and destination filters, a secure payment gateway integration, and a dedicated admin console to track reservations and customer reviews.",
     tech: ["Next.js", "Node.js", "PostgreSQL", "Prisma", "Tailwind CSS", "Stripe API"],
@@ -419,7 +419,7 @@ const renderArt = (project, extraClass = "") => {
   if (project.image) {
     return `
       <div class="project-art ${extraClass}" style="--project-accent: ${project.accent}; padding: 0; background: none; isolation: isolate;">
-        <img src="${project.image}" alt="${project.title}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
+        <img src="${project.image}" alt="${project.title}" loading="lazy" decoding="async" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
       </div>
     `;
   }
@@ -882,7 +882,7 @@ const renderAboutPage = () => {
                 <p data-scroll data-scroll-speed="-1"><span>Always exploring<span class="animate-dot">.</span><span class="animate-dot">.</span><span class="animate-dot">.</span></span></p>
               </div>
               <div class="single-about-image">
-                <img src="/assets/sagar-about-portrait.jpg" alt="Sagar Luitel" data-scroll data-scroll-speed="-2" />
+                <img src="/assets/sagar-about-portrait.webp" alt="Sagar Luitel" loading="lazy" decoding="async" data-scroll data-scroll-speed="-2" />
               </div>
             </div>
           </div>
@@ -1850,20 +1850,22 @@ const initScrollAnimations = () => {
   const heroPortraitImg = document.querySelector(".hero__portrait img");
   if (heroPortraitImg) {
     const isMobile = window.innerWidth <= 780;
+    const baseScale = isMobile ? 1.85 : 1.6;
+    const baseTranslateY = isMobile ? 48 : 36;
     
     gsap.fromTo(
       heroPortraitImg,
       {
-        yPercent: 26,
-        y: 90,
+        yPercent: baseTranslateY,
+        y: 60,
         autoAlpha: 0,
-        scale: 1.4,
+        scale: baseScale,
       },
       {
-        yPercent: 26,
+        yPercent: baseTranslateY,
         y: 0,
         autoAlpha: 1,
-        scale: 1.4,
+        scale: baseScale,
         duration: 1,
         ease: "power4.out",
         clearProps: isMobile ? "opacity,visibility" : "transform,opacity,visibility",
@@ -1873,8 +1875,8 @@ const initScrollAnimations = () => {
     // Dynamic scroll-driven zoom and parallax for mobile view
     if (isMobile) {
       gsap.to(heroPortraitImg, {
-        scale: 1.15,
-        yPercent: 34,
+        scale: baseScale * 1.08,
+        yPercent: baseTranslateY + 6,
         ease: "none",
         scrollTrigger: {
           trigger: ".hero",

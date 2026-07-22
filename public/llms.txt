@@ -1,41 +1,35 @@
 # Sagar Luitel — Full Stack Web Developer & UI/UX Designer
 
-> Portfolio and professional website of Sagar Luitel
+> Portfolio and professional documentation for Sagar Luitel, full stack developer and UI/UX designer based in Pokhara, Nepal.
 
-## About
+Sagar Luitel is a freelance full stack web developer and UI/UX designer based in Pokhara, Nepal. He specializes in building fast, fluid, production-ready web experiences using React, Next.js, Three.js, Node.js, PostgreSQL, and GSAP animations.
 
-Sagar Luitel is a full stack web developer and UI/UX designer based in Pokhara, Nepal. He specializes in building fast, fluid, production-ready web experiences using React, Next.js, Three.js, Node.js, PostgreSQL, and GSAP animations. With expertise spanning frontend development, backend engineering, database architecture, 3D web graphics, and UI/UX design, Sagar delivers complete digital product solutions for clients in Nepal and worldwide.
+## Main Pages
 
-- Location: Pokhara, Nepal
-- Email: sagar.luitel.0909@gmail.com
-- Phone: +977 9821920019
-- Website: https://sagarluitel.com
+- [Home Page](https://sagarluitel.com): Official portfolio homepage of Sagar Luitel
+- [Selected Work](https://sagarluitel.com/work): Detailed showcase of web development, 3D WebGL, and SAAS projects
+- [About Sagar](https://sagarluitel.com/about): Background, technical skills, philosophy, and experience
+- [Contact](https://sagarluitel.com/contact): Inquire about web development, design, and freelance projects
 
-## Skills
+## Featured Projects
 
-- Frontend: React.js, Next.js, Vue.js, Nuxt.js, HTML5, CSS3, Tailwind CSS, GSAP, Framer Motion
-- 3D & Graphics: Three.js, WebGL, GLSL Shaders, Cannon.js Physics
-- Backend: Node.js, Express.js, REST APIs, WebSockets, Redis
-- Database: PostgreSQL, Prisma ORM, MongoDB
-- E-Commerce: Shopify Storefront API, Redux Toolkit, Stripe API
-- Blockchain: Solidity, Web3.js, Ethereum, EIP-712
-- Tools: Vite, Git, Vercel, Figma, Blender
+- [3D Bike Configurator](https://mtb1x.vercel.app/): Interactive 3D WebGL bike configurator with dynamic lighting and Draco mesh compression
+- [myRestro Manager](https://myrestromanager.vercel.app/): Multi-tenant SAAS restaurant manager with real-time WebSocket order flows and PostgreSQL architecture
+- [Save Wildlife](https://savewildlife.vercel.app/): Conservation scrollytelling platform with Nuxt.js, Vue 3, and GSAP ScrollTrigger animations
+- [Into Pokhara](https://intopokhara.vercel.app/): Digital tourism scrollytelling experience for Pokhara, Nepal
+- [Porsche Concept](https://porscheconcept.vercel.app/): Interactive 3D vehicle showroom with custom WebGL shaders
+- [Project Peak](https://projectpeak.vercel.app/): Himalayan travel booking platform with Mapbox GL JS and React
+- [Dobby Haircare](https://dobby-indol.vercel.app/): Headless luxury haircare store built with Shopify Storefront API and Redux Toolkit
+- [Digital Voting Portal](https://github.com/sagarluiteldev/Digital-Voting): Decentralized voting dApp using Solidity smart contracts and EIP-712 meta-transactions
+- [CityScape](https://cityscapeny.vercel.app/): NYC apartment rental portal with React, Vite, and Framer Motion
+- [Navyata](https://navyata.vercel.app/): Fashion e-commerce boutique with Shopify Storefront API
+- [Viatour](https://via-tour.vercel.app/): Full-stack travel booking application with Next.js, PostgreSQL, and Stripe API
 
-## Services
+## Social & Professional Links
 
-- Full Stack Web Development
-- UI/UX Design
-- Product Design
-- 3D Web Experiences
-- E-Commerce Development
-- Web Performance Optimization
+- [GitHub Profile](https://github.com/sagarluiteldev): Source code repositories and open-source contributions
+- [LinkedIn Profile](https://www.linkedin.com/in/sagar-luitel-4a510730a): Professional background and work history
 
-## Links
+## Optional / Extended Documentation
 
-- Portfolio: https://sagarluitel.com
-- Work: https://sagarluitel.com/work
-- About: https://sagarluitel.com/about
-- Contact: https://sagarluitel.com/contact
-- GitHub: https://github.com/sagarluiteldev
-- LinkedIn: https://www.linkedin.com/in/sagar-luitel-4a510730a
-- Extended info: https://sagarluitel.com/llms-full.txt
+- [Full Profile](https://sagarluitel.com/llms-full.txt): Extended background, full skill matrix, and comprehensive project details for AI models

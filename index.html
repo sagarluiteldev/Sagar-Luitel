@@ -2,13 +2,26 @@
 <html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP7MX6CW2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-6NP7MX6CW2');
+      function initGtag() {
+        if (window.gtagLoaded) return;
+        window.gtagLoaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-6NP7MX6CW2';
+        document.head.appendChild(s);
+        gtag('config', 'G-6NP7MX6CW2');
+      }
+
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(initGtag, { timeout: 3000 });
+      } else {
+        window.addEventListener('load', function() { setTimeout(initGtag, 1000); });
+      }
     </script>
 
     <meta charset="UTF-8" />
@@ -53,8 +66,9 @@
     <meta name="theme-color" content="#141517" />
     <link rel="icon" type="image/png" href="/assets/sagar-footer-portrait-circle.png" />
 
-    <!-- Fonts & Styles -->
+    <!-- Fonts, LCP Preload & Styles -->
     <link rel="preload" href="/web/fonts/Chillax-Variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/hero-full.webp" as="image" type="image/webp" fetchpriority="high" />
     <link rel="stylesheet" href="/web/css/chillax.css" />
 
     <!-- JSON-LD Structured Data: Person -->
@@ -317,7 +331,6 @@
         background: #141517;
       }
 
-      html:not(.app-ready) main,
       html:not(.app-ready) .drawer,
       html:not(.app-ready) .hamburger,
       html:not(.app-ready) .nav-backdrop {
@@ -438,27 +451,27 @@
           <div class="floating-preview__track" style="height: 500%;">
             <div class="floating-preview__item" style="height: 20.0%;">
               <div class="project-art project-art--one" style="--project-accent: #0F7BFF; padding: 0; background: none; isolation: isolate;">
-                <img src="/assets/bike-configurator-mockup.jpg" alt="3D Bike Configurator" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
+                <img src="/assets/bike-configurator-mockup.webp" alt="3D Bike Configurator" loading="lazy" decoding="async" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
               </div>
             </div>
             <div class="floating-preview__item" style="height: 20.0%;">
               <div class="project-art project-art--three" style="--project-accent: #0F7BFF; padding: 0; background: none; isolation: isolate;">
-                <img src="/assets/dobby-mockup.jpg" alt="Dobby Haircare" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
+                <img src="/assets/dobby-mockup.webp" alt="Dobby Haircare" loading="lazy" decoding="async" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
               </div>
             </div>
             <div class="floating-preview__item" style="height: 20.0%;">
               <div class="project-art project-art--four" style="--project-accent: #49A77B; padding: 0; background: none; isolation: isolate;">
-                <img src="/assets/digital-voting-mockup.jpg" alt="Digital Voting Portal" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
+                <img src="/assets/digital-voting-mockup.webp" alt="Digital Voting Portal" loading="lazy" decoding="async" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
               </div>
             </div>
             <div class="floating-preview__item" style="height: 20.0%;">
               <div class="project-art project-art--three" style="--project-accent: #49A77B; padding: 0; background: none; isolation: isolate;">
-                <img src="/assets/save-wildlife-mockup.jpg" alt="Save Wildlife" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
+                <img src="/assets/save-wildlife-mockup.webp" alt="Save Wildlife" loading="lazy" decoding="async" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
               </div>
             </div>
             <div class="floating-preview__item" style="height: 20.0%;">
               <div class="project-art project-art--two" style="--project-accent: #5299FF; padding: 0; background: none; isolation: isolate;">
-                <img src="/assets/myrestro-manager-mockup.jpg" alt="myRestro Manager" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
+                <img src="/assets/myrestro-manager-mockup.webp" alt="myRestro Manager" loading="lazy" decoding="async" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
               </div>
             </div>
           </div>
@@ -534,7 +547,10 @@
             </div>
           </div>
           <div class="hero__portrait" data-scroll data-scroll-speed="-3" data-scroll-position="top">
-            <img src="/assets/hero%20full.png" alt="Sagar Luitel" fetchpriority="high" />
+            <picture>
+              <source srcset="/assets/hero-full.webp" type="image/webp" />
+              <img src="/assets/hero-full.webp" alt="Sagar Luitel" fetchpriority="high" decoding="async" width="900" height="1200" />
+            </picture>
           </div>
 
           <div class="hero__location" data-scroll data-scroll-speed="-1">
@@ -661,7 +677,7 @@
               <li class="fade-up">
                 <a href="/work/3d-bike-configurator/">
                   <div class="project-art project-art--one" style="--project-accent: #0F7BFF; padding: 0; background: none; isolation: isolate;">
-                <img src="/assets/bike-configurator-mockup.jpg" alt="3D Bike Configurator" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
+                <img src="/assets/bike-configurator-mockup.webp" alt="3D Bike Configurator" loading="lazy" decoding="async" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
               </div>
                   <h3>3D Bike Configurator</h3>
                   <span class="stripe"></span>
@@ -672,7 +688,7 @@
               <li class="fade-up">
                 <a href="/work/dobby-haircare/">
                   <div class="project-art project-art--three" style="--project-accent: #0F7BFF; padding: 0; background: none; isolation: isolate;">
-                <img src="/assets/dobby-mockup.jpg" alt="Dobby Haircare" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
+                <img src="/assets/dobby-mockup.webp" alt="Dobby Haircare" loading="lazy" decoding="async" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
               </div>
                   <h3>Dobby Haircare</h3>
                   <span class="stripe"></span>
@@ -683,7 +699,7 @@
               <li class="fade-up">
                 <a href="/work/digital-voting/">
                   <div class="project-art project-art--four" style="--project-accent: #49A77B; padding: 0; background: none; isolation: isolate;">
-                <img src="/assets/digital-voting-mockup.jpg" alt="Digital Voting Portal" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
+                <img src="/assets/digital-voting-mockup.webp" alt="Digital Voting Portal" loading="lazy" decoding="async" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
               </div>
                   <h3>Digital Voting Portal</h3>
                   <span class="stripe"></span>
@@ -694,7 +710,7 @@
               <li class="fade-up">
                 <a href="/work/save-wildlife/">
                   <div class="project-art project-art--three" style="--project-accent: #49A77B; padding: 0; background: none; isolation: isolate;">
-                <img src="/assets/save-wildlife-mockup.jpg" alt="Save Wildlife" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
+                <img src="/assets/save-wildlife-mockup.webp" alt="Save Wildlife" loading="lazy" decoding="async" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
               </div>
                   <h3>Save Wildlife</h3>
                   <span class="stripe"></span>
@@ -705,7 +721,7 @@
               <li class="fade-up">
                 <a href="/work/myrestro-manager/">
                   <div class="project-art project-art--two" style="--project-accent: #5299FF; padding: 0; background: none; isolation: isolate;">
-                <img src="/assets/myrestro-manager-mockup.jpg" alt="myRestro Manager" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
+                <img src="/assets/myrestro-manager-mockup.webp" alt="myRestro Manager" loading="lazy" decoding="async" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; border-radius: inherit;" />
               </div>
                   <h3>myRestro Manager</h3>
                   <span class="stripe"></span>
@@ -728,30 +744,30 @@
           <div class="media-marquee__inner">
             <div class="media-row media-row--one">
               <div class="media-card">
-                <img src="/assets/desktop%20mockups/This_is_my_website's_hero_202605241330.jpeg" alt="Desktop Mockup 1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
+                <img src="/assets/desktop%20mockups/This_is_my_website's_hero_202605241330.webp" alt="Desktop Mockup 1" loading="lazy" decoding="async" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
               </div>
               <div class="media-card">
-                <img src="/assets/desktop%20mockups/This_is_my_website's_hero_202605241330%20(1).jpeg" alt="Desktop Mockup 2" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
+                <img src="/assets/desktop%20mockups/This_is_my_website's_hero_202605241330%20(1).webp" alt="Desktop Mockup 2" loading="lazy" decoding="async" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
               </div>
               <div class="media-card">
-                <img src="/assets/desktop%20mockups/cityscape%20desktop.jpeg" alt="CityScape Desktop Mockup" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
+                <img src="/assets/desktop%20mockups/cityscape%20desktop.webp" alt="CityScape Desktop Mockup" loading="lazy" decoding="async" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
               </div>
               <div class="media-card">
-                <img src="/assets/desktop%20mockups/This_is_my_website's_hero_202605241331.jpeg" alt="Desktop Mockup 4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
+                <img src="/assets/desktop%20mockups/This_is_my_website's_hero_202605241331.webp" alt="Desktop Mockup 4" loading="lazy" decoding="async" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
               </div>
             </div>
             <div class="media-row media-row--two">
               <div class="media-card">
-                <img src="/assets/desktop%20mockups/viatour%20desktop.jpeg" alt="Viatour Desktop Mockup" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
+                <img src="/assets/desktop%20mockups/viatour%20desktop.webp" alt="Viatour Desktop Mockup" loading="lazy" decoding="async" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
               </div>
               <div class="media-card">
-                <img src="/assets/desktop%20mockups/This_is_my_website's_hero_202605241331%20(2).jpeg" alt="Desktop Mockup 6" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
+                <img src="/assets/desktop%20mockups/This_is_my_website's_hero_202605241331%20(2).webp" alt="Desktop Mockup 6" loading="lazy" decoding="async" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
               </div>
               <div class="media-card">
-                <img src="/assets/desktop%20mockups/This_is_my_website's_hero_202605241331%20(3).jpeg" alt="Desktop Mockup 7" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
+                <img src="/assets/desktop%20mockups/This_is_my_website's_hero_202605241331%20(3).webp" alt="Desktop Mockup 7" loading="lazy" decoding="async" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
               </div>
               <div class="media-card">
-                <img src="/assets/desktop%20mockups/This_is_my_website's_hero_202605241331%20(4).jpeg" alt="Desktop Mockup 8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
+                <img src="/assets/desktop%20mockups/This_is_my_website's_hero_202605241331%20(4).webp" alt="Desktop Mockup 8" loading="lazy" decoding="async" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
               </div>
             </div>
           </div>
