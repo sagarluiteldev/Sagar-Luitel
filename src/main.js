@@ -1901,47 +1901,34 @@ const initScrollAnimations = () => {
         0
       );
 
-      // Dynamic scroll-driven pronounced parallax curtain effect for mobile view
+      // Ultra-smooth GPU-accelerated mobile hero parallax with 0.1s scrub dampening
       if (isMobile) {
         gsap.to(heroPortraitImg, {
-          scale: baseScale * 1.15,
-          yPercent: baseTranslateY + 32,
+          scale: baseScale * 1.08,
+          yPercent: baseTranslateY + 14,
           ease: "none",
+          force3D: true,
           scrollTrigger: {
             trigger: ".hero",
             start: "top top",
             end: "bottom top",
-            scrub: true,
+            scrub: 0.1,
             invalidateOnRefresh: true,
           }
         });
 
         gsap.to(".hero__name:not(.hero__name--back)", {
-          yPercent: 42,
+          yPercent: 18,
           ease: "none",
+          force3D: true,
           scrollTrigger: {
             trigger: ".hero",
             start: "top top",
             end: "bottom top",
-            scrub: true,
+            scrub: 0.1,
             invalidateOnRefresh: true,
           }
         });
-
-        const heroEl = document.querySelector(".hero");
-        if (heroEl) {
-          gsap.to(heroEl, {
-            yPercent: 18,
-            ease: "none",
-            scrollTrigger: {
-              trigger: heroEl,
-              start: "top top",
-              end: "bottom top",
-              scrub: true,
-              invalidateOnRefresh: true,
-            }
-          });
-        }
       }
     }
 
