@@ -3518,8 +3518,8 @@ html:not(.app-ready) .hero__name {
 
   .hero {
     position: relative;
-    min-height: calc(var(--vh, 1vh) * 95.5);
-    min-height: 95.5dvh;
+    min-height: calc(var(--vh, 1vh) * 104);
+    min-height: 104dvh;
   }
 
   .intro {

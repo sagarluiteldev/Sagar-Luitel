@@ -1807,6 +1807,20 @@ const initHeroMarquee = () => {
   let lastScrollY = window.scrollY || 0;
   let smoothScrollDelta = 0;
 
+  let frontLoopWidth = frontTrack?.firstElementChild?.offsetWidth || (window.innerWidth * 1.5);
+  let backLoopWidth = backTrack?.firstElementChild?.offsetWidth || (window.innerWidth * 1.5);
+
+  const updateLoopWidths = () => {
+    if (frontTrack?.firstElementChild) {
+      frontLoopWidth = frontTrack.firstElementChild.offsetWidth || (window.innerWidth * 1.5);
+    }
+    if (backTrack?.firstElementChild) {
+      backLoopWidth = backTrack.firstElementChild.offsetWidth || (window.innerWidth * 1.5);
+    }
+  };
+
+  window.addEventListener("resize", updateLoopWidths, { passive: true });
+
   if (marqueeTickerFn) {
     gsap.ticker.remove(marqueeTickerFn);
   }
@@ -1824,13 +1838,11 @@ const initHeroMarquee = () => {
     backX += (baseSpeed * 0.85) + (smoothScrollDelta * 0.25);
 
     if (frontTrack) {
-      const frontLoopWidth = frontTrack.firstElementChild?.offsetWidth || (window.innerWidth * 1.5);
       const wrappedFrontX = ((frontX % frontLoopWidth) - frontLoopWidth) % frontLoopWidth;
       gsap.set(frontTrack, { x: wrappedFrontX, force3D: true });
     }
 
     if (backTrack && !isMobile) {
-      const backLoopWidth = backTrack.firstElementChild?.offsetWidth || (window.innerWidth * 1.5);
       const wrappedBackX = ((backX % backLoopWidth) - backLoopWidth) % backLoopWidth;
       gsap.set(backTrack, { x: wrappedBackX, force3D: true });
     }
@@ -1909,28 +1921,28 @@ const initScrollAnimations = () => {
       // Ultra-smooth dual-section mobile parallax: hero elements & intro section react dynamically to scroll
       if (isMobile) {
         gsap.to(heroPortraitImg, {
-          scale: baseScale * 1.12,
-          yPercent: baseTranslateY + 24,
+          scale: baseScale * 1.14,
+          yPercent: baseTranslateY + 28,
           ease: "none",
           force3D: true,
           scrollTrigger: {
             trigger: ".hero",
             start: "top top",
             end: "bottom top",
-            scrub: 0.1,
+            scrub: 0.05,
             invalidateOnRefresh: true,
           }
         });
 
         gsap.to(".hero__name:not(.hero__name--back)", {
-          yPercent: 28,
+          yPercent: 32,
           ease: "none",
           force3D: true,
           scrollTrigger: {
             trigger: ".hero",
             start: "top top",
             end: "bottom top",
-            scrub: 0.1,
+            scrub: 0.05,
             invalidateOnRefresh: true,
           }
         });
@@ -1938,14 +1950,14 @@ const initScrollAnimations = () => {
         const introSection = document.querySelector(".intro");
         if (introSection) {
           gsap.to(introSection, {
-            y: -45,
+            y: -50,
             ease: "none",
             force3D: true,
             scrollTrigger: {
               trigger: introSection,
               start: "top bottom",
               end: "bottom top",
-              scrub: 0.1,
+              scrub: 0.05,
               invalidateOnRefresh: true,
             }
           });
