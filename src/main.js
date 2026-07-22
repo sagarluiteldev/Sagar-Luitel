@@ -1832,7 +1832,7 @@ const initScrollAnimations = () => {
         {
           yPercent: baseTranslateY,
           y: 70,
-          autoAlpha: 0,
+          autoAlpha: 1,
           scale: baseScale,
         },
         {
