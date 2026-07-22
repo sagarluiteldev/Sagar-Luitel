@@ -1130,13 +1130,16 @@ const initSmoothScroll = () => {
 
   const isMobile = window.innerWidth <= 780;
 
-  // Initialize Lenis for premium, ultra-smooth momentum scrolling on all pages
+  // Initialize Lenis for premium, 120fps ultra-smooth momentum scrolling across desktop and mobile browsers
   lenis = new Lenis({
-    duration: isMobile ? 1.0 : 1.2,
+    duration: 1.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Exponential dampening curve
     orientation: "vertical",
     gestureOrientation: "vertical",
     smoothWheel: true,
+    smoothTouch: true,
+    syncTouch: true,
+    syncTouchLerp: 0.075,
     wheelMultiplier: 1.0,
     touchMultiplier: 1.2,
     infinite: false,
@@ -1913,7 +1916,7 @@ const initScrollAnimations = () => {
             trigger: ".hero",
             start: "top top",
             end: "bottom top",
-            scrub: true,
+            scrub: 0.1,
             invalidateOnRefresh: true,
           }
         });
@@ -1926,7 +1929,7 @@ const initScrollAnimations = () => {
             trigger: ".hero",
             start: "top top",
             end: "bottom top",
-            scrub: true,
+            scrub: 0.1,
             invalidateOnRefresh: true,
           }
         });
@@ -1941,7 +1944,7 @@ const initScrollAnimations = () => {
               trigger: introSection,
               start: "top bottom",
               end: "bottom top",
-              scrub: true,
+              scrub: 0.1,
               invalidateOnRefresh: true,
             }
           });
