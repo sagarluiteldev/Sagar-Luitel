@@ -1906,13 +1906,14 @@ const initScrollAnimations = () => {
     const heroFrontTrack = document.querySelector(".hero__name:not(.hero__name--back) .hero__name-track");
     if (heroFrontTrack) {
       gsap.to(heroFrontTrack, {
-        xPercent: 14,
+        xPercent: 12,
         ease: "none",
+        force3D: true,
         scrollTrigger: {
           trigger: ".hero",
           start: "top top",
           end: "bottom top",
-          scrub: true,
+          scrub: 0.1,
           invalidateOnRefresh: true,
         },
       });
@@ -1921,13 +1922,14 @@ const initScrollAnimations = () => {
     const heroBackTrack = document.querySelector(".hero__name--back .hero__name-track");
     if (heroBackTrack) {
       gsap.to(heroBackTrack, {
-        xPercent: -14,
+        xPercent: -12,
         ease: "none",
+        force3D: true,
         scrollTrigger: {
           trigger: ".hero",
           start: "top top",
           end: "bottom top",
-          scrub: true,
+          scrub: 0.1,
           invalidateOnRefresh: true,
         },
       });
