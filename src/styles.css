@@ -948,7 +948,8 @@ body.nav-open .drawer__primary li:nth-child(4) {
   will-change: transform, opacity;
 }
 
-html:not(.app-ready) .hero__portrait img {
+html:not(.app-ready) .hero__portrait img,
+html:not(.app-ready) .hero__name {
   opacity: 0 !important;
   visibility: hidden !important;
 }

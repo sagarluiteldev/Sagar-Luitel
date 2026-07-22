@@ -1843,54 +1843,73 @@ const initScrollAnimations = () => {
   });
 
   const heroPortraitImg = document.querySelector(".hero__portrait img");
-  if (heroPortraitImg) {
+  const heroNames = document.querySelectorAll(".hero__name");
+
+  if (heroPortraitImg || heroNames.length) {
     const isMobile = window.innerWidth <= 780;
     const baseScale = isMobile ? 2.035 : 1.6;
     const baseTranslateY = isMobile ? 46 : 36;
-    
-    gsap.fromTo(
-      heroPortraitImg,
-      {
-        yPercent: baseTranslateY,
-        y: 60,
-        autoAlpha: 0,
-        scale: baseScale,
-      },
-      {
-        yPercent: baseTranslateY,
-        y: 0,
-        autoAlpha: 1,
-        scale: baseScale,
-        duration: 1,
-        ease: "power4.out",
-        clearProps: isMobile ? "opacity,visibility" : "transform,opacity,visibility",
-      }
-    );
 
-    // Dynamic scroll-driven zoom and parallax for mobile view
-    if (isMobile) {
-      gsap.to(heroPortraitImg, {
-        scale: baseScale * 1.08,
-        yPercent: baseTranslateY + 5,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".hero",
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-          invalidateOnRefresh: true,
-        }
-      });
+    const heroSyncTl = gsap.timeline({
+      defaults: { ease: "power4.out", duration: 1.1 }
+    });
+
+    if (heroPortraitImg) {
+      heroSyncTl.fromTo(
+        heroPortraitImg,
+        {
+          yPercent: baseTranslateY,
+          y: 70,
+          autoAlpha: 0,
+          scale: baseScale,
+        },
+        {
+          yPercent: baseTranslateY,
+          y: 0,
+          autoAlpha: 1,
+          scale: baseScale,
+          duration: 1.1,
+          ease: "power4.out",
+          clearProps: isMobile ? "opacity,visibility" : "transform,opacity,visibility",
+        },
+        0
+      );
+
+      // Dynamic scroll-driven zoom and parallax for mobile view
+      if (isMobile) {
+        gsap.to(heroPortraitImg, {
+          scale: baseScale * 1.08,
+          yPercent: baseTranslateY + 5,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".hero",
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+            invalidateOnRefresh: true,
+          }
+        });
+      }
+    }
+
+    if (heroNames.length) {
+      heroSyncTl.fromTo(
+        heroNames,
+        {
+          y: 70,
+          autoAlpha: 0,
+        },
+        {
+          y: 0,
+          autoAlpha: 1,
+          duration: 1.1,
+          ease: "power4.out",
+          clearProps: "transform,opacity,visibility",
+        },
+        0
+      );
     }
   }
-
-  animateFromIfPresent(".hero__name", {
-    y: 90,
-    autoAlpha: 0,
-    duration: 1,
-    delay: 0.08,
-    ease: "power4.out",
-  });
 
   // Alphabet Split and Reveal for Hero Role text & pop animation for arrow
   const roleH4 = document.querySelector(".hero__role h4");
