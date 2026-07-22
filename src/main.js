@@ -1,7 +1,7 @@
 import "./styles.css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import LocomotiveScroll from "locomotive-scroll";
+import Lenis from "lenis";
 import LazyLoad from "vanilla-lazyload";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -1035,8 +1035,8 @@ if (activeProject) {
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 let scrollContainer = document.querySelector("[data-scroll-container]");
-let smoothScroll = null;
-let scrollRefreshListener = null;
+let lenis = null;
+let lenisTickerListener = null;
 let gsapContext = null;
 
 const setViewportHeight = () => {
@@ -1112,95 +1112,63 @@ const runPreloader = () => {
 let windowScrollListener = null;
 
 const initSmoothScroll = () => {
-  scrollContainer = document.querySelector("[data-scroll-container]");
-
   if (windowScrollListener) {
     window.removeEventListener("scroll", windowScrollListener);
     windowScrollListener = null;
   }
 
-  if (!scrollContainer || prefersReducedMotion) {
+  if (prefersReducedMotion) {
     windowScrollListener = () => setScrolledState(window.scrollY);
     window.addEventListener("scroll", windowScrollListener, { passive: true });
     return;
   }
 
-  const isMobile = window.innerWidth <= 780;
-  const isCasePage = document.body.classList.contains("case-route");
+  if (lenis) {
+    lenis.destroy();
+    lenis = null;
+  }
 
-  smoothScroll = new LocomotiveScroll({
-    el: scrollContainer,
-    smooth: true,
-    lerp: isMobile ? 0.07 : 0.06,
-    multiplier: 1.0,
-    reloadOnContextChange: true,
-    tablet: { 
-      smooth: true, 
-      breakpoint: 780 
-    },
-    smartphone: { 
-      smooth: true 
-    },
+  const isMobile = window.innerWidth <= 780;
+
+  // Initialize Lenis for premium, ultra-smooth momentum scrolling on all pages
+  lenis = new Lenis({
+    duration: isMobile ? 1.0 : 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Exponential dampening curve
+    orientation: "vertical",
+    gestureOrientation: "vertical",
+    smoothWheel: true,
+    wheelMultiplier: 1.0,
+    touchMultiplier: 1.2,
+    infinite: false,
   });
 
-  window.smoothScroll = smoothScroll;
+  window.lenis = lenis;
 
-  // Reset scroll position to 0 immediately to prevent any async window scroll positions from carrying over
-  smoothScroll.scrollTo(0, { duration: 0, disableLerp: true });
-
-  smoothScroll.on("scroll", (args) => {
-    const y = args?.scroll?.y || 0;
+  // Sync scroll position state and trigger GSAP ScrollTrigger updates
+  lenis.on("scroll", (e) => {
+    const y = e.scroll || window.scrollY || 0;
     setScrolledState(y);
     ScrollTrigger.update();
   });
 
-  ScrollTrigger.scrollerProxy(scrollContainer, {
-    scrollTop(value) {
-      if (arguments.length && smoothScroll) {
-        const isRefreshing = typeof ScrollTrigger !== "undefined" && ScrollTrigger.isRefreshing;
-        if (!isRefreshing) {
-          const currentY = smoothScroll.scroll?.instance?.scroll?.y || 0;
-          if (Math.abs(currentY - value) > 0.5) {
-            smoothScroll.scrollTo(value, { duration: 0, disableLerp: true });
-          }
-        }
-      }
-      return smoothScroll?.scroll?.instance?.scroll?.y || 0;
-    },
-    getBoundingClientRect() {
-      return {
-        top: 0,
-        left: 0,
-        width: window.innerWidth,
-        height: window.innerHeight,
-      };
-    },
-    pinType: "transform",
-  });
-
-  ScrollTrigger.defaults({ scroller: scrollContainer });
-  
-  if (scrollRefreshListener) {
-    ScrollTrigger.removeEventListener("refresh", scrollRefreshListener);
+  // Tightly integrate Lenis RAF with GSAP Ticker for frame-perfect animation alignment
+  if (lenisTickerListener) {
+    gsap.ticker.remove(lenisTickerListener);
   }
-  scrollRefreshListener = () => smoothScroll?.update();
-  ScrollTrigger.addEventListener("refresh", scrollRefreshListener);
-
-  if (window.ResizeObserver && scrollContainer) {
-    const resizeObserver = new ResizeObserver(() => {
-      smoothScroll?.update();
-    });
-    resizeObserver.observe(scrollContainer);
-  }
+  lenisTickerListener = (time) => {
+    lenis?.raf(time * 1000);
+  };
+  gsap.ticker.add(lenisTickerListener);
+  gsap.ticker.lagSmoothing(0);
 };
 
 const scrollToTarget = (target) => {
   if (!target) return;
 
-  if (smoothScroll && typeof smoothScroll.scrollTo === "function") {
-    smoothScroll.scrollTo(target, {
-      duration: 900,
-      easing: [0.7, 0, 0.3, 1],
+  if (lenis && typeof lenis.scrollTo === "function") {
+    lenis.scrollTo(target, {
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       offset: 0,
     });
     return;
@@ -1311,7 +1279,7 @@ const playRouteTransitionExit = () => {
     onUpdate: updateExitPath,
     onComplete: () => {
       overlay.classList.remove("is-active");
-      smoothScroll?.update();
+      lenis?.resize();
       ScrollTrigger.refresh();
     },
   });
@@ -1357,11 +1325,11 @@ const renderHomePage = () => {
 };
 
 const destroySite = () => {
-  if (smoothScroll) {
-    smoothScroll.scrollTo(0, { duration: 0, disableLerp: true });
-    smoothScroll.destroy();
-    smoothScroll = null;
-    window.smoothScroll = null;
+  if (lenis) {
+    lenis.scrollTo(0, { immediate: true });
+    lenis.destroy();
+    lenis = null;
+    window.lenis = null;
   }
   if (windowScrollListener) {
     window.removeEventListener("scroll", windowScrollListener);
@@ -1386,6 +1354,10 @@ const reinitSiteForNewPage = () => {
   updateLocalTime();
   initLazyMedia();
   initSmoothScroll();
+  if (lenis) {
+    lenis.scrollTo(0, { immediate: true });
+    lenis.resize();
+  }
   if (typeof ScrollTrigger !== "undefined") {
     ScrollTrigger.refresh();
   }
@@ -1403,18 +1375,18 @@ const reinitSiteForNewPage = () => {
     initScrollAnimations();
   });
 
-  smoothScroll?.update();
+  lenis?.resize();
   ScrollTrigger.refresh();
 
   requestAnimationFrame(() => {
-    smoothScroll?.update();
+    lenis?.resize();
     ScrollTrigger.refresh();
   });
 
-  // Periodically refresh ScrollTrigger and Locomotive Scroll after page load to handle lazy media and font loading reflows
+  // Periodically refresh ScrollTrigger and Lenis after page load to handle lazy media and font loading reflows
   [100, 300, 600, 1000, 1500].forEach((delay) => {
     setTimeout(() => {
-      smoothScroll?.update();
+      lenis?.resize();
       ScrollTrigger.refresh();
     }, delay);
   });
@@ -1503,13 +1475,13 @@ const initRouteTransitions = () => {
 const openNavigation = () => {
   document.body.classList.add("nav-open");
   document.querySelector(".hamburger")?.setAttribute("aria-expanded", "true");
-  smoothScroll?.stop();
+  lenis?.stop();
 };
 
 const closeNavigation = () => {
   document.body.classList.remove("nav-open");
   document.querySelector(".hamburger")?.setAttribute("aria-expanded", "false");
-  smoothScroll?.start();
+  lenis?.start();
 };
 
 const toggleNavigation = () => {
@@ -1665,7 +1637,7 @@ const initWorkPageControls = () => {
         row.classList.toggle("is-filtered-out", !visible);
       });
 
-      smoothScroll?.update();
+      lenis?.resize();
       ScrollTrigger.refresh();
     });
   });
@@ -1674,7 +1646,7 @@ const initWorkPageControls = () => {
     button.addEventListener("click", () => {
       viewButtons.forEach((item) => item.classList.toggle("is-active", item === button));
       workPage.classList.toggle("show-tiles", button.dataset.view === "tiles");
-      smoothScroll?.update();
+      lenis?.resize();
       ScrollTrigger.refresh();
     });
   });
@@ -2241,7 +2213,7 @@ let debouncedRefresh = null;
 const initLazyMedia = () => {
   if (!debouncedRefresh) {
     debouncedRefresh = debounce(() => {
-      smoothScroll?.update();
+      lenis?.resize();
       ScrollTrigger.refresh();
     }, 150);
   }
@@ -2273,7 +2245,7 @@ const initGlobalListeners = () => {
     lastWidth = width;
 
     setViewportHeight();
-    smoothScroll?.update();
+    lenis?.resize();
     ScrollTrigger.refresh();
   });
 
@@ -2281,7 +2253,7 @@ const initGlobalListeners = () => {
     "load",
     (event) => {
       if (event.target && (event.target.tagName === "IMG" || event.target.tagName === "VIDEO")) {
-        smoothScroll?.update();
+        lenis?.resize();
         ScrollTrigger.refresh();
       }
     },
@@ -2327,7 +2299,7 @@ const initSite = () => {
   });
 
   requestAnimationFrame(() => {
-    smoothScroll?.update();
+    lenis?.resize();
     ScrollTrigger.refresh();
   });
 };
@@ -2342,7 +2314,7 @@ runPreloader().then(initSite);
 
 window.addEventListener("load", () => {
   setTimeout(() => {
-    smoothScroll?.update();
+    lenis?.resize();
     ScrollTrigger.refresh();
   }, 100);
 });
