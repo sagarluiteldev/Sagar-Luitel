@@ -988,14 +988,11 @@ body.nav-open .drawer__primary li:nth-child(4) {
   max-height: 100vh;
   height: min(82vh, 88%);
   object-fit: contain;
-  transform: translateY(36%) scale(1.6);
   transform-origin: bottom center;
   filter: saturate(0.96) contrast(1.02);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-  will-change: transform, opacity;
+  will-change: transform;
 }
 
 html:not(.app-ready) .hero__portrait img,
@@ -3542,7 +3539,6 @@ html:not(.app-ready) .hero__name {
   .hero__portrait img {
     bottom: 0;
     height: 84%;
-    transform: translateY(51%) scale(2.035);
   }
 
   .hero__name--back {

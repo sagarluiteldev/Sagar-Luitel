@@ -1881,22 +1881,23 @@ const initScrollAnimations = () => {
     });
 
     if (heroPortraitImg) {
+      gsap.set(heroPortraitImg, {
+        yPercent: baseTranslateY,
+        scale: baseScale,
+        force3D: true,
+      });
+
       heroSyncTl.fromTo(
         heroPortraitImg,
         {
-          yPercent: baseTranslateY,
-          y: 70,
+          y: 65,
           autoAlpha: 1,
-          scale: baseScale,
         },
         {
-          yPercent: baseTranslateY,
           y: 0,
           autoAlpha: 1,
-          scale: baseScale,
           duration: 1.1,
           ease: "power4.out",
-          clearProps: "transform,opacity,visibility",
         },
         0
       );
@@ -1912,7 +1913,7 @@ const initScrollAnimations = () => {
             trigger: ".hero",
             start: "top top",
             end: "bottom top",
-            scrub: 0.1,
+            scrub: true,
             invalidateOnRefresh: true,
           }
         });
@@ -1925,7 +1926,7 @@ const initScrollAnimations = () => {
             trigger: ".hero",
             start: "top top",
             end: "bottom top",
-            scrub: 0.1,
+            scrub: true,
             invalidateOnRefresh: true,
           }
         });
@@ -1940,7 +1941,7 @@ const initScrollAnimations = () => {
               trigger: introSection,
               start: "top bottom",
               end: "bottom top",
-              scrub: 0.1,
+              scrub: true,
               invalidateOnRefresh: true,
             }
           });
