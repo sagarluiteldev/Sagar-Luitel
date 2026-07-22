@@ -1152,7 +1152,7 @@ html:not(.app-ready) .hero__name {
   display: inline-block;
 }
 
-.hero__name:not(.hero__name--back) {
+.hero__name {
   position: absolute;
   left: 0;
   bottom: clamp(3rem, 7vh, 5.75rem);
