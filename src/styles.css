@@ -2959,7 +2959,7 @@ html:not(.app-ready) .hero__name {
   height: 6rem;
   margin-right: 0.5rem;
   border-radius: 50%;
-  background: url("/assets/sagar-footer-portrait.jpg") center / cover no-repeat, var(--color-gray);
+  background: url("/assets/sagar-footer-portrait.webp") center / cover no-repeat, var(--color-gray);
   vertical-align: middle;
 }
 
@@ -3326,7 +3326,7 @@ html:not(.app-ready) .hero__name {
   height: 5.3rem;
   margin-right: 0.4rem;
   border-radius: 50%;
-  background: url("/assets/sagar-footer-portrait.jpg") center / cover no-repeat, var(--color-dark);
+  background: url("/assets/sagar-footer-portrait.webp") center / cover no-repeat, var(--color-dark);
   vertical-align: middle;
 }
 
