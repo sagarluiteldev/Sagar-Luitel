@@ -155,7 +155,7 @@ const projects = [
     background: "#DED5C8",
     accent: "#FF930F",
     image: "/assets/project-peak-mockup.webp",
-    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605261352.webp",
+    laptopImage: "/assets/laptop mockups/project-peak-laptop.webp",
     summary:
       "A luxury adventure travel booking platform offering bespoke trekking itineraries across the Himalayas. The application features interactive geographic maps showing elevations, path routes, weather statistics, and dynamic booking forms. The interface is optimized to make exploring high-altitude routes visual, inspiring, and straightforward.",
     tech: ["React.js", "Mapbox GL JS", "Framer Motion", "Tailwind CSS", "REST APIs"],
