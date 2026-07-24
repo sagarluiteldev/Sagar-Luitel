@@ -154,7 +154,7 @@ const projects = [
     artClass: "project-art--two",
     background: "#DED5C8",
     accent: "#FF930F",
-    image: "/assets/project-peak-mockup.webp",
+    image: "/assets/project-peak-mockup-new.webp",
     laptopImage: "/assets/laptop mockups/project-peak-laptop.webp",
     summary:
       "A luxury adventure travel booking platform offering bespoke trekking itineraries across the Himalayas. The application features interactive geographic maps showing elevations, path routes, weather statistics, and dynamic booking forms. The interface is optimized to make exploring high-altitude routes visual, inspiring, and straightforward.",
