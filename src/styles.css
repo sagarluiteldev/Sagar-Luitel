@@ -503,7 +503,7 @@ p {
   position: relative;
   width: 100%;
   height: 100%;
-  background-image: url("/assets/waving-hand.png");
+  background-image: url("/assets/waving-hand.webp");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
