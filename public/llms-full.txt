@@ -206,6 +206,13 @@ Core Web Vitals optimization, progressive image loading, asset compression, and 
 - Live URL: https://myartmuseum.vercel.app/
 - Description: Virtual physics museum with interactive exhibits, physics simulations, and spatial audio using Web Audio API panner nodes for immersive gallery acoustics.
 
+### 14. Little Paws
+- Type: Pet Grooming & Veterinary Clinic Platform
+- Role: Front End & UI Design Architecture
+- Tech Stack: React.js, Vite, GSAP Animations, Lucide Icons, CSS3 / Custom Modules
+- Live URL: https://littlepawss.vercel.app/
+- Description: Modern, playful web platform for a pet grooming and veterinary clinic featuring an interactive appointment scheduler, service catalog showcases, cloud aesthetic design, and locked 60fps GSAP scroll interactions.
+
 ---
 
 ## Philosophy

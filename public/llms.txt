@@ -24,6 +24,7 @@ Sagar Luitel is a freelance full stack web developer and UI/UX designer based in
 - [CityScape](https://cityscapeny.vercel.app/): NYC apartment rental portal with React, Vite, and Framer Motion
 - [Navyata](https://navyata.vercel.app/): Fashion e-commerce boutique with Shopify Storefront API
 - [Viatour](https://via-tour.vercel.app/): Full-stack travel booking application with Next.js, PostgreSQL, and Stripe API
+- [Little Paws](https://littlepawss.vercel.app/): Pet grooming and veterinary clinic platform with React, Vite, and GSAP animations
 
 ## Social & Professional Links
 

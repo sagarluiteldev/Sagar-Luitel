@@ -98,7 +98,13 @@
   </url>
   <url>
     <loc>https://sagarluitel.com/work/3d-museum-concept/</loc>
-    <lastmod>2026-07-11</lastmod>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sagarluitel.com/work/little-paws/</loc>
+    <lastmod>2026-07-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

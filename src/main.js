@@ -318,6 +318,28 @@ const projects = [
     solution:
       "I designed a slot reservation system using transaction blocks in PostgreSQL with database-level row locks. I offloaded temporary seat reservations to an in-memory database with automatic TTL (time-to-live) expiration, ensuring slots were held for only 10 minutes during checkout.",
   },
+  {
+    slug: "little-paws",
+    title: "Little Paws",
+    service: "Pet Grooming & Veterinary Clinic",
+    role: "Front End & UI Design Architecture",
+    credits: "Code and design: Sagar Luitel",
+    location: "Kathmandu ©",
+    year: "2026",
+    liveUrl: "https://littlepawss.vercel.app/",
+    artClass: "project-art--five",
+    background: "#D8D9F9",
+    accent: "#F0B634",
+    image: "/assets/little-paws-mockup.webp",
+    laptopImage: "/assets/laptop mockups/little-paws-laptop.webp",
+    summary:
+      "A modern, playful, and high-conversion web platform designed for Little Paws, a premier pet grooming studio and veterinary wellness clinic. Combining pastel color palettes, friendly typography, and intuitive appointment booking flows, the site creates an inviting digital haven for pet owners. Built with React and Vite, the platform balances vibrant aesthetic branding with high performance, fast page transitions, and structured service showcases.",
+    tech: ["React.js", "Vite", "GSAP Animations", "Lucide Icons", "CSS3 / Custom Modules"],
+    challenge:
+      "Balancing a playful visual aesthetic (organic cloud geometries, pastel gradients, bold typography) with high performance and accessibility across all screen sizes. Traditional animated vector elements often lead to layout shifts and performance degradation during responsive viewport recalculations and booking modal interactions.",
+    solution:
+      "I engineered a modular React component architecture using Vite for rapid bundling. I implemented hardware-accelerated GSAP ScrollTrigger timelines for fluid scrollytelling and micro-interactions while isolating cloud shapes and pet visual assets with CSS layer isolation (isolation: isolate). This ensured zero layout shifts, optimized paint cycles, and locked 60fps scrolling on both mobile and desktop browsers.",
+  },
 ];
 
 
@@ -527,6 +549,8 @@ const renderTechIcon = (name) => {
       url = "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/opengl.svg";
     } else if (norm.includes("api") || norm.includes("rest")) {
       url = "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/postman.svg";
+    } else if (norm.includes("lucide")) {
+      url = "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/lucide.svg";
     } else {
       url = "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/codeforces.svg";
     }
@@ -1833,16 +1857,21 @@ const initHeroMarquee = () => {
     // Smooth lerp for scroll velocity to eliminate mobile touch discrete spikes and match desktop smoothness
     smoothScrollDelta += (rawDelta - smoothScrollDelta) * (isMobile ? 0.08 : 0.15);
 
-    // Apply continuous horizontal drift + smoothed scroll momentum
-    frontX -= baseSpeed + (smoothScrollDelta * 0.25);
-    backX += (baseSpeed * 0.85) + (smoothScrollDelta * 0.25);
+    // Calculate scroll speed boost towards each track's own loop direction
+    // Front loop continuously drifts LEFT (-), back loop continuously drifts RIGHT (+)
+    const scrollFactor = isMobile ? 0.14 : 0.28;
+    const scrollBoost = Math.abs(smoothScrollDelta) * scrollFactor;
+
+    // Apply continuous horizontal drift + smoothed scroll speed boost towards own loop direction
+    frontX -= baseSpeed + scrollBoost;
+    backX += (baseSpeed * 0.85) + scrollBoost;
 
     if (frontTrack) {
       const wrappedFrontX = ((frontX % frontLoopWidth) - frontLoopWidth) % frontLoopWidth;
       gsap.set(frontTrack, { x: wrappedFrontX, force3D: true });
     }
 
-    if (backTrack && !isMobile) {
+    if (backTrack) {
       const wrappedBackX = ((backX % backLoopWidth) - backLoopWidth) % backLoopWidth;
       gsap.set(backTrack, { x: wrappedBackX, force3D: true });
     }
@@ -1900,14 +1929,14 @@ const initScrollAnimations = () => {
         yPercent: baseTranslateY,
         scale: baseScale,
         force3D: true,
-        autoAlpha: 0,
+        autoAlpha: 1,
       });
 
       heroSyncTl.fromTo(
         heroPortraitImg,
         {
           y: 65,
-          autoAlpha: 0,
+          autoAlpha: 1,
         },
         {
           y: 0,
@@ -1918,31 +1947,31 @@ const initScrollAnimations = () => {
         0
       );
 
-      // Ultra-smooth dual-section mobile parallax: hero elements & intro section react dynamically to scroll
+      // Ultra-smooth dual-section mobile parallax: hero image sinks while white intro section covers it
       if (isMobile) {
         gsap.to(heroPortraitImg, {
-          scale: baseScale * 1.14,
-          yPercent: baseTranslateY + 28,
+          scale: baseScale * 1.12,
+          yPercent: baseTranslateY + 30,
           ease: "none",
           force3D: true,
           scrollTrigger: {
             trigger: ".hero",
             start: "top top",
             end: "bottom top",
-            scrub: 0.05,
+            scrub: true,
             invalidateOnRefresh: true,
           }
         });
 
         gsap.to(".hero__name:not(.hero__name--back)", {
-          yPercent: 32,
+          yPercent: 30,
           ease: "none",
           force3D: true,
           scrollTrigger: {
             trigger: ".hero",
             start: "top top",
             end: "bottom top",
-            scrub: 0.05,
+            scrub: true,
             invalidateOnRefresh: true,
           }
         });
@@ -1950,14 +1979,14 @@ const initScrollAnimations = () => {
         const introSection = document.querySelector(".intro");
         if (introSection) {
           gsap.to(introSection, {
-            y: -50,
+            y: -60,
             ease: "none",
             force3D: true,
             scrollTrigger: {
-              trigger: introSection,
-              start: "top bottom",
+              trigger: ".hero",
+              start: "top top",
               end: "bottom top",
-              scrub: 0.05,
+              scrub: true,
               invalidateOnRefresh: true,
             }
           });
@@ -1968,7 +1997,9 @@ const initScrollAnimations = () => {
     const heroBackName = document.querySelector(".hero__name--back");
     const heroFrontName = document.querySelector(".hero__name:not(.hero__name--back)");
 
-    if (heroBackName && !isMobile) {
+    if (heroBackName) {
+      gsap.set(heroBackName, { zIndex: 0 });
+      const targetOpacity = isMobile ? 0.22 : 0.35;
       heroSyncTl.fromTo(
         heroBackName,
         {
@@ -1977,10 +2008,9 @@ const initScrollAnimations = () => {
         },
         {
           y: 0,
-          autoAlpha: 0.35,
+          autoAlpha: targetOpacity,
           duration: 1.1,
           ease: "power4.out",
-          clearProps: "transform,visibility",
         },
         0
       );
