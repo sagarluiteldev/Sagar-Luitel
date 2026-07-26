@@ -1963,8 +1963,8 @@ const initScrollAnimations = () => {
           }
         });
 
-        gsap.to(".hero__name:not(.hero__name--back)", {
-          yPercent: 30,
+        gsap.to(".hero__name", {
+          yPercent: -35,
           ease: "none",
           force3D: true,
           scrollTrigger: {
