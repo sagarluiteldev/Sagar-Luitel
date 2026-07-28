@@ -1849,14 +1849,15 @@ const initHeroMarquee = () => {
     // Smooth lerp for scroll velocity to eliminate mobile touch discrete spikes and match desktop smoothness
     smoothScrollDelta += (rawDelta - smoothScrollDelta) * (isMobile ? 0.08 : 0.15);
 
-    // Calculate scroll speed boost towards each track's own loop direction
-    // Front loop continuously drifts LEFT (-), back loop continuously drifts RIGHT (+)
-    const scrollFactor = isMobile ? 0.14 : 0.28;
-    const scrollBoost = Math.abs(smoothScrollDelta) * scrollFactor;
+    // Calculate signed scroll boost:
+    // Scrolling DOWN (smoothScrollDelta > 0) accelerates tracks in default loop directions
+    // Scrolling UP (smoothScrollDelta < 0) triggers smooth reverse acceleration
+    const scrollFactor = isMobile ? 0.22 : 0.42;
+    const scrollEffect = smoothScrollDelta * scrollFactor;
 
-    // Apply continuous horizontal drift + smoothed scroll speed boost towards own loop direction
-    frontX -= baseSpeed + scrollBoost;
-    backX += (baseSpeed * 0.85) + scrollBoost;
+    // Apply continuous horizontal drift + signed scroll acceleration
+    frontX -= baseSpeed + scrollEffect;
+    backX += (baseSpeed * 0.85) + scrollEffect;
 
     if (frontTrack) {
       const wrappedFrontX = ((frontX % frontLoopWidth) - frontLoopWidth) % frontLoopWidth;
