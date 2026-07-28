@@ -1235,6 +1235,8 @@ const runRouteTransition = (label) => {
   if (!pathNode || !labelNode) return Promise.resolve();
 
   labelNode.textContent = label;
+  overlay.style.position = "absolute";
+  overlay.style.top = `${window.scrollY}px`;
   overlay.classList.add("is-active");
 
   gsap.killTweensOf([labelNode]);
@@ -1277,6 +1279,8 @@ const playRouteTransitionExit = () => {
   }
 
   document.documentElement.classList.remove("route-transitioning-exit");
+  overlay.style.position = "absolute";
+  overlay.style.top = "0px";
   overlay.classList.add("is-active");
 
   gsap.killTweensOf([labelNode]);
@@ -1298,6 +1302,8 @@ const playRouteTransitionExit = () => {
     onUpdate: updateExitPath,
     onComplete: () => {
       overlay.classList.remove("is-active");
+      overlay.style.position = "";
+      overlay.style.top = "";
       lenis?.resize();
       ScrollTrigger.refresh();
     },
