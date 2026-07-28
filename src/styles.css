@@ -2827,7 +2827,7 @@ html:not(.app-ready) .hero__name--back {
 
 .single-about-image {
   position: relative;
-  width: 100%;
+  width: 80%;
   aspect-ratio: 3 / 4;
   margin-top: 3.5rem;
   overflow: hidden;
@@ -4272,6 +4272,7 @@ html:not(.app-ready) .hero__name--back {
   }
 
   .single-about-image {
+    width: 85%;
     aspect-ratio: 3 / 4;
     min-height: auto;
     margin-top: 2rem;
