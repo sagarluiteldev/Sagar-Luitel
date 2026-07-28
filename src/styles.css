@@ -3353,7 +3353,9 @@ html:not(.app-ready) .hero__name--back {
 .footer__cta .stripe {
   position: absolute;
   left: 0;
+  right: calc(16% + 10.5rem);
   top: 0;
+  width: auto;
 }
 
 .footer__cta .round-button {
@@ -3912,6 +3914,10 @@ html:not(.app-ready) .hero__name--back {
 
   .footer__headline .arrow-mark {
     display: none;
+  }
+
+  .footer__cta .stripe {
+    right: 8.5rem;
   }
 
   .footer__cta .round-button {
