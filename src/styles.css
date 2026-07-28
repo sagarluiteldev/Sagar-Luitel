@@ -169,14 +169,24 @@ li {
 
 .page-transition {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 104);
+  height: 104dvh;
   z-index: 900;
   pointer-events: none;
-  overflow: hidden;
+  overflow: visible;
   background: transparent;
   visibility: hidden;
   display: grid;
   place-items: center;
+}
+
+html.is-safari .page-transition {
+  height: 112vh;
+  height: 112lvh;
 }
 
 .page-transition__svg {
