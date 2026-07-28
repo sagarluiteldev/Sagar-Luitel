@@ -2293,6 +2293,17 @@ const initScrollAnimations = () => {
     },
   });
 
+  animateFromIfPresent(".footer__cta .round-button", {
+    x: -70,
+    autoAlpha: 0,
+    duration: 0.95,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: ".footer",
+      start: "top 75%",
+    },
+  });
+
   // Project detail page paragraphs scrolly reveal (TextFluxUnveil effect)
   const isMobile = window.innerWidth <= 780;
   gsap.utils.toArray(".case-paragraph").forEach((element) => {
