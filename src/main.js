@@ -2258,6 +2258,24 @@ const initScrollAnimations = () => {
     );
   }
 
+  if (document.querySelector(".about-awards__image img")) {
+    gsap.fromTo(
+      ".about-awards__image img",
+      { yPercent: -8 },
+      {
+        yPercent: 8,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".about-awards",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.5,
+          invalidateOnRefresh: true,
+        },
+      }
+    );
+  }
+
   if (document.querySelector(".media-marquee")) {
     gsap.to(".media-row--one", {
       xPercent: -8,
