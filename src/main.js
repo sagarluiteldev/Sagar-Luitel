@@ -933,7 +933,7 @@ const renderAboutPage = () => {
         <section class="about-awards" data-scroll-section>
           <div class="container container--medium">
             <div class="about-awards__grid">
-              <div class="about-awards__image" data-scroll data-scroll-speed="-1">${renderArt(projects[1])}</div>
+              <div class="about-awards__image">${renderArt(projects[1])}</div>
               <div class="about-awards__copy">
                 <h2>Full stack<br>since day one</h2>
                 <p>I care about the small details that make software feel considered: loading states, keyboard paths, empty states, motion, and backend contracts that do not surprise the next person.</p>
@@ -2249,24 +2249,6 @@ const initScrollAnimations = () => {
         ease: "none",
         scrollTrigger: {
           trigger: ".about-image-section",
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 0.5,
-          invalidateOnRefresh: true,
-        },
-      }
-    );
-  }
-
-  if (document.querySelector(".about-awards__image img")) {
-    gsap.fromTo(
-      ".about-awards__image img",
-      { yPercent: -8 },
-      {
-        yPercent: 8,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".about-awards",
           start: "top bottom",
           end: "bottom top",
           scrub: 0.5,
