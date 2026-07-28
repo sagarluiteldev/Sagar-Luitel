@@ -2799,11 +2799,11 @@ html:not(.app-ready) .hero__name--back {
   display: grid;
   grid-template-columns: minmax(20rem, 0.9fr) minmax(0, 1.1fr);
   gap: calc(var(--gap) * 2);
-  align-items: start;
+  align-items: center;
 }
 
 .about-copy {
-  padding-top: 4rem;
+  padding-top: 2rem;
 }
 
 .about-copy .arrow-mark {
@@ -2827,10 +2827,11 @@ html:not(.app-ready) .hero__name--back {
 
 .single-about-image {
   position: relative;
-  width: 70%;
-  aspect-ratio: 4 / 4.7;
-  margin-top: 1.5rem;
+  width: 75%;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
   overflow: hidden;
+  border-radius: 0.5rem;
   background: var(--color-gray);
 }
 
@@ -4272,10 +4273,10 @@ html:not(.app-ready) .hero__name--back {
   }
 
   .single-about-image {
-    width: 75%;
-    aspect-ratio: 4 / 4.7;
+    width: 80%;
+    aspect-ratio: 1 / 1;
     min-height: auto;
-    margin-top: 1.5rem;
+    margin: 1.5rem auto 0;
   }
 
   .about-services-page h2 {
