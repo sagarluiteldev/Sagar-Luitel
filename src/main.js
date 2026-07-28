@@ -1257,10 +1257,10 @@ const runRouteTransition = (label) => {
       onComplete: resolve,
     });
 
-    tl.to(transitionVal, { y: 0, duration: 0.72, ease: "power3.inOut" })
-      .to(transitionVal, { curve: maxCurve, duration: 0.36, ease: "power2.out" }, 0)
-      .to(transitionVal, { curve: 0, duration: 0.36, ease: "power2.in" }, 0.36)
-      .to(labelNode, { yPercent: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 0.28);
+    tl.to(transitionVal, { y: 0, duration: 0.95, ease: "power3.inOut" })
+      .to(transitionVal, { curve: maxCurve, duration: 0.475, ease: "power2.out" }, 0)
+      .to(transitionVal, { curve: 0, duration: 0.475, ease: "power2.in" }, 0.475)
+      .to(labelNode, { yPercent: 0, autoAlpha: 1, duration: 0.55, ease: "power3.out" }, 0.35);
   });
 };
 
@@ -1303,10 +1303,10 @@ const playRouteTransitionExit = () => {
     },
   });
 
-  tl.to(labelNode, { yPercent: -100, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, 0)
-    .to(transitionVal, { y: 0, duration: 0.72, ease: "power3.inOut" }, 0.08)
-    .to(transitionVal, { curve: maxCurve, duration: 0.36, ease: "power2.out" }, 0.08)
-    .to(transitionVal, { curve: 0, duration: 0.36, ease: "power2.in" }, 0.44);
+  tl.to(labelNode, { yPercent: -100, autoAlpha: 0, duration: 0.38, ease: "power3.in" }, 0)
+    .to(transitionVal, { y: 0, duration: 0.95, ease: "power3.inOut" }, 0.1)
+    .to(transitionVal, { curve: maxCurve, duration: 0.475, ease: "power2.out" }, 0.1)
+    .to(transitionVal, { curve: 0, duration: 0.475, ease: "power2.in" }, 0.575);
 };
 
 let homePageHTML = "";
