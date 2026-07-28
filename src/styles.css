@@ -2828,7 +2828,7 @@ html:not(.app-ready) .hero__name--back {
 .single-about-image {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  min-height: 37rem;
   overflow: hidden;
   border-radius: 0;
   background: var(--color-gray);
@@ -4273,8 +4273,7 @@ html:not(.app-ready) .hero__name--back {
 
   .single-about-image {
     width: 100%;
-    aspect-ratio: 1 / 1;
-    min-height: auto;
+    min-height: 28rem;
     border-radius: 0;
     margin: 2rem 0 0;
   }
