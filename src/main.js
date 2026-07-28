@@ -11,19 +11,6 @@ window.ScrollTrigger = ScrollTrigger;
 document.body.classList.remove("nav-open", "route-transitioning");
 initSoundSystem();
 
-const updateRealScreenHeight = () => {
-  if (typeof window === "undefined" || !document?.documentElement?.style) return;
-  const realH = Math.max(window.screen?.height || 0, window.innerHeight || 0, document.documentElement.clientHeight || 0);
-  if (realH) {
-    document.documentElement.style.setProperty("--real-screen-height", `${realH}px`);
-  }
-};
-updateRealScreenHeight();
-if (typeof window !== "undefined") {
-  window.addEventListener("resize", updateRealScreenHeight, { passive: true });
-  window.addEventListener("orientationchange", updateRealScreenHeight, { passive: true });
-}
-
 const projects = [
   {
     slug: "digital-voting",
