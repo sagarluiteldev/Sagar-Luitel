@@ -214,13 +214,46 @@ export function initSoundSystem() {
   window.addEventListener("touchstart", unlockAudio, { passive: true });
   window.addEventListener("keydown", unlockAudio, { passive: true });
 
+  // Touch swipe detection to prevent sounds during mobile scrolling/swiping
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let isScrollingOrSwiping = false;
+
+  window.addEventListener("touchstart", (e) => {
+    if (e.touches && e.touches[0]) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      isScrollingOrSwiping = false;
+    }
+  }, { passive: true });
+
+  window.addEventListener("touchmove", (e) => {
+    if (e.touches && e.touches[0]) {
+      const deltaX = Math.abs(e.touches[0].clientX - touchStartX);
+      const deltaY = Math.abs(e.touches[0].clientY - touchStartY);
+      if (deltaX > 8 || deltaY > 8) {
+        isScrollingOrSwiping = true;
+      }
+    }
+  }, { passive: true });
+
   const handleInteraction = (e) => {
     getAudioContext();
 
-    const target = e.target.closest("[data-sound], button, a, .project-card, .work-card, .hamburger");
+    // If user is actively scrolling/swiping on mobile touch, suppress sound completely!
+    if (isScrollingOrSwiping) return;
+
+    // For touch inputs, pointerdown occurs at initial finger contact BEFORE knowing if the user intends to scroll.
+    // Ignore pointerdown for touch inputs so sounds fire ONLY when an actual click/tap event is registered!
+    const isTouchInput = e.pointerType === "touch" || e.type === "touchstart";
+    if (isTouchInput && (e.type === "pointerdown" || e.type === "touchstart")) {
+      return;
+    }
+
+    const target = e.target.closest("[data-sound], button, a, .project-card, .work-card, .work-row, .work-page-row, .work-page-tile, .hamburger");
     if (!target) return;
 
-    // Deduplicate sounds when mobile triggers both pointerdown and click on the same element
+    // Deduplicate sounds when desktop/mouse triggers both pointerdown and click on the same element
     const now = Date.now();
     if (e.type === "pointerdown" || e.type === "touchstart") {
       target._soundPlayedTime = now;
@@ -270,6 +303,12 @@ export function initSoundSystem() {
       target.closest(".project-card") ||
       target.classList.contains("work-card") ||
       target.closest(".work-card") ||
+      target.classList.contains("work-row") ||
+      target.closest(".work-row") ||
+      target.classList.contains("work-page-row") ||
+      target.closest(".work-page-row") ||
+      target.classList.contains("work-page-tile") ||
+      target.closest(".work-page-tile") ||
       href.includes("/work/") ||
       text.includes("case study") ||
       text.includes("view work") ||
