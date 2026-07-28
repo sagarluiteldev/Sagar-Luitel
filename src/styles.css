@@ -2827,9 +2827,9 @@ html:not(.app-ready) .hero__name--back {
 
 .single-about-image {
   position: relative;
-  width: 80%;
-  aspect-ratio: 3 / 4;
-  margin-top: 3.5rem;
+  width: 70%;
+  aspect-ratio: 4 / 4.7;
+  margin-top: 1.5rem;
   overflow: hidden;
   background: var(--color-gray);
 }
@@ -4272,10 +4272,10 @@ html:not(.app-ready) .hero__name--back {
   }
 
   .single-about-image {
-    width: 85%;
-    aspect-ratio: 3 / 4;
+    width: 75%;
+    aspect-ratio: 4 / 4.7;
     min-height: auto;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
   }
 
   .about-services-page h2 {
