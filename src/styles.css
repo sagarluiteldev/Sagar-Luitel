@@ -187,6 +187,19 @@ li {
   pointer-events: none;
 }
 
+/* iOS Mobile Safari Only: Extend transition overlay height past Safari's bottom toolbar */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 780px) {
+    .page-transition {
+      height: 125lvh !important;
+      bottom: -25vh !important;
+    }
+    .page-transition__svg {
+      height: 125% !important;
+    }
+  }
+}
+
 .page-transition__path {
   fill: var(--color-darker);
 }
