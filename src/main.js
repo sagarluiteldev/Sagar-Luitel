@@ -2294,9 +2294,9 @@ const initScrollAnimations = () => {
   });
 
   animateFromIfPresent(".footer__cta .round-button", {
-    x: -70,
+    x: -280,
     autoAlpha: 0,
-    duration: 0.95,
+    duration: 1.1,
     ease: "power3.out",
     scrollTrigger: {
       trigger: ".footer",
