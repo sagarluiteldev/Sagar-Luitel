@@ -3,34 +3,36 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import LazyLoad from "vanilla-lazyload";
+import { initSoundSystem } from "./sound.js";
 
 gsap.registerPlugin(ScrollTrigger);
 window.ScrollTrigger = ScrollTrigger;
 
 document.body.classList.remove("nav-open", "route-transitioning");
+initSoundSystem();
 
 const projects = [
   {
-    slug: "3d-bike-configurator",
-    title: "3D Bike Configurator",
-    service: "3D Configurator",
-    role: "Interactive & GSAP Development",
+    slug: "digital-voting",
+    title: "Digital Voting Portal",
+    service: "Tamper-Proof Voting System",
+    role: "Security & Next.js Architecture",
     credits: "Code and design: Sagar Luitel",
     location: "Kathmandu ©",
-    year: "2024",
-    liveUrl: "https://mtb1x.vercel.app/",
-    artClass: "project-art--one",
-    background: "#C9D5F5",
-    accent: "#0F7BFF",
-    image: "/assets/bike-configurator-mockup.webp",
-    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252344 (2).webp",
+    year: "2026",
+    liveUrl: "https://digitalvotingnepal.vercel.app/",
+    artClass: "project-art--four",
+    background: "#E3C4BC",
+    accent: "#49A77B",
+    image: "/assets/digital-voting-mockup.webp",
+    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252343 (2).webp",
     summary:
-      "A production-grade, highly interactive 3D WebGL bike configurator developed to elevate user customization and engagement for a premium utility bicycle manufacturer. By moving away from static 2D image sheets, this platform allows customers to configure components, frames, colors, and accessories in real-time under naturalistic dynamic lighting. Built upon high-fidelity CAD source data, the app bridges the gap between high-performance interactive 3D renderings and responsive state management across desktop and mobile browsers.",
-    tech: ["Three.js", "WebGL", "GSAP", "React State", "CSS Grid"],
+      "A secure, decentralized digital voting portal designed to execute transparent, tamper-proof organizational elections. The platform utilizes blockchain smart contracts to log votes and cryptographic proofs to ensure voter privacy. It represents a model in building secure, accessible Web3 interfaces for everyday administrative workflows.",
+    tech: ["Next.js", "Web3.js", "Solidity", "Tailwind CSS", "Ethereum Blockchain"],
     challenge:
-      "We faced a double-pronged architectural bottleneck: assets and synchronization. The raw CAD models from the design team exceeded 140MB with hundreds of thousands of polygons, which crashed mobile browsers instantly. Furthermore, dynamically updating paint textures, frame decals, and tire treads while camera coordinates transitioned between component nodes (handlebars, pedals, chainsets) introduced severe garbage collection pauses and frame drops (falling to 15fps) during rapid UI changes.",
+      "The primary challenge was security and usability. Blockchain transactions require gas fees and wallet interactions, which confuse standard users. We had to design an interface that handles cryptographic signatures and contract transactions in the background while ensuring complete voter anonymity and mathematical vote immutability.",
     solution:
-      "I spearheaded a complete geometry optimization pipeline, using Draco mesh compression and texture baking in Blender to reduce the asset size to 4.2MB without loss of visual fidelity. I engineered a robust state-management solution using a React-like publish-subscribe pattern, ensuring texture swaps and material parameters were updated in a single render call. Finally, I optimized camera movements using GSAP timelines tied to Three.js orbital limits, leveraging requestAnimationFrame throttling to guarantee a locked 60fps across both modern iOS and Android devices.",
+      "I built a decentralized ballot architecture using Solidity smart contracts on an EVM-compatible chain. I integrated Next.js as the front-end layer using Web3.js to enable wallet validations. To abstract blockchain complexity, I implemented meta-transactions (EIP-712) allowing users to sign votes off-chain, which our server relayer commits to the chain, covering gas costs while guaranteeing voter anonymity.",
   },
   {
     slug: "myrestro-manager",
@@ -185,28 +187,6 @@ const projects = [
       "Traditional e-commerce platforms struggle with page transitions and layout shifts when fetching products. Users expect a luxury site to feel instantaneous, but API fetch cycles for product descriptions, price variants, and inventory updates created noticeable visual jumps and loading spinners that disrupted the purchasing funnel.",
     solution:
       "I built the site as a headless React app utilizing the Shopify Storefront API. I implemented a local state management layer with Redux Toolkit to cache catalog metadata on initial load. I crafted custom GSAP page transitions that run asynchronously during route changes, pre-fetching the destination page's product details so the screen switches instantly without loading indicators.",
-  },
-  {
-    slug: "digital-voting",
-    title: "Digital Voting Portal",
-    service: "Tamper-Proof Voting System",
-    role: "Security & Next.js Architecture",
-    credits: "Code and design: Sagar Luitel",
-    location: "Kathmandu ©",
-    year: "2026",
-    liveUrl: "https://digitalvotingnepal.vercel.app/",
-    artClass: "project-art--four",
-    background: "#E3C4BC",
-    accent: "#49A77B",
-    image: "/assets/digital-voting-mockup.webp",
-    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252343 (2).webp",
-    summary:
-      "A secure, decentralized digital voting portal designed to execute transparent, tamper-proof organizational elections. The platform utilizes blockchain smart contracts to log votes and cryptographic proofs to ensure voter privacy. It represents a model in building secure, accessible Web3 interfaces for everyday administrative workflows.",
-    tech: ["Next.js", "Web3.js", "Solidity", "Tailwind CSS", "Ethereum Blockchain"],
-    challenge:
-      "The primary challenge was security and usability. Blockchain transactions require gas fees and wallet interactions, which confuse standard users. We had to design an interface that handles cryptographic signatures and contract transactions in the background while ensuring complete voter anonymity and mathematical vote immutability.",
-    solution:
-      "I built a decentralized ballot architecture using Solidity smart contracts on an EVM-compatible chain. I integrated Next.js as the front-end layer using Web3.js to enable wallet validations. To abstract blockchain complexity, I implemented meta-transactions (EIP-712) allowing users to sign votes off-chain, which our server relayer commits to the chain, covering gas costs while guaranteeing voter anonymity.",
   },
   {
     slug: "everest-adventures",
@@ -707,10 +687,19 @@ const renderCasePage = (project) => {
   );
 };
 
+const FULLSTACK_SLUGS = [
+  "digital-voting",
+  "myrestro-manager",
+  "navyata",
+  "everest-adventures",
+  "save-wildlife",
+];
+
 const getProjectTags = (project) => {
-  if (project.slug === "myrestro-manager") return "development interaction";
-  if (project.slug === "digital-voting") return "development interaction";
-  return "design development interaction";
+  if (FULLSTACK_SLUGS.includes(project.slug)) {
+    return "fullstack";
+  }
+  return "frontend";
 };
 
 const renderFloatingPreview = () => `
@@ -816,6 +805,9 @@ const renderWorkPage = () => {
     )
     .join("");
 
+  const fullstackCount = projects.filter((p) => FULLSTACK_SLUGS.includes(p.slug)).length;
+  const frontendCount = projects.filter((p) => !FULLSTACK_SLUGS.includes(p.slug)).length;
+
   document.querySelector("main")?.remove();
   document.body.insertAdjacentHTML(
     "beforeend",
@@ -835,8 +827,8 @@ const renderWorkPage = () => {
             <div class="filter-row">
               <div class="toggle-row" aria-label="Project filters">
                 <button class="button magnetic work-filter is-active" type="button" data-filter="all"><span class="btn-fill"></span><span>All</span></button>
-                <button class="button magnetic work-filter" type="button" data-filter="design"><span class="btn-fill"></span><span>Design <small>8</small></span></button>
-                <button class="button magnetic work-filter" type="button" data-filter="development"><span class="btn-fill"></span><span>Development <small>10</small></span></button>
+                <button class="button magnetic work-filter" type="button" data-filter="frontend"><span class="btn-fill"></span><span>Frontend Development <small>${frontendCount}</small></span></button>
+                <button class="button magnetic work-filter" type="button" data-filter="fullstack"><span class="btn-fill"></span><span>Full Stack Development <small>${fullstackCount}</small></span></button>
               </div>
               <div class="grid-row" aria-label="Layout view">
                 <button class="button button--icon magnetic work-view is-active" type="button" data-view="rows" aria-label="Rows view"><span class="btn-fill"></span><span></span></button>

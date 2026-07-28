@@ -2958,6 +2958,7 @@ html:not(.app-ready) .hero__name--back {
 
 .contact-heading h1 span {
   display: block;
+  white-space: nowrap;
 }
 
 .contact-heading h1 i,
@@ -3502,18 +3503,35 @@ html:not(.app-ready) .hero__name--back {
     display: inline-flex;
   }
 
-  .hamburger {
+  .hamburger,
+  body.is-scrolled .hamburger,
+  body.nav-open .hamburger {
     right: 1rem;
     top: 1rem;
     width: 3.3rem;
     height: 3.3rem;
     scale: 1;
+    background: #FF4F22 !important;
+    background-color: #FF4F22 !important;
+    border-color: #FF4F22 !important;
+    box-shadow: none !important;
   }
 
-  .hamburger__bars,
+  .hamburger:hover .btn-fill,
+  .hamburger .btn-fill {
+    background: #FF4F22 !important;
+    transform: translate3d(0, 102%, 0) !important;
+  }
+
+  .hamburger__bars {
+    width: 0.9rem;
+    background: transparent !important;
+  }
+
   .hamburger__bars::before,
   .hamburger__bars::after {
     width: 0.9rem;
+    background: #ffffff !important;
   }
 
   .hamburger__bars::before {
@@ -3522,6 +3540,16 @@ html:not(.app-ready) .hero__name--back {
 
   .hamburger__bars::after {
     top: 0.16rem;
+  }
+
+  body.nav-open .hamburger__bars::before {
+    top: 0 !important;
+    transform: rotate(-45deg) !important;
+  }
+
+  body.nav-open .hamburger__bars::after {
+    top: 0 !important;
+    transform: rotate(45deg) !important;
   }
 
   .hero {
@@ -4193,9 +4221,34 @@ html:not(.app-ready) .hero__name--back {
     line-height: 1.04;
   }
 
+  /* Mobile category filters: Turn orange when selected, disable hover effect on mobile */
   .work-filter {
     min-height: 3.6rem;
     padding: 0 1.4rem;
+  }
+
+  .work-filter:hover .btn-fill {
+    transform: translate3d(0, 102%, 0);
+  }
+
+  .work-filter:hover span:not(.btn-fill) {
+    color: var(--color-dark);
+  }
+
+  .work-filter.is-active,
+  .work-filter.is-active:hover {
+    border-color: #FF4F22;
+  }
+
+  .work-filter.is-active .btn-fill,
+  .work-filter.is-active:hover .btn-fill {
+    transform: translate3d(0, 0, 0) !important;
+    background: #FF4F22 !important;
+  }
+
+  .work-filter.is-active span:not(.btn-fill),
+  .work-filter.is-active:hover span:not(.btn-fill) {
+    color: #ffffff !important;
   }
 
   .work-page-row h4 {
@@ -4224,7 +4277,11 @@ html:not(.app-ready) .hero__name--back {
   }
 
   .contact-heading h1 {
-    font-size: 3.25rem;
+    font-size: clamp(1.85rem, 7.4vw, 3.25rem);
+  }
+
+  .contact-heading h1 span {
+    white-space: nowrap;
   }
 
   .contact-heading h1 i {

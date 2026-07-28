@@ -22,6 +22,7 @@ let code = fs.readFileSync(srcMainPath, 'utf8');
 code = code.replace(/import\s+[\s\S]*?;\s*/g, '');
 code = code.replace(/gsap\.registerPlugin[\s\S]*?;/g, '');
 code = code.replace(/document\.body\.classList\.remove[\s\S]*?;/g, '');
+code = code.replace(/initSoundSystem\(\);?/g, '');
 code = code.replace(/runPreloader\(\)\.then\(initSite\);/g, '');
 code = code.replace(/window\.addEventListener\("load",[\s\S]*?\);\s*$/g, '');
 
