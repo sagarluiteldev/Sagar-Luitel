@@ -244,6 +244,11 @@ body.route-transitioning .nav-backdrop {
 
 .preloader {
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
   inset: 0;
   z-index: 800;
   overflow: hidden;
@@ -252,7 +257,10 @@ body.route-transitioning .nav-backdrop {
 
 .preloader__screen {
   position: absolute;
-  inset: 0;
+  top: -2px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 4px);
   background: var(--color-darker);
   will-change: transform;
 }

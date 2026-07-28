@@ -1121,7 +1121,7 @@ const runPreloader = () => {
     tl.to(wordsWrap, { autoAlpha: 0, duration: 0.18 }, "+=0.25")
       .to(".preloader__curve", { height: "12vh", duration: 0.7, ease: "power4.inOut" }, "<")
       .to(".preloader__screen", { yPercent: -100, duration: 0.9, ease: "power4.inOut" }, "<0.12")
-      .to(".preloader", { autoAlpha: 0, duration: 0.1 }, "-=0.15");
+      .to(".preloader", { autoAlpha: 0, duration: 0.25 }, "-=0.25");
   });
 };
 
