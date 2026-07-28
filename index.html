@@ -26,6 +26,12 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <script>
+      (function() {
+        var h = Math.max(window.screen && window.screen.height || 0, window.innerHeight || 0);
+        if (h) document.documentElement.style.setProperty('--real-screen-height', h + 'px');
+      })();
+    </script>
 
     <!-- Primary SEO Meta Tags -->
     <title>Sagar Luitel — Full Stack & Frontend Developer, UI/UX Designer in Nepal</title>
