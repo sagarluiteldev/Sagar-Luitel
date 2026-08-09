@@ -30,6 +30,7 @@ export function playSound(type = "click") {
   if (!ctx) return;
 
   const now = ctx.currentTime;
+  const VOLUME_SCALE = 1.2; // 20% volume increase for UI and navigation sound effects
 
   try {
     switch (type) {
@@ -40,7 +41,7 @@ export function playSound(type = "click") {
         osc1.type = "sine";
         osc1.frequency.setValueAtTime(440, now);
         osc1.frequency.exponentialRampToValueAtTime(880, now + 0.04);
-        gain1.gain.setValueAtTime(0.22, now);
+        gain1.gain.setValueAtTime(0.22 * VOLUME_SCALE, now);
         gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
 
         const osc2 = ctx.createOscillator();
@@ -48,7 +49,7 @@ export function playSound(type = "click") {
         osc2.type = "sine";
         osc2.frequency.setValueAtTime(880, now + 0.03);
         osc2.frequency.exponentialRampToValueAtTime(1320, now + 0.08);
-        gain2.gain.setValueAtTime(0.26, now + 0.03);
+        gain2.gain.setValueAtTime(0.26 * VOLUME_SCALE, now + 0.03);
         gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
 
         osc1.connect(gain1);
@@ -72,7 +73,7 @@ export function playSound(type = "click") {
         osc.frequency.exponentialRampToValueAtTime(540, now + 0.025);
         osc.frequency.exponentialRampToValueAtTime(280, now + 0.055);
 
-        gain.gain.setValueAtTime(0.25, now);
+        gain.gain.setValueAtTime(0.25 * VOLUME_SCALE, now);
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.055);
 
         osc.connect(gain);
@@ -91,7 +92,7 @@ export function playSound(type = "click") {
         osc.frequency.setValueAtTime(220, now);
         osc.frequency.exponentialRampToValueAtTime(580, now + 0.04);
 
-        gain.gain.setValueAtTime(0.28, now);
+        gain.gain.setValueAtTime(0.28 * VOLUME_SCALE, now);
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
 
         osc.connect(gain);
@@ -110,7 +111,7 @@ export function playSound(type = "click") {
         osc.frequency.setValueAtTime(900, now);
         osc.frequency.exponentialRampToValueAtTime(1300, now + 0.025);
 
-        gain.gain.setValueAtTime(0.15, now);
+        gain.gain.setValueAtTime(0.15 * VOLUME_SCALE, now);
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.025);
 
         osc.connect(gain);
@@ -129,7 +130,7 @@ export function playSound(type = "click") {
         osc1.frequency.setValueAtTime(400, now);
         osc1.frequency.exponentialRampToValueAtTime(700, now + 0.03);
 
-        gain1.gain.setValueAtTime(0.18, now);
+        gain1.gain.setValueAtTime(0.18 * VOLUME_SCALE, now);
         gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.03);
 
         osc1.connect(gain1);
@@ -147,7 +148,7 @@ export function playSound(type = "click") {
         osc.type = "sine";
         osc.frequency.setValueAtTime(1100, now);
 
-        gain.gain.setValueAtTime(0.03, now);
+        gain.gain.setValueAtTime(0.03 * VOLUME_SCALE, now);
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.015);
 
         osc.connect(gain);
@@ -167,7 +168,7 @@ export function playSound(type = "click") {
         osc.frequency.setValueAtTime(240, now);
         osc.frequency.exponentialRampToValueAtTime(70, now + 0.03);
 
-        gain.gain.setValueAtTime(0.30, now);
+        gain.gain.setValueAtTime(0.30 * VOLUME_SCALE, now);
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.03);
 
         osc.connect(gain);

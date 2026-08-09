@@ -501,59 +501,7 @@ p {
 .round-button-text {
   display: inline-block;
   font-size: 1.3rem; /* 30% larger */
-  transition: opacity 0.35s var(--ease-primary), transform 0.35s var(--ease-primary);
-}
-
-.round-button:hover .round-button-text {
-  opacity: 0;
-  transform: scale(0.75);
-}
-
-.round-button-icon-waving-wrapper {
-  position: absolute !important;
-  top: 50%;
-  left: 50%;
-  width: 3.1rem; /* 40% larger */
-  height: 3.1rem;
-  margin-left: -1.55rem;
-  margin-top: -1.55rem;
-  z-index: 2;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.round-button-icon-waving {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-image: url("/assets/waving-hand.webp");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0;
-  transform: scale(0.6);
-  transition: opacity 0.35s var(--ease-primary), transform 0.35s var(--ease-primary);
-  filter: brightness(0) invert(1);
-  transform-origin: 50% 85%;
-}
-
-.round-button:hover .round-button-icon-waving {
-  opacity: 1;
-  transform: scale(1.1);
-  animation: wave-animation 1.5s ease-in-out infinite 0.1s;
-}
-
-@keyframes wave-animation {
-  0% { transform: rotate(0deg) scale(1.1); }
-  15% { transform: rotate(15deg) scale(1.1); }
-  30% { transform: rotate(-10deg) scale(1.1); }
-  45% { transform: rotate(15deg) scale(1.1); }
-  60% { transform: rotate(-5deg) scale(1.1); }
-  75% { transform: rotate(10deg) scale(1.1); }
-  90% { transform: rotate(0deg) scale(1.1); }
-  100% { transform: rotate(0deg) scale(1.1); }
+  transition: color 0.35s var(--ease-primary);
 }
 
 .round-button--blue {
@@ -2620,7 +2568,7 @@ html:not(.app-ready) .hero__name--back {
 .work-directory__labels,
 .work-page-row a {
   display: grid;
-  grid-template-columns: 42% 18% 28% 12%;
+  grid-template-columns: 50% 36% 14%;
   align-items: center;
 }
 
@@ -3493,7 +3441,7 @@ html:not(.app-ready) .hero__name--back {
 
   .work-directory__labels,
   .work-page-row a {
-    grid-template-columns: 40% 20% 28% 12%;
+    grid-template-columns: 50% 36% 14%;
   }
 
   .about-image-section__grid,
@@ -3502,23 +3450,83 @@ html:not(.app-ready) .hero__name--back {
     gap: var(--gap);
   }
 
-  /* Disable hover shape fill and color shift animations on mobile */
+  /* Disable unnecessary hover shape fill and color shift animations on mobile */
   .round-button:hover .btn-fill,
   .hamburger:hover .btn-fill,
-  .button:hover .btn-fill {
+  .button:hover .btn-fill,
+  .work-filter:hover .btn-fill {
     transform: translate3d(0, -76%, 0) !important;
   }
   
-  .button:hover span:not(.btn-fill) {
-    color: var(--color-dark) !important;
+  .button:hover span:not(.btn-fill),
+  .round-button:hover span:not(.btn-fill),
+  .hamburger:hover span:not(.btn-fill) {
+    color: inherit !important;
   }
-  
+
   .button--dark:hover span:not(.btn-fill) {
     color: var(--color-light) !important;
   }
-  
-  .round-button:hover span:not(.btn-fill) {
+
+  /* Specific fix for footer contact buttons on mobile: text must remain light (#ffffff) at all times */
+  .footer__buttons .button,
+  .footer__buttons .button:hover,
+  .footer__buttons .button:focus,
+  .footer__buttons .button:active {
     color: var(--color-light) !important;
+  }
+
+  .footer__buttons .button:hover span:not(.btn-fill),
+  .footer__buttons .button:focus span:not(.btn-fill),
+  .footer__buttons .button:active span:not(.btn-fill) {
+    color: var(--color-light) !important;
+  }
+
+  .footer__cta .round-button,
+  .footer__cta .round-button:hover,
+  .footer__cta .round-button:focus,
+  .footer__cta .round-button:active {
+    color: var(--color-light) !important;
+  }
+
+  .footer__cta .round-button:hover span:not(.btn-fill),
+  .footer__cta .round-button:focus span:not(.btn-fill),
+  .footer__cta .round-button:active span:not(.btn-fill) {
+    color: var(--color-light) !important;
+  }
+
+  .socials a:hover::after {
+    transform: scaleX(0) !important;
+  }
+
+  .nav-link:not(.is-active):hover::after {
+    transform: translate(-50%, 0.5rem) scale(0) !important;
+  }
+
+  .nav-link:not(.is-active):hover {
+    color: inherit !important;
+  }
+
+  .drawer-link:not(.is-active):hover::before {
+    transform: translateY(-50%) scale(0) !important;
+  }
+
+  .tech-item-card:hover {
+    border-color: var(--color-border) !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  .tech-item-card:hover .tech-icon-img,
+  .tech-item-card:hover .tech-icon-wrapper svg {
+    transform: none !important;
+  }
+
+  .work-tiles a:hover .project-art,
+  .next-case-card:hover .next-case-thumb,
+  .next-case-card:hover .project-art,
+  .work-page-tile:hover .project-art {
+    transform: none !important;
   }
 }
 
@@ -3975,75 +3983,6 @@ html:not(.app-ready) .hero__name--back {
     display: block;
     margin-top: 2rem;
   }
-
-  /* About me button loop animation for mobile view */
-  .round-button-text {
-    animation: mobile-btn-text-loop 4s ease-in-out infinite;
-  }
-
-  .round-button-icon-waving {
-    animation: mobile-btn-wave-loop 4s ease-in-out infinite;
-  }
-
-  .round-button:hover .round-button-text {
-    opacity: unset;
-    transform: unset;
-  }
-
-  .round-button:hover .round-button-icon-waving {
-    opacity: unset;
-    transform: unset;
-    animation: none;
-  }
-
-  @keyframes mobile-btn-text-loop {
-    0%, 65% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    70%, 95% {
-      opacity: 0;
-      transform: scale(0.75);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  @keyframes mobile-btn-wave-loop {
-    0%, 70% {
-      opacity: 0;
-      transform: scale(0.6) rotate(0deg);
-    }
-    75% {
-      opacity: 1;
-      transform: scale(1.1) rotate(0deg);
-    }
-    78% {
-      transform: scale(1.1) rotate(15deg);
-    }
-    81% {
-      transform: scale(1.1) rotate(-10deg);
-    }
-    84% {
-      transform: scale(1.1) rotate(15deg);
-    }
-    87% {
-      transform: scale(1.1) rotate(-5deg);
-    }
-    90% {
-      transform: scale(1.1) rotate(10deg);
-    }
-    93% {
-      opacity: 1;
-      transform: scale(1.1) rotate(0deg);
-    }
-    95%, 100% {
-      opacity: 0;
-      transform: scale(0.6) rotate(0deg);
-    }
-  }
 }
 
 @media (max-width: 560px) {
@@ -4263,12 +4202,12 @@ html:not(.app-ready) .hero__name--back {
     padding: 0 1.4rem;
   }
 
-  .work-filter:hover .btn-fill {
-    transform: translate3d(0, 102%, 0);
+  .work-filter:not(.is-active):hover .btn-fill {
+    transform: translate3d(0, -76%, 0) !important;
   }
 
-  .work-filter:hover span:not(.btn-fill) {
-    color: var(--color-dark);
+  .work-filter:not(.is-active):hover span:not(.btn-fill) {
+    color: var(--color-dark) !important;
   }
 
   .work-filter.is-active,
@@ -4387,3 +4326,80 @@ html:not(.app-ready) .hero__name--back {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Touch device hover resets (prevents sticky hover artifacts on coarse/touch pointers) */
+@media (hover: none) {
+  .round-button:hover .btn-fill,
+  .hamburger:hover .btn-fill,
+  .button:hover .btn-fill,
+  .work-filter:not(.is-active):hover .btn-fill {
+    transform: translate3d(0, -76%, 0) !important;
+  }
+
+  .button:hover span:not(.btn-fill),
+  .round-button:hover span:not(.btn-fill),
+  .hamburger:hover span:not(.btn-fill) {
+    color: inherit !important;
+  }
+
+  .footer__buttons .button,
+  .footer__buttons .button:hover,
+  .footer__buttons .button:focus,
+  .footer__buttons .button:active,
+  .footer__buttons .button:hover span:not(.btn-fill),
+  .footer__buttons .button:focus span:not(.btn-fill),
+  .footer__buttons .button:active span:not(.btn-fill),
+  .footer__cta .round-button,
+  .footer__cta .round-button:hover,
+  .footer__cta .round-button:focus,
+  .footer__cta .round-button:active,
+  .footer__cta .round-button:hover span:not(.btn-fill),
+  .footer__cta .round-button:focus span:not(.btn-fill),
+  .footer__cta .round-button:active span:not(.btn-fill) {
+    color: var(--color-light) !important;
+  }
+
+  .socials a:hover::after {
+    transform: scaleX(0) !important;
+  }
+
+  .nav-link:not(.is-active):hover::after {
+    transform: translate(-50%, 0.5rem) scale(0) !important;
+  }
+
+  .nav-link:not(.is-active):hover {
+    color: inherit !important;
+  }
+
+  .drawer-link:not(.is-active):hover::before {
+    transform: translateY(-50%) scale(0) !important;
+  }
+
+  .tech-item-card:hover {
+    border-color: var(--color-border) !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  .tech-item-card:hover .tech-icon-img,
+  .tech-item-card:hover .tech-icon-wrapper svg {
+    transform: none !important;
+  }
+
+  .work-tiles a:hover .project-art,
+  .next-case-card:hover .next-case-thumb,
+  .next-case-card:hover .project-art,
+  .work-page-tile:hover .project-art {
+    transform: none !important;
+  }
+
+  .credit:hover .credit__mark {
+    transform: none !important;
+  }
+
+  .credit:hover .credit__code,
+  .credit:hover .credit__name {
+    transform: none !important;
+  }
+}
+

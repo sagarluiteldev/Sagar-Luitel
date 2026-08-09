@@ -18,7 +18,7 @@ const projects = [
     service: "Tamper-Proof Voting System",
     role: "Security & Next.js Architecture",
     credits: "Code and design: Sagar Luitel",
-    location: "Kathmandu ©",
+
     year: "2026",
     liveUrl: "https://digitalvotingnepal.vercel.app/",
     artClass: "project-art--four",
@@ -40,7 +40,7 @@ const projects = [
     service: "SAAS Restaurant Manager",
     role: "Full Stack & Database Architecture",
     credits: "Code and design: Sagar Luitel",
-    location: "Kathmandu ©",
+
     year: "2024",
     liveUrl: "https://myrestromanager.vercel.app/",
     artClass: "project-art--two",
@@ -62,7 +62,7 @@ const projects = [
     service: "Conservation Platform",
     role: "Nuxt & GSAP Development",
     credits: "Code and design: Sagar Luitel",
-    location: "Kathmandu ©",
+
     year: "2026",
     liveUrl: "https://savewildlife.vercel.app/",
     artClass: "project-art--three",
@@ -84,7 +84,6 @@ const projects = [
     service: "Nature Editorial Experience",
     role: "GSAP & WebGL Scrollytelling",
     credits: "Code and design: Sagar Luitel",
-    location: "Pokhara ©",
     year: "2025",
     liveUrl: "https://intopokhara.vercel.app/",
     artClass: "project-art--four",
@@ -106,7 +105,7 @@ const projects = [
     service: "3D Porsche Showroom",
     role: "Three.js & WebGL Development",
     credits: "Code and design: Sagar Luitel",
-    location: "Kathmandu ©",
+
     year: "2025",
     liveUrl: "https://porscheconcept.vercel.app/",
     artClass: "project-art--one",
@@ -128,7 +127,7 @@ const projects = [
     service: "Luxury Architectural Firm",
     role: "Full Stack & Database Architecture",
     credits: "Code and design: Sagar Luitel",
-    location: "Kathmandu ©",
+
     year: "2026",
     liveUrl: "https://architrave.vercel.app/",
     artClass: "project-art--five",
@@ -150,7 +149,7 @@ const projects = [
     service: "Travel Booking Platform",
     role: "React & Animation Architecture",
     credits: "Code and design: Sagar Luitel",
-    location: "Kathmandu ©",
+
     year: "2025",
     liveUrl: "https://projectpeak.vercel.app/",
     artClass: "project-art--two",
@@ -172,7 +171,7 @@ const projects = [
     service: "Luxury E-Commerce Platform",
     role: "React, GSAP & E-Commerce",
     credits: "Code and design: Sagar Luitel",
-    location: "Kathmandu ©",
+
     year: "2026",
     liveUrl: "https://dobby-indol.vercel.app/",
     artClass: "project-art--three",
@@ -194,7 +193,7 @@ const projects = [
     service: "Expedition Tracker (In Dev)",
     role: "WebGL & GSAP Orchestration",
     credits: "Code and design: Sagar Luitel",
-    location: "Kathmandu ©",
+
     year: "2026",
     liveUrl: "",
     artClass: "project-art--one",
@@ -216,7 +215,7 @@ const projects = [
     service: "Virtual Physics Museum (In Dev)",
     role: "Three.js & Audio Integration",
     credits: "Code and design: Sagar Luitel",
-    location: "Kathmandu ©",
+
     year: "2026",
     liveUrl: "https://myartmuseum.vercel.app/",
     artClass: "project-art--two",
@@ -238,7 +237,7 @@ const projects = [
     service: "Apartment Rentals",
     role: "Full Stack Development & UI Design",
     credits: "Code and design: Sagar Luitel",
-    location: "Kathmandu ©",
+
     year: "2026",
     liveUrl: "https://cityscapeny.vercel.app/",
     artClass: "project-art--three",
@@ -260,7 +259,7 @@ const projects = [
     service: "E-Commerce Boutique",
     role: "Front End & E-Commerce Integration",
     credits: "Code and design: Sagar Luitel",
-    location: "Kathmandu ©",
+
     year: "2026",
     liveUrl: "https://navyata.vercel.app/",
     artClass: "project-art--four",
@@ -282,7 +281,7 @@ const projects = [
     service: "Travel Booking Platform",
     role: "Full Stack & Database Architecture",
     credits: "Code and design: Sagar Luitel",
-    location: "Kathmandu ©",
+
     year: "2026",
     liveUrl: "https://via-tour.vercel.app/",
     artClass: "project-art--one",
@@ -304,7 +303,7 @@ const projects = [
     service: "Pet Grooming & Veterinary Clinic",
     role: "Front End & UI Design Architecture",
     credits: "Code and design: Sagar Luitel",
-    location: "Kathmandu ©",
+
     year: "2026",
     liveUrl: "https://littlepawss.vercel.app/",
     artClass: "project-art--five",
@@ -551,9 +550,9 @@ const renderCasePage = (project) => {
   const nextProject = getNextProject(project);
 
   document.body.classList.add("case-route");
-  document.title = `${project.title} — Sagar Luitel | Full Stack & Frontend Developer Nepal`;
-  setMetaContent('meta[name="description"]', `${project.title} — ${project.service}. Case study by Sagar Luitel, freelance full stack developer, frontend engineer, and UI/UX designer in Nepal. Built with ${project.tech.slice(0, 3).join(', ')}.`);
-  setMetaContent('meta[property="og:title"]', `${project.title} — Sagar Luitel | Full Stack Developer Nepal`);
+  document.title = `${project.title} — Sagar Luitel | Full Stack & Frontend Developer Norway`;
+  setMetaContent('meta[name="description"]', `${project.title} — ${project.service}. Case study by Sagar Luitel, freelance full stack developer, frontend engineer, and UI/UX designer in Molde, Norway. Built with ${project.tech.slice(0, 3).join(', ')}.`);
+  setMetaContent('meta[property="og:title"]', `${project.title} — Sagar Luitel | Full Stack Developer Norway`);
   setMetaContent('meta[property="og:description"]', `${project.service}: ${project.summary.slice(0, 200)}`);
 
   document.querySelector("main")?.remove();
@@ -585,9 +584,9 @@ const renderCasePage = (project) => {
                   <p>${project.credits}</p>
                 </div>
                 <div class="case-meta-col">
-                  <h5>Location & year</h5>
+                  <h5>Year</h5>
                   <span class="stripe reveal-stripe"></span>
-                  <p>${project.location} &nbsp; ${project.year}</p>
+                  <p>${project.year}</p>
                 </div>
               </div>
             </div>
@@ -668,7 +667,7 @@ const renderCasePage = (project) => {
                 </div>
                 <div>
                   <h5>Local time</h5>
-                  <p id="local-time">--:-- NPT</p>
+                  <p id="local-time">--:-- CEST</p>
                 </div>
               </div>
               <div class="socials">
@@ -754,7 +753,7 @@ const renderStandardFooter = () => `
         </div>
         <div>
           <h5>Local time</h5>
-          <p id="local-time">--:-- NPT</p>
+          <p id="local-time">--:-- CEST</p>
         </div>
       </div>
       <div class="socials">
@@ -771,8 +770,8 @@ const renderStandardFooter = () => `
 
 const renderWorkPage = () => {
   document.body.classList.add("work-route");
-  document.title = "Work — Sagar Luitel | Full Stack & Frontend Developer, UI/UX Designer Nepal";
-  setMetaContent('meta[name="description"]', "Portfolio of Sagar Luitel — full stack & frontend developer, UI/UX designer in Nepal. View projects including 3D configurators, e-commerce platforms, SAAS apps, travel booking systems, and blockchain solutions built with React, Next.js, Three.js, and Node.js.");
+  document.title = "Work — Sagar Luitel | Full Stack & Frontend Developer, UI/UX Designer Norway";
+  setMetaContent('meta[name="description"]', "Portfolio of Sagar Luitel — full stack & frontend developer, UI/UX designer in Molde, Norway. View projects including 3D configurators, e-commerce platforms, SAAS apps, travel booking systems, and blockchain solutions built with React, Next.js, Three.js, and Node.js.");
 
   const rows = projects
     .map(
@@ -782,7 +781,6 @@ const renderWorkPage = () => {
           <a href="/work/${project.slug}/">
             <div class="work-page-row__img">${renderArt(project)}</div>
             <div class="work-page-row__title"><h4><span>${project.title}</span></h4></div>
-            <div class="work-page-row__location"><p>${project.location.replace(" ©", "")}</p></div>
             <div><p>${project.role}</p></div>
             <div><p>${project.year}</p></div>
           </a>
@@ -842,7 +840,6 @@ const renderWorkPage = () => {
           <div class="container">
             <div class="work-directory__labels">
               <h5>Client</h5>
-              <h5>Location</h5>
               <h5>Services</h5>
               <h5>Year</h5>
             </div>
@@ -862,8 +859,8 @@ const renderWorkPage = () => {
 
 const renderAboutPage = () => {
   document.body.classList.add("about-route");
-  document.title = "About — Sagar Luitel | Full Stack & Frontend Developer, UI/UX Designer in Nepal";
-  setMetaContent('meta[name="description"]', "About Sagar Luitel — freelance full stack developer, frontend engineer, and UI/UX designer in Nepal. Specialized in React, Next.js, Node.js, and Three.js.");
+  document.title = "About — Sagar Luitel | Full Stack & Frontend Developer, UI/UX Designer in Molde, Norway";
+  setMetaContent('meta[name="description"]', "About Sagar Luitel — freelance full stack developer, frontend engineer, and UI/UX designer in Molde, Norway. Specialized in React, Next.js, Node.js, and Three.js.");
 
   document.querySelector("main")?.remove();
   document.body.insertAdjacentHTML(
@@ -894,7 +891,7 @@ const renderAboutPage = () => {
             <div class="about-image-section__grid">
               <div class="about-copy">
                 <div class="arrow-mark" aria-hidden="true"></div>
-                <p data-scroll data-scroll-speed="-1">As a versatile <strong>Full Stack & Frontend Developer</strong> and <strong>UI/UX Designer based in Nepal</strong>, I help teams turn complex concepts into polished, fast, and secure digital product systems. Every build spans the entire lifecycle—from wireframing and interface prototypes to reliable database systems and clean codebases.</p>
+                <p data-scroll data-scroll-speed="-1">As a versatile <strong>Full Stack & Frontend Developer</strong> and <strong>UI/UX Designer based in Molde, Norway</strong>, I help teams turn complex concepts into polished, fast, and secure digital product systems. Every build spans the entire lifecycle—from wireframing and interface prototypes to reliable database systems and clean codebases.</p>
                 <p data-scroll data-scroll-speed="-1"><span>Always exploring<span class="animate-dot">.</span><span class="animate-dot">.</span><span class="animate-dot">.</span></span></p>
               </div>
               <div class="single-about-image">
@@ -949,8 +946,8 @@ const renderAboutPage = () => {
 
 const renderContactPage = () => {
   document.body.classList.add("contact-route");
-  document.title = "Contact — Hire Sagar Luitel | Full Stack Developer & UI/UX Designer in Nepal";
-  setMetaContent('meta[name="description"]', "Hire Sagar Luitel — freelance full stack developer, frontend engineer, and UI/UX designer in Nepal. Get in touch for custom web development and digital solutions.");
+  document.title = "Contact — Hire Sagar Luitel | Full Stack Developer & UI/UX Designer in Molde, Norway";
+  setMetaContent('meta[name="description"]', "Hire Sagar Luitel — freelance full stack developer, frontend engineer, and UI/UX designer in Molde, Norway. Get in touch for custom web development and digital solutions.");
 
   document.querySelector("main")?.remove();
   document.body.insertAdjacentHTML(
@@ -1004,7 +1001,7 @@ const renderContactPage = () => {
                 <ul>
                   <li><p>Sagar Luitel Studio</p></li>
                   <li><p>Full Stack Development</p></li>
-                  <li><p>Location: Kathmandu, Nepal</p></li>
+                  <li><p>Location: Molde, Norway</p></li>
                 </ul>
               </aside>
             </div>
@@ -1019,7 +1016,7 @@ const renderContactPage = () => {
               </div>
               <div>
                 <h5>Local time</h5>
-                <p id="local-time">--:-- NPT</p>
+                <p id="local-time">--:-- CEST</p>
               </div>
             </div>
             <div class="socials">
@@ -1064,15 +1061,20 @@ const setScrolledState = (value) => {
 };
 
 const updateLocalTime = () => {
-  const timeNode = document.querySelector("#local-time");
-  if (!timeNode) return;
+  const timeNodes = document.querySelectorAll("#local-time");
+  if (!timeNodes.length) return;
 
-  timeNode.textContent = new Intl.DateTimeFormat("en-US", {
-    timeZone: "Asia/Kathmandu",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: true,
-  }).format(new Date()) + " NPT";
+  const timeString =
+    new Intl.DateTimeFormat("en-US", {
+      timeZone: "Europe/Oslo",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    }).format(new Date()) + " CEST";
+
+  timeNodes.forEach((node) => {
+    node.textContent = timeString;
+  });
 };
 
 const setActiveLoaderWord = (words, activeIndex) => {
@@ -1326,8 +1328,8 @@ const saveHomePageHTML = () => {
 
 const renderHomePage = () => {
   document.body.classList.remove("case-route", "work-route", "about-route", "contact-route");
-  document.title = "Sagar Luitel — Full Stack & Frontend Developer, UI/UX Designer in Nepal";
-  setMetaContent('meta[name="description"]', "Sagar Luitel is a freelance full stack developer, frontend engineer, and UI/UX designer in Nepal. Specialized in React, Next.js, Three.js, and Node.js. Available for freelance projects.");
+  document.title = "Sagar Luitel — Full Stack & Frontend Developer, UI/UX Designer in Molde, Norway";
+  setMetaContent('meta[name="description"]', "Sagar Luitel is a freelance full stack developer, frontend engineer, and UI/UX designer based in Molde, Norway. Specialized in React, Next.js, Three.js, and Node.js. Available for freelance projects.");
 
   if (homePageHTML) {
     document.querySelector("main")?.remove();
@@ -1456,8 +1458,8 @@ const navigateToPage = (href, isPopState = false) => {
       renderContactPage();
     } else if (pathName === "/") {
       document.body.classList.remove("case-route", "work-route", "about-route", "contact-route");
-      document.title = "Sagar Luitel — Full Stack & Frontend Developer, UI/UX Designer in Nepal";
-      setMetaContent('meta[name="description"]', "Sagar Luitel is a freelance full stack developer, frontend engineer, and UI/UX designer in Nepal. Specialized in React, Next.js, Three.js, and Node.js. Available for freelance projects.");
+      document.title = "Sagar Luitel — Full Stack & Frontend Developer, UI/UX Designer in Molde, Norway";
+      setMetaContent('meta[name="description"]', "Sagar Luitel is a freelance full stack developer, frontend engineer, and UI/UX designer based in Molde, Norway. Specialized in React, Next.js, Three.js, and Node.js. Available for freelance projects.");
       document.querySelector("main")?.remove();
       if (homePageHTML) {
         document.body.insertAdjacentHTML("beforeend", homePageHTML);
@@ -1524,7 +1526,7 @@ const initNavigation = () => {
 };
 
 const initMagneticButtons = () => {
-  if (prefersReducedMotion || window.matchMedia("(pointer: coarse)").matches) return;
+  if (prefersReducedMotion || window.matchMedia("(pointer: coarse)").matches || window.innerWidth <= 900) return;
 
   document.querySelectorAll(".magnetic").forEach((element) => {
     const isRound = element.classList.contains("round-button") || element.classList.contains("hamburger");
@@ -1604,7 +1606,7 @@ const initHoverPreview = () => {
   const cursorDisc = document.querySelector(".cursor-disc");
   const cursorLabel = document.querySelector(".cursor-label");
 
-  if (!preview || !previewTrack || !cursorDisc || !cursorLabel || window.matchMedia("(pointer: coarse)").matches) return;
+  if (!preview || !previewTrack || !cursorDisc || !cursorLabel || window.matchMedia("(pointer: coarse)").matches || window.innerWidth <= 900) return;
 
   const movePreviewX = gsap.quickTo(preview, "x", { duration: 0.48, ease: "power3.out" });
   const movePreviewY = gsap.quickTo(preview, "y", { duration: 0.48, ease: "power3.out" });
@@ -2300,11 +2302,12 @@ const initScrollAnimations = () => {
     },
   });
 
+  const ctaDistance = window.innerWidth <= 900 ? -98 : -140;
+
   animateFromIfPresent(".footer__cta .round-button", {
-    x: -280,
-    autoAlpha: 0,
-    duration: 1.1,
-    ease: "power3.out",
+    x: ctaDistance,
+    duration: 1.8,
+    ease: "power2.inOut",
     scrollTrigger: {
       trigger: ".footer",
       start: "top 75%",

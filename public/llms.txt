@@ -1,8 +1,8 @@
 # Sagar Luitel — Full Stack Web Developer & UI/UX Designer
 
-> Portfolio and professional documentation for Sagar Luitel, full stack developer and UI/UX designer based in Pokhara, Nepal.
+> Portfolio and professional documentation for Sagar Luitel, full stack developer and UI/UX designer based in Molde, Norway.
 
-Sagar Luitel is a freelance full stack web developer and UI/UX designer based in Pokhara, Nepal. He specializes in building fast, fluid, production-ready web experiences using React, Next.js, Three.js, Node.js, PostgreSQL, and GSAP animations.
+Sagar Luitel is a freelance full stack web developer and UI/UX designer based in Molde, Norway. He specializes in building fast, fluid, production-ready web experiences using React, Next.js, Three.js, Node.js, PostgreSQL, and GSAP animations.
 
 ## Main Pages
 

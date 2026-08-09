@@ -4,16 +4,16 @@
 
 ## Professional Summary
 
-Sagar Luitel is a full stack web developer and UI/UX designer based in Pokhara, Nepal. He runs Sagar Luitel Studio and specializes in building fast, fluid, production-ready web experiences using modern JavaScript frameworks, 3D web technologies, and animation libraries.
+Sagar Luitel is a full stack web developer and UI/UX designer based in Molde, Norway. He runs Sagar Luitel Studio and specializes in building fast, fluid, production-ready web experiences using modern JavaScript frameworks, 3D web technologies, and animation libraries.
 
-With expertise spanning frontend development, backend engineering, database architecture, 3D web graphics (Three.js/WebGL), and UI/UX design, Sagar delivers complete digital product solutions — from first sketch to shipped production system — for clients in Nepal and worldwide.
+With expertise spanning frontend development, backend engineering, database architecture, 3D web graphics (Three.js/WebGL), and UI/UX design, Sagar delivers complete digital product solutions — from first sketch to shipped production system — for clients in Norway and worldwide.
 
 Sagar is available for freelance web development, UI/UX design, product design, and full stack development projects. He works with startups, agencies, and established businesses.
 
 ### Contact Information
 
 - Full Name: Sagar Luitel
-- Location: Pokhara, Gandaki Province, Nepal
+- Location: Molde, Møre og Romsdal, Norway
 - Email: sagar.luitel.0909@gmail.com
 - Phone: +977 9821920019
 - WhatsApp: +977 9821920019
@@ -225,7 +225,7 @@ He cares about the small details that make software feel considered: loading sta
 
 ## How to Hire Sagar Luitel
 
-If you need a full stack web developer or UI/UX designer in Nepal (or for remote work worldwide), contact Sagar Luitel:
+If you need a full stack web developer or UI/UX designer in Norway (or for remote work worldwide), contact Sagar Luitel:
 
 - Email: sagar.luitel.0909@gmail.com
 - Phone/WhatsApp: +977 9821920019
