@@ -252,17 +252,11 @@ body.route-transitioning .nav-backdrop {
   left: 0;
   width: 100vw;
   height: 100vh;
-  height: calc(var(--vh, 1vh) * 104);
-  height: 104dvh;
+  height: 100dvh;
   inset: 0;
   z-index: 800;
   overflow: hidden;
   pointer-events: none;
-}
-
-html.is-safari .preloader {
-  height: 112vh;
-  height: 112lvh;
 }
 
 .preloader__screen {
@@ -3924,26 +3918,9 @@ html:not(.app-ready) .hero__name--back {
     bottom: 5.25rem;
   }
 
-  .nav-backdrop {
-    height: calc(var(--vh, 1vh) * 104);
-    height: 104dvh;
-  }
-
   .drawer {
     min-width: 100vw;
-    height: calc(var(--vh, 1vh) * 104);
-    height: 104dvh;
     transform: translateX(calc(100% + 18vw));
-  }
-
-  html.is-safari .drawer {
-    height: 112vh;
-    height: 112lvh;
-  }
-
-  html.is-safari .nav-backdrop {
-    height: 112vh;
-    height: 112lvh;
   }
 
   .drawer__curve {
@@ -3951,11 +3928,7 @@ html:not(.app-ready) .hero__name--back {
   }
 
   .drawer__inner {
-    padding: 14vh var(--container-padding) calc(2.5rem + env(safe-area-inset-bottom, 0px));
-  }
-
-  html.is-safari .drawer__inner {
-    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+    padding: 14vh var(--container-padding) 2.5rem;
   }
 
   .drawer-link {
