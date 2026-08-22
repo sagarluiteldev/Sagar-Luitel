@@ -1499,28 +1499,15 @@ const initRouteTransitions = () => {
   });
 };
 
-let navScrollPosition = 0;
-
 const openNavigation = () => {
-  navScrollPosition = window.scrollY || window.pageYOffset || 0;
   document.body.classList.add("nav-open");
-  document.body.style.position = "fixed";
-  document.body.style.top = `-${navScrollPosition}px`;
-  document.body.style.left = "0";
-  document.body.style.right = "0";
   document.querySelector(".hamburger")?.setAttribute("aria-expanded", "true");
   lenis?.stop();
 };
 
 const closeNavigation = () => {
-  document.body.style.position = "";
-  document.body.style.top = "";
-  document.body.style.left = "";
-  document.body.style.right = "";
   document.body.classList.remove("nav-open");
   document.querySelector(".hamburger")?.setAttribute("aria-expanded", "false");
-  window.scrollTo(0, navScrollPosition);
-  setViewportHeight();
   lenis?.start();
 };
 
