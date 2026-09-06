@@ -17,8 +17,8 @@ Sagar Luitel is a freelance full stack web developer and UI/UX designer based in
 - [myRestro Manager](https://myrestromanager.vercel.app/): Multi-tenant SAAS restaurant manager with real-time WebSocket order flows and PostgreSQL architecture
 - [Save Wildlife](https://savewildlife.vercel.app/): Conservation scrollytelling platform with Nuxt.js, Vue 3, and GSAP ScrollTrigger animations
 - [Architrave](https://architrave.vercel.app/): Full-stack luxury housing and architectural portal with React, Node.js, Express, and PostgreSQL
-- [Estate](https://estato.vercel.app/): Luxury property investment platform with Tailwind CSS, GSAP ScrollTrigger, Lenis smooth scroll, and real-time occupancy analytics
-- [Hotel Management Dashboard](https://grandhaven-hotel.vercel.app/): Full-stack hotel operations and property management system with Next.js, Tailwind CSS, Prisma, PostgreSQL, and WebSockets
+- [Estate](https://estateinv.vercel.app/): Luxury property investment platform with Tailwind CSS, GSAP ScrollTrigger, Lenis smooth scroll, and real-time occupancy analytics
+- [Hotel Management Dashboard](https://hotel-management-grandhaven.vercel.app/): Full-stack hotel operations and property management system with Next.js, Tailwind CSS, Prisma, PostgreSQL, and WebSockets
 - [Project Peak](https://projectpeak.vercel.app/): Himalayan travel booking platform with Mapbox GL JS and React
 - [Dobby Haircare](https://dobby-indol.vercel.app/): Headless luxury haircare store built with Shopify Storefront API and Redux Toolkit
 - [Digital Voting Portal](https://github.com/sagarluiteldev/Digital-Voting): Decentralized voting dApp using Solidity smart contracts and EIP-712 meta-transactions

@@ -148,14 +148,14 @@ Core Web Vitals optimization, progressive image loading, asset compression, and 
 - Type: Luxury Property Investment Platform
 - Role: Frontend Engineering & UI/UX Design
 - Tech Stack: Tailwind CSS, GSAP ScrollTrigger, Lenis Scroll, HTML5/CSS3, JavaScript
-- Live URL: https://estato.vercel.app/
+- Live URL: https://estateinv.vercel.app/
 - Description: Modern web platform designed for high-growth property investments and luxury architectural showcases. Integrates interactive ROI calculators, real-time occupancy metrics, dynamic investor portfolios, and fluid narrative scrollytelling. Built with Lenis, GSAP, and Tailwind CSS.
 
 ### 6. Hotel Management Dashboard
 - Type: Full-Stack Hotel Operations & Property Management
 - Role: Full Stack Architecture & UI/UX Design
 - Tech Stack: Next.js, React, PostgreSQL, Prisma ORM, Tailwind CSS, WebSockets, Chart.js
-- Live URL: https://grandhaven-hotel.vercel.app/
+- Live URL: https://hotel-management-grandhaven.vercel.app/
 - Description: Enterprise hotel management and operations dashboard built for hospitality properties to streamline daily operations. Unifies real-time room readiness tracking, guest check-in/checkout workflows, dynamic occupancy analytics, interactive reservations calendars, cross-department communication channels, and shift scheduling. Built with Next.js, Tailwind CSS, Prisma, and PostgreSQL.
 
 ### 7. Project Peak
