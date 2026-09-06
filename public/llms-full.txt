@@ -137,67 +137,68 @@ Core Web Vitals optimization, progressive image loading, asset compression, and 
 - Live URL: https://savewildlife.vercel.app/
 - Description: Immersive scrollytelling editorial platform for a global conservation non-profit. Transformed ecological datasets into interactive maps and cinematic scroll transitions. Achieved Lighthouse performance score improvement from 48 to 96.
 
-### 4. Into Pokhara
-- Type: Digital Tourism Scrollytelling Experience
-- Role: GSAP & WebGL Scrollytelling
-- Tech Stack: GSAP ScrollTrigger, Locomotive Scroll, HTML5 Video, Vanilla CSS
-- Live URL: https://intopokhara.vercel.app/
-- Description: Premium digital tourism platform for the Nepal Tourism Board featuring dynamic parallax transitions, ambient music, and vector-drawn scrolly outlines of Pokhara's lakes and mountains. Built custom scroll proxy bridging Locomotive Scroll with GSAP.
+### 4. Architrave
+- Type: Full-Stack Luxury Architectural Firm Portal
+- Role: Full Stack & Database Architecture
+- Tech Stack: React.js, Vite, Tailwind CSS, GSAP Animations, Node.js, Express, PostgreSQL
+- Live URL: https://architrave.vercel.app/
+- Description: High-performance, full-stack housing portal designed to balance complex architectural listings with a minimalist, high-conversion user interface. Blends heritage design with modern components, secure Node.js Express backend with Zod validations, and PostgreSQL database.
 
-### 5. Porsche Concept
-- Type: Interactive 3D Vehicle Showroom
-- Role: Three.js & WebGL Development
-- Tech Stack: Three.js, WebGL, GLSL Shaders, GSAP ScrollTrigger, Vite
-- Live URL: https://porscheconcept.vercel.app/
-- Description: Interactive 3D concept showroom with custom GLSL vertex and fragment shaders for realistic metallic paint reflections, glass refractions, and carbon fiber simulation. Implemented adaptive quality controller for cross-device performance.
+### 5. Estate
+- Type: Luxury Property Investment Platform
+- Role: Frontend Engineering & UI/UX Design
+- Tech Stack: Tailwind CSS, GSAP ScrollTrigger, Lenis Scroll, HTML5/CSS3, JavaScript
+- Live URL: https://estato.vercel.app/
+- Description: Modern web platform designed for high-growth property investments and luxury architectural showcases. Integrates interactive ROI calculators, real-time occupancy metrics, dynamic investor portfolios, and fluid narrative scrollytelling. Built with Lenis, GSAP, and Tailwind CSS.
 
-### 6. Project Peak
+### 6. Hotel Management Dashboard
+- Type: Full-Stack Hotel Operations & Property Management
+- Role: Full Stack Architecture & UI/UX Design
+- Tech Stack: Next.js, React, PostgreSQL, Prisma ORM, Tailwind CSS, WebSockets, Chart.js
+- Live URL: https://grandhaven-hotel.vercel.app/
+- Description: Enterprise hotel management and operations dashboard built for hospitality properties to streamline daily operations. Unifies real-time room readiness tracking, guest check-in/checkout workflows, dynamic occupancy analytics, interactive reservations calendars, cross-department communication channels, and shift scheduling. Built with Next.js, Tailwind CSS, Prisma, and PostgreSQL.
+
+### 7. Project Peak
 - Type: Travel Booking Platform
 - Role: React & Animation Architecture
 - Tech Stack: React.js, Mapbox GL JS, Framer Motion, Tailwind CSS, REST APIs
 - Live URL: https://projectpeak.vercel.app/
 - Description: Luxury adventure travel booking platform for Himalayan trekking with interactive geographic maps, elevation data, weather statistics, and dynamic booking forms. Solved Mapbox GL JS memory leaks with proper WebGL context cleanup.
 
-### 7. Dobby Haircare
+### 8. Dobby Haircare
 - Type: Luxury E-Commerce Platform
 - Role: React, GSAP & E-Commerce
 - Tech Stack: React.js, Shopify API, GSAP Animations, Tailwind CSS, Redux Toolkit
 - Live URL: https://dobby-indol.vercel.app/
 - Description: Headless e-commerce for a luxury haircare brand with Shopify Storefront API backend, custom GSAP page transitions with async route pre-fetching, and Redux Toolkit for instant cart state management.
 
-### 8. Digital Voting Portal
+### 9. Digital Voting Portal
 - Type: Blockchain-Based Voting System
 - Role: Security & Next.js Architecture
 - Tech Stack: Next.js, Web3.js, Solidity, Tailwind CSS, Ethereum Blockchain
 - Live URL: https://github.com/sagarluiteldev/Digital-Voting
 - Description: Secure, decentralized digital voting portal using Solidity smart contracts and EIP-712 meta-transactions for voter anonymity. Users sign votes off-chain while a relayer commits to the chain, covering gas costs.
 
-### 9. CityScape
+### 10. CityScape
 - Type: Apartment Rental Platform
 - Role: Full Stack Development & UI Design
 - Tech Stack: React.js, Vite, GSAP Animations, Tailwind CSS, Framer Motion
 - Live URL: https://cityscapeny.vercel.app/
 - Description: Premium apartment rental platform for NYC featuring intuitive apartment selection, fluid transition effects, interactive neighborhood maps, and streamlined booking checkout.
 
-### 10. Navyata
+### 11. Navyata
 - Type: E-Commerce Boutique
 - Role: Front End & E-Commerce Integration
 - Tech Stack: React.js, Shopify API, Tailwind CSS, Redux Toolkit, GSAP Animations
 - Live URL: https://navyata.vercel.app/
 - Description: High-end fashion e-commerce boutique with lightweight Shopify Storefront API middleware wrapper for optimistic cart updates and minimal network latency.
 
-### 11. Viatour
+### 12. Viatour
 - Type: Travel Booking Platform
 - Role: Full Stack & Database Architecture
 - Tech Stack: Next.js, Node.js, PostgreSQL, Prisma, Tailwind CSS, Stripe API
 - Live URL: https://via-tour.vercel.app/
 - Description: Full-stack travel booking application with secure concurrent booking handling using PostgreSQL transaction blocks and row-level locks. Features Stripe payment integration and admin console.
-
-### 12. Everest Adventures (In Development)
-- Type: Expedition Tracker
-- Role: WebGL & GSAP Orchestration
-- Tech Stack: WebGL, OpenWeather API, Leaflet.js, GSAP ScrollTrigger, Sass
-- Description: High-altitude expedition tracker with real-time route tracing, weather integration, and 3D topographic maps of Mt. Everest. Uses Web Workers for wind vector calculations and LOD terrain rendering.
 
 ### 13. 3D Museum Concept (In Development)
 - Type: Virtual Physics Museum

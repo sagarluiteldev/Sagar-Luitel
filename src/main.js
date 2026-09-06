@@ -79,55 +79,11 @@ const projects = [
       "I implemented an advanced pre-fetching and progressive image enhancement pipeline, converting high-res assets to WebP/AVIF formats and utilizing low-quality image placeholders (LQIP). I resolved the GSAP layout shifts by binding an event listener to media load states, executing dynamic ScrollTrigger.refresh() recalculations once images/videos loaded. Finally, I offloaded heavy canvas scrollytelling computations to CSS-transform-accelerated layers, boosting the Lighthouse performance score from 48 to 96.",
   },
   {
-    slug: "into-pokhara",
-    title: "Into Pokhara",
-    service: "Nature Editorial Experience",
-    role: "GSAP & WebGL Scrollytelling",
-    credits: "Code and design: Sagar Luitel",
-    year: "2025",
-    liveUrl: "https://intopokhara.vercel.app/",
-    artClass: "project-art--four",
-    background: "#E3C4BC",
-    accent: "#FF805F",
-    image: "/assets/into-pokhara-mockup.webp",
-    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252344.webp",
-    summary:
-      "A premium digital tourism scrollytelling platform commissioned by the Nepal Tourism Board. Designed as a cinematic virtual tour of Pokhara's lakes and mountains, the site relies on dynamic parallax transitions, ambient music transitions, and vector-drawn scrolly outlines. The site offers visitors an editorial-style narrative experience that adapts dynamically as they scroll, providing an immersive taste of the region's geography and culture.",
-    tech: ["GSAP ScrollTrigger", "Locomotive Scroll", "HTML5 Video", "Vanilla CSS"],
-    challenge:
-      "Synchronizing custom desktop smooth scrolling (handled via Locomotive Scroll) with mobile touch physics created a disjointed experience. On mobile, scroll-driven timelines were laggy and failed to align background mountain silhouettes with foreground callouts. Additionally, rendering auto-playing video backdrops caused significant battery drain and CPU spikes, especially on devices with high-refresh-rate displays.",
-    solution:
-      "I resolved the synchronization bottleneck by building a custom scroll proxy class in Javascript, bridging Locomotive Scroll's rendering loop directly to GSAP's scroll handler. I designed viewport-dependent CSS media rules that automatically scale down parallax velocities on smaller devices. To handle video playback efficiently, I implemented intersection observers that pause off-screen video wrappers and toggle low-power static images when battery-saver flags are detected in the browser.",
-  },
-  {
-    slug: "porsche-concept",
-    title: "Porsche Concept",
-    service: "3D Porsche Showroom",
-    role: "Three.js & WebGL Development",
-    credits: "Code and design: Sagar Luitel",
-
-    year: "2025",
-    liveUrl: "https://porscheconcept.vercel.app/",
-    artClass: "project-art--one",
-    background: "#C9D5F5",
-    accent: "#0F7BFF",
-    image: "/assets/porsche-mockup.webp",
-    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252344 (1).webp",
-    summary:
-      "An interactive 3D concept showroom showcasing next-generation Porsche electric models. Built to replicate the physical luxury of a vehicle showroom, the platform allows users to open doors, trigger charging animation timelines, inspect wheels, and rotate models inside a WebGL sandbox. The app represents a benchmark in combining web-based 3D assets with responsive, high-end web design elements.",
-    tech: ["Three.js", "WebGL", "GLSL Shaders", "GSAP ScrollTrigger", "Vite"],
-    challenge:
-      "Simulating realistic metallic car paint reflections, glass refractions, and carbon fiber weaves requires heavy GPU shader calculations. Standard Three.js PBR materials looked flat and failed to capture the signature Porsche metallic luster. However, adding complex custom shaders and high-resolution cube maps caused mobile GPUs to throttle, dropping the frame rate to single digits.",
-    solution:
-      "I authored custom GLSL vertex and fragment shaders to simulate real-time specular highlights and fresnel paint shading with minimal texture memory overhead. I baked ambient occlusion maps from high-poly models onto mobile-optimized Three.js meshes, reducing load sizes by 80%. Furthermore, I implemented an adaptive quality controller that monitors frame times and scales down shadow resolutions dynamically on weaker devices to ensure smooth interactions.",
-  },
-  {
     slug: "architrave",
     title: "Architrave",
     service: "Luxury Architectural Firm",
     role: "Full Stack & Database Architecture",
     credits: "Code and design: Sagar Luitel",
-
     year: "2026",
     liveUrl: "https://architrave.vercel.app/",
     artClass: "project-art--five",
@@ -135,13 +91,58 @@ const projects = [
     accent: "#2B2D42",
     image: "/assets/architrave-mockup.webp",
     laptopImage: "/assets/laptop mockups/architrave mockup.webp",
+    desktopImage: "/assets/desktop mockups/architrave desktop.webp",
     summary:
       "A high-performance, full-stack housing portal designed to balance complex architectural listings with a minimalist, high-conversion user interface. The platform blends heritage design with modern components, providing visitors with an elegant architectural journey.",
     tech: ["React.js", "Vite", "Tailwind CSS", "GSAP Animations", "Node.js", "Express", "PostgreSQL"],
     challenge:
       "Integrating complex architectural blueprints, high-resolution interior photos, and extensive property listings without causing visual layout shifts or performance lag on mobile web browsers. Additionally, maintaining transaction integrity and security during real-time booking and inquiry flows.",
     solution:
-      "I engineered a unified design system using Tailwind and GSAP that eliminated layout shifts and optimized image delivery with modern WebP pipelines. I designed a secure Node.js backend using Express and Zod validations, guaranteeing transaction safety and sanitizing booking queues."
+      "I engineered a unified design system using Tailwind and GSAP that eliminated layout shifts and optimized image delivery with modern WebP pipelines. I designed a secure Node.js backend using Express and Zod validations, guaranteeing transaction safety and sanitizing booking queues.",
+  },
+  {
+    slug: "estate",
+    title: "Estate",
+    service: "Property Investment Platform",
+    role: "Frontend Engineering & UI/UX Design",
+    credits: "Code and design: Sagar Luitel",
+    year: "2026",
+    liveUrl: "https://estato.vercel.app/",
+    artClass: "project-art--one",
+    background: "#DCE8F5",
+    accent: "#0284C7",
+    image: "/assets/estate-mockup.webp",
+    laptopImage: "/assets/laptop mockups/estate-laptop.webp",
+    desktopImage: "/assets/desktop mockups/estate-desktop.webp",
+    summary:
+      "A modern, high-conversion web platform engineered for high-growth property investments and luxury architectural showcases. Designed to deliver an engaging investor journey, the site features interactive ROI calculators, real-time occupancy metrics, dynamic investor portfolios, and fluid narrative scrollytelling.",
+    tech: ["Tailwind CSS", "GSAP ScrollTrigger", "Lenis Scroll", "HTML5/CSS3", "JavaScript"],
+    challenge:
+      "Creating high-end architectural editorial experiences with layered scrollytelling timelines often introduces severe scroll friction and frame drops, particularly when mixing CSS glassmorphism cards, auto-playing media, and complex SVG metric rings. Mobile touch physics frequently suffered from jitter when native gesture listeners competed with smooth-scroll handlers.",
+    solution:
+      "I architected a decoupled rendering pipeline utilizing Lenis smooth scroll coupled directly with GSAP ScrollTrigger ticker updates for frame-locked 60fps scrolling. I built lightweight, hardware-accelerated SVG circular progress widgets for occupancy metrics and optimized glassmorphism backdrop filters with CSS layer containment. Viewport-triggered micro-interactions and progressive image loading ensured instant initial render times without compromising visual fidelity.",
+  },
+  {
+    slug: "hotel-management-dashboard",
+    title: "Hotel Management Dashboard",
+    service: "Hotel Operations & Property Management",
+    role: "Full Stack Architecture & UI/UX Design",
+    credits: "Code and design: Sagar Luitel",
+    year: "2026",
+    liveUrl: "https://grandhaven-hotel.vercel.app/",
+    artClass: "project-art--four",
+    background: "#D8E5DF",
+    accent: "#0D9488",
+    image: "/assets/hotel-management-mockup.webp",
+    laptopImage: "/assets/laptop mockups/hotel-management-laptop.webp",
+    desktopImage: "/assets/desktop mockups/hotel-management-desktop.webp",
+    summary:
+      "A comprehensive, enterprise-ready hotel management and operations dashboard built for hospitality properties to streamline daily operations. The system unifies real-time room readiness tracking, guest check-in/checkout workflows, dynamic occupancy analytics, interactive reservations calendars, cross-department communication channels (front desk, housekeeping, engineering), and shift scheduling into an intuitive, high-performance interface designed for desktop and mobile devices.",
+    tech: ["Next.js", "React", "PostgreSQL", "Prisma ORM", "Tailwind CSS", "WebSockets", "Chart.js"],
+    challenge:
+      "Hotels manage high-concurrency operations where room turnover status, check-in schedules, and guest requests fluctuate by the minute. Coordinating front-desk bookings with real-time housekeeping inspections via traditional relational queries introduced significant database contention and stale state issues. Additionally, rendering complex interactive timelines, Gantt shift schedules, and multi-series occupancy analytics charts caused noticeable UI frame drops on touch devices and front-desk workstations.",
+    solution:
+      "I engineered a robust full-stack architecture leveraging PostgreSQL with Prisma ORM for relational consistency and optimized indexing on reservation timelines. I implemented a WebSocket-powered pub/sub synchronization layer to broadcast instant room readiness updates between housekeeping staff on mobile and front-desk staff on desktop. To ensure buttery-smooth UI performance, I built responsive component systems with Tailwind CSS, memoized analytical chart renders with Chart.js, and implemented optimistic UI updates for instantaneous booking and shift reassignments.",
   },
   {
     slug: "project-peak",
@@ -187,28 +188,7 @@ const projects = [
     solution:
       "I built the site as a headless React app utilizing the Shopify Storefront API. I implemented a local state management layer with Redux Toolkit to cache catalog metadata on initial load. I crafted custom GSAP page transitions that run asynchronously during route changes, pre-fetching the destination page's product details so the screen switches instantly without loading indicators.",
   },
-  {
-    slug: "everest-adventures",
-    title: "Everest Adventures",
-    service: "Expedition Tracker (In Dev)",
-    role: "WebGL & GSAP Orchestration",
-    credits: "Code and design: Sagar Luitel",
 
-    year: "2026",
-    liveUrl: "",
-    artClass: "project-art--one",
-    background: "#C9D5F5",
-    accent: "#FF930F",
-    image: "/assets/everest-mockup.webp",
-    laptopImage: "/assets/laptop mockups/The_website_in_the_second_202605252343 (3).webp",
-    summary:
-      "A high-altitude expedition tracker application designed for mountaineering teams and outdoor enthusiasts. The platform provides real-time route tracing, weather integration, and topographic 3D maps of Mt. Everest. It serves as an interactive scrollytelling tool and safety tracker for teams navigating the Himalayas.",
-    tech: ["WebGL", "OpenWeather API", "Leaflet.js", "GSAP ScrollTrigger", "Sass"],
-    challenge:
-      "Rendering detailed 3D topographic models of the Everest region alongside live weather vector wind arrows in real-time caused severe memory bottlenecks. The WebGL rendering loop struggled to update wind particle coordinate buffers without blocking the main browser thread, causing layout lag during scroll events.",
-    solution:
-      "I optimized the terrain rendering by splitting the mountain mesh into dynamic Level of Detail (LOD) segments, loading high-res textures only for regions near the active camera. I offloaded wind vector math to Web Workers, calculating wind coordinate shifts on a separate thread and feeding results back to a WebGL instanced mesh renderer, keeping the UI fully responsive.",
-  },
   {
     slug: "3d-museum-concept",
     title: "3D Museum Concept",
@@ -512,6 +492,10 @@ const renderTechIcon = (name) => {
       url = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg";
     } else if (norm.includes("css") || norm.includes("grid")) {
       url = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg";
+    } else if (norm.includes("lenis")) {
+      url = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg";
+    } else if (norm.includes("javascript") || norm.includes("js")) {
+      url = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg";
     } else if (norm.includes("html")) {
       url = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg";
     } else if (norm.includes("contentful")) {
@@ -635,6 +619,11 @@ const renderCasePage = (project) => {
               </div>
 
             </div>
+            ${project.desktopImage ? `
+            <div class="case-showcase-wrap fade-up" style="margin-top: clamp(4rem, 8vw, 8rem); border-radius: clamp(1rem, 2vw, 2rem); overflow: hidden; box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.12);">
+              <img src="${project.desktopImage}" alt="${project.title} Desktop View" loading="lazy" decoding="async" style="width: 100%; height: auto; display: block;" />
+            </div>
+            ` : ""}
           </div>
         </section>
 
@@ -689,8 +678,8 @@ const renderCasePage = (project) => {
 const FULLSTACK_SLUGS = [
   "digital-voting",
   "myrestro-manager",
+  "hotel-management-dashboard",
   "navyata",
-  "everest-adventures",
   "save-wildlife",
 ];
 
@@ -809,7 +798,7 @@ const renderWorkPage = () => {
   document.querySelector("main")?.remove();
   document.body.insertAdjacentHTML(
     "beforeend",
-    `<main id="work" class="route-page work-page" data-barba="container" data-barba-namespace="work">
+    `<main id="work" class="route-page work-page show-tiles" data-barba="container" data-barba-namespace="work">
       ${renderFloatingPreview()}
       ${renderChrome("work", "View")}
       <div class="site-wrap" data-scroll-container>
@@ -829,8 +818,8 @@ const renderWorkPage = () => {
                 <button class="button magnetic work-filter" type="button" data-filter="fullstack"><span class="btn-fill"></span><span>Full Stack Development <small>${fullstackCount}</small></span></button>
               </div>
               <div class="grid-row" aria-label="Layout view">
-                <button class="button button--icon magnetic work-view is-active" type="button" data-view="rows" aria-label="Rows view"><span class="btn-fill"></span><span></span></button>
-                <button class="button button--icon button--grid magnetic work-view" type="button" data-view="tiles" aria-label="Grid view"><span class="btn-fill"></span><span></span></button>
+                <button class="button button--icon button--grid magnetic work-view is-active" type="button" data-view="tiles" aria-label="Grid view"><span class="btn-fill"></span><span></span></button>
+                <button class="button button--icon magnetic work-view" type="button" data-view="rows" aria-label="Rows view"><span class="btn-fill"></span><span></span></button>
               </div>
             </div>
           </div>

@@ -3825,6 +3825,14 @@ html:not(.app-ready) .hero__name--back {
     display: none;
   }
 
+  .work-page.show-tiles .work-directory__rows {
+    display: block;
+  }
+
+  .work-page.show-tiles .work-directory__tiles {
+    display: none;
+  }
+
   .work-directory__labels {
     display: none;
   }
